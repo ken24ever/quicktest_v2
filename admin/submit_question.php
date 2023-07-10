@@ -1,0 +1,85 @@
+<?php
+// Connect to the database
+include("../connection.php");
+
+$uploadDir = "uploads/"; // Set the upload directory
+$response = array();
+
+// Get the form data
+$questionId = isset($_POST['questionId']) ? $_POST['questionId'] : null;
+$questionText = isset($_POST['question']) ? $_POST['question'] : null;
+$optionA = isset($_POST['optionA']) ? $_POST['optionA'] : null;
+$optionB = isset($_POST['optionB']) ? $_POST['optionB'] : null;
+$optionC = isset($_POST['optionC']) ? $_POST['optionC'] : null;
+$optionD = isset($_POST['optionD']) ? $_POST['optionD'] : null;
+$optionE = isset($_POST['optionE']) ? $_POST['optionE'] : null;
+$imgQues = isset($_FILES['question_image_']['name']) ? $_FILES['question_image_']['name'] : null;
+$imgOptA = isset($_FILES['image_optionA']['name']) ? $_FILES['image_optionA']['name'] : null;
+$imgOptB = isset($_FILES['image_optionB']['name']) ? $_FILES['image_optionB']['name'] : null;
+$imgOptC = isset($_FILES['image_optionC']['name']) ? $_FILES['image_optionC']['name'] : null;
+$imgOptD = isset($_FILES['image_optionD']['name']) ? $_FILES['image_optionD']['name'] : null;
+$imgOptE = isset($_FILES['image_optionE']['name']) ? $_FILES['image_optionE']['name'] : null;
+$answer = isset($_POST['answer']) ? $_POST['answer'] : null;
+
+// Prepare the SQL statement
+$sql = "UPDATE questions SET question=?, option_a=?, option_b=?, option_c=?, option_d=?, option_e=?, answer=?, image_ques=?, option_a_image_path=?, option_b_image_path=?, option_c_image_path=?, option_d_image_path=?, option_e_image_path=? WHERE id=?";
+
+// Prepare the query
+$stmt = $conn->prepare($sql);
+
+// Generate unique names for the uploaded files
+$questionImageNewName = !empty($imgQues) ? $uploadDir . uniqid('qimg_', true) . '.' . pathinfo($imgQues, PATHINFO_EXTENSION) : null;
+$optionAImageNewName = !empty($imgOptA) ? $uploadDir . uniqid('optionA_', true) . '.' . pathinfo($imgOptA, PATHINFO_EXTENSION) : null;
+$optionBImageNewName = !empty($imgOptB) ? $uploadDir . uniqid('optionB_', true) . '.' . pathinfo($imgOptB, PATHINFO_EXTENSION) : null;
+$optionCImageNewName = !empty($imgOptC) ? $uploadDir . uniqid('optionC_', true) . '.' . pathinfo($imgOptC, PATHINFO_EXTENSION) : null;
+$optionDImageNewName = !empty($imgOptD) ? $uploadDir . uniqid('optionD_', true) . '.' . pathinfo($imgOptD, PATHINFO_EXTENSION) : null;
+$optionEImageNewName = !empty($imgOptE) ? $uploadDir . uniqid('optionE_', true) . '.' . pathinfo($imgOptE, PATHINFO_EXTENSION) : null;
+
+// Move the uploaded files to the "uploads/" directory
+if (!empty($imgQues)) {
+  move_uploaded_file($_FILES['question_image_']['tmp_name'], $questionImageNewName);
+}
+if (!empty($imgOptA)) {
+  move_uploaded_file($_FILES['image_optionA']['tmp_name'], $optionAImageNewName);
+}
+if (!empty($imgOptB)) {
+  move_uploaded_file($_FILES['image_optionB']['tmp_name'], $optionBImageNewName);
+}
+if (!empty($imgOptC)) {
+  move_uploaded_file($_FILES['image_optionC']['tmp_name'], $optionCImageNewName);
+}
+if (!empty($imgOptD)) {
+  move_uploaded_file($_FILES['image_optionD']['tmp_name'], $optionDImageNewName);
+}
+if (!empty($imgOptE)) {
+  move_uploaded_file($_FILES['image_optionE']['tmp_name'], $optionEImageNewName);
+}
+
+// Bind the parameters
+$stmt->bind_param("sssssssssssssi", $questionText, $optionA, $optionB, $optionC, $optionD, $optionE, $answer, $questionImageNewName, $optionAImageNewName, $optionBImageNewName, $optionCImageNewName, $optionDImageNewName, $optionEImageNewName, $questionId);
+
+// Execute the query
+if ($stmt->execute()) {
+  // If the query is successful, return a success response
+  $response = array(
+    'status' => 'success',
+    'question' => null
+  );
+} else {
+  // If the query fails, return an error response
+  $response = array(
+    'status' => 'error',
+    'message' => 'Failed to update question'
+  );
+}
+
+// Close the prepared statement
+$stmt->close();
+
+// Close the database connection
+$conn->close();
+
+// Send the response back to the client as JSON
+header('Content-Type: application/json');
+echo json_encode($response);
+

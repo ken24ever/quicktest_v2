@@ -1,0 +1,51 @@
+ # Computer Based Test App Documentation
+
+## Introduction
+The Computer Based Test (CBT) app is a web-based application designed to facilitate the creation, management, and administration of exams. 
+It provides a user-friendly interface for both administrators and test-takers, allowing them to interact with the system efficiently. 
+The app streamlines the process of conducting computer-based exams, making it easier to administer, grade, and analyze results.
+
+## Usage
+The CBT app is primarily used by administrators to create and manage exams, as well as handle user accounts. Administrators have access to various features and functionalities,
+ including account creation, exam creation, exam summaries, and user management.
+
+### Account Creation
+The administrator is responsible for creating user accounts within the CBT app. This can be done in two ways: bulk user uploads or single account creation.
+ In bulk user uploads, the administrator can upload a MICROSOFT EXCEL file containing user details such as username, email, and password ETC. 
+For single account creation, the administrator can manually enter the user's details, including their username and password ETC.
+
+### Exam Creation
+The administrator has the authority to create exams within the CBT app. The exam creation process involves defining the exam's details, 
+such as the exam name, duration, and the set of questions to be included. 
+The administrator can utilize the provided Questions template to organize and structure the exam questions effectively.
+
+### Exam Management
+The administrator holds the responsibility for managing exams within the CBT app. They can perform various actions on both users and exams,
+ such as resetting an exam, searching for specific users or exams with their respective questions, deleting user accounts or exam records, and editing user or exam details as needed.
+ These management capabilities enable the administrator to maintain the integrity and accuracy of the exams conducted through the app.
+
+### Exam Summaries
+The CBT app offers exam summaries, allowing the administrator to obtain comprehensive reports on exam performance. 
+These summaries provide essential insights, such as the overall exam scores, individual question statistics, and aggregated results of all test-takers.
+ By analyzing these summaries, administrators can identify areas of improvement and make informed decisions regarding the evaluation process.
+
+## Resources
+The CBT app provides two essential templates for users and questions, which are available in the documentation folder. 
+These templates assist administrators in creating and managing user accounts and exam questions effectively. 
+The templates are provided in a standardized format, ensuring consistency and compatibility with the app's functionality.
+
+## Admin Dashboard Access
+To access the admin dashboard, administrators can follow these steps:
+
+1. Launch a web browser.
+2. Enter the following URL: [http://localhost/cbt_exam](http://localhost/cbt_exam).
+3. Append a forward slash and the text 'admin' at the end of the URL, like this: [http://localhost/cbt_exam/admin](http://localhost/cbt_exam/admin).
+4. Press Enter to navigate to the admin dashboard.
+
+The admin dashboard serves as the central hub for administering the CBT app, offering a user-friendly interface to perform various administrative tasks efficiently.
+
+## Conclusion
+The Computer Based Test (CBT) app simplifies the process of creating, managing, and administering exams. By providing a comprehensive set of features and functionalities,
+ the app empowers administrators to efficiently handle user accounts, create exams, manage exam details, and generate exam summaries.
+ The inclusion of resources like user and questions templates further enhances the app's usability.
+ With its intuitive interface and robust capabilities, the CBT app is a valuable tool for conducting computer-based tests.

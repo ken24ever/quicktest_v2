@@ -1,0 +1,18 @@
+{
+    "name": "admin/cbt-exam",
+    "description": "cbt platform",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Admin\\CbtExam\\": "admin/cbt-exam/"
+        }
+    },
+    "authors": [
+        {
+            "name": "cbt"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.28"
+    }
+}
