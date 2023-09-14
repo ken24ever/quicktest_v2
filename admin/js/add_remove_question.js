@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 var questionCount = 0; // Initialize with one question
 $(document).ready(function(){
   var maxQuestions = 10; // Maximum number of questions that can be added
 
+=======
+$(document).ready(function(){
+  var maxQuestions = 10; // Maximum number of questions that can be added
+  var questionCount = 0; // Initialize with one question
+   
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
 
   $("#addQuestionBtn").click(function(){
@@ -73,6 +80,7 @@ $(document).ready(function(){
           '<br><input type="file" class="btn btn-dark" id="option_e_image_' + questionCount + '" name="option_e_image_' + questionCount + '">'+
           '</div>'+
 
+<<<<<<< HEAD
         // Updated section for checkboxes
       '<div class="form-group">' +
       '<label for="correct' + questionCount + '">Correct Answer:</label><br>' +
@@ -82,6 +90,19 @@ $(document).ready(function(){
       '<label class="checkbox-label"><input type="checkbox" name="correct' + questionCount + '[]" value="D"> Option D</label><br>' +
       '<label class="checkbox-label"><input type="checkbox" name="correct' + questionCount + '[]" value="E"> Option E</label><br>' +
       '</div>' +
+=======
+          '<div class="form-group">' +
+            '<label for="correct' + questionCount + '">Correct Answer:</label>' +
+            '<select class="form-control" id="correct' + questionCount + '" name="correct' + questionCount + '" required>' +
+            '<option value="">Select Correct Answer</option>' +  
+            '<option value="A">Option A</option>' +
+              '<option value="B">Option B</option>' +
+              '<option value="C">Option C</option>' +
+              '<option value="D">Option D</option>' +
+              '<option value="E">Option E</option>' +
+            '</select>' +
+          '</div>' +
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
           '<button type="button" class="btn btn-danger remove-question-btn">Remove Question</button>' +
 

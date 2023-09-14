@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 
@@ -15,6 +16,8 @@ $userID = $_SESSION['user_id'];
 
 ?>
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +41,7 @@ $userID = $_SESSION['user_id'];
   <script src="sheetjs/dist/xlsx.full.min.js"></script>
 
    <!-- sweet  alert 2 lib -->
+<<<<<<< HEAD
    <link rel="stylesheet" href="datepicker/dist/css/bootstrap-datepicker.min.css">
 <script src="datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
@@ -50,6 +54,11 @@ $userID = $_SESSION['user_id'];
    <link rel="stylesheet" href="node_modules/select2/dist/css/select2.min.css">
 	<script src="node_modules/select2/dist/js/select2.min.js"></script>
 
+=======
+   <link rel="stylesheet" href="../sweetalert2/dist/sweetalert2.min.css">
+<script src="../sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
 	<!-- import all custom js scripts -->
   <script src="js/usersBatchUpload.js"></script>
@@ -58,6 +67,7 @@ $userID = $_SESSION['user_id'];
 	<script src="js/search_users.js"></script>
 	<script src="js/add_exam.js"></script>
 	<script src="js/get_manage_exams.js"></script>
+<<<<<<< HEAD
 	<script src="js/addImageExams.js"></script>
 	<script src="js/add_admin.js"></script>
 
@@ -197,6 +207,22 @@ $('#userPassport').on('change', function() {
     e.preventDefault(); // prevent default form submit behavior
 
     // Check if any input or select fields are empty
+=======
+	
+	<script src="js/addImageExams.js"></script>
+	
+	
+  
+
+	<script>
+		$(document).ready(function(){
+
+		
+        $('#addUserForm').submit(function(e) {
+            e.preventDefault(); // prevent default form submit behavior
+          
+              // Check if any input or select fields are empty
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     var emptyFields = $(this).find('input, select').filter(function() {
       var value = $(this).val();
       return !value || $.trim(value) === '';
@@ -204,6 +230,10 @@ $('#userPassport').on('change', function() {
 
     // If any fields are empty, display an error message
     if (emptyFields.length > 0) {
+<<<<<<< HEAD
+=======
+      //$('#errorMessage').text('Please fill in all the required fields.').show();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
       Toastify({
         text: "Please Fill In All The Required Fields!",
         duration: 5000,
@@ -213,6 +243,7 @@ $('#userPassport').on('change', function() {
           background: 'linear-gradient(to right, #FFA0A0, #B88AFF, #A0A0FF)',
         }
       }).showToast();
+<<<<<<< HEAD
     } else {
       // Validate user passport image format and size
       var userPassportInput = $('#userPassport')[0];
@@ -281,6 +312,48 @@ $('#userPassport').on('change', function() {
   });
 });
 
+=======
+
+    } else {
+      
+      $.ajax({
+                url: 'add_user.php',
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    // handle success response
+                    console.log(response);
+                    //alert(response) 
+
+                    Toastify({
+        text: response,
+        duration: 5000,
+        gravity: 'bottom',
+        close: true,
+        style: {
+          background: 'linear-gradient(to right, #FFA0A0, #B88AFF, #A0A0FF)',
+        }
+      }).showToast();
+                    $('#addUserForm')[0].reset();
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // handle error response
+                    console.log(textStatus, errorThrown);
+                }
+            });
+
+
+
+
+    } // end of else statement 
+            
+    });// end of $('#addUserForm')
+
+
+
+		})
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 	</script>
   <script src="js/batchQuestions.js"></script>
 
@@ -356,6 +429,7 @@ $('#userPassport').on('change', function() {
   width: 100%  !important;
 }
 
+<<<<<<< HEAD
 #audit_tray {
   height: 50%;
 }
@@ -372,6 +446,8 @@ $('#userPassport').on('change', function() {
   height: 30% !important; 
   width: 100%  !important;
 }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
 @keyframes heartbeat {
   0% {
@@ -428,6 +504,7 @@ $('#userPassport').on('change', function() {
   .heartbeat-image {
     animation: logo 4s infinite;
   }
+<<<<<<< HEAD
 
   /* Add CSS for the collapsible effect */
 .exam-status-container {
@@ -445,6 +522,8 @@ $('#userPassport').on('change', function() {
   z-index: 1;
 }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 	</style>
 	<script src="FileSaver.js/dist/FileSaver.js"></script>
 	<!-- script toggle -->
@@ -466,12 +545,19 @@ $('#userPassport').on('change', function() {
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
   <ul class="navbar-nav ml-auto"> <!-- Added 'ml-auto' class -->
+<<<<<<< HEAD
   <li class="nav-item">
         <a class="nav-link text-dark" href="#"> <b> Welcome, <?php echo $_SESSION['user_name']; ?> </b> </a>
       </li>  
     
       <li class="nav-item">
         <a class="nav-link text-dark" href="logout.php"> <b>Logout</b> </a>
+=======
+     
+    
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php"> <b>Logout</b> </a>
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
       </li>    
     </ul>
   </div>
@@ -497,6 +583,7 @@ $('#userPassport').on('change', function() {
 		<li class="nav-item">
 			<a href="#report" data-toggle="tab" class="nav-link">Report Generation</a>
 		</li>
+<<<<<<< HEAD
     <?php
        if ($_SESSION['access_level'] === 1 ){
        echo ' <li class="nav-item">
@@ -512,6 +599,8 @@ $('#userPassport').on('change', function() {
        }
     ?>
    
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 	</ul>
 	<div class="tab-content mt-3">
 		<div id="addUser" class="tab-pane active">
@@ -519,7 +608,11 @@ $('#userPassport').on('change', function() {
 			<!-- Add the form for adding user here -->
 				<div id="addUsers"><img src="img/add_Users.png" alt="" class="img-fluid img-thumbnail">	</div>				
 				<hr>
+<<<<<<< HEAD
    							 <form id="addUserForm" enctype="multipart/form-data">
+=======
+   							 <form id="addUserForm" >
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                   <h3>Fill The Form </h3>
 								<div class="form-group">
            							 			<label for="Fullname:">Fullname:<b style="color:red; font-size:12px">*</b></label>
@@ -549,6 +642,7 @@ $('#userPassport').on('change', function() {
 									  </div>
 
                     <div class="form-group">
+<<<<<<< HEAD
                           <label for="userPassport">User Passport:</label>
                           <input type="file" class="form-control"  accept="image/" capture="environment" id="userPassport" name="userPassport">
                      </div>
@@ -560,6 +654,8 @@ $('#userPassport').on('change', function() {
                           <div id="imagePreview" style="width: 80px; height: 80px;"></div>
                         <hr>
                     <div class="form-group">
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
          										   <label for="app">Applying For:<b style="color:red; font-size:12px">*</b></label>
           										   <input type="text" class="form-control" id="app" name="app" placeholder="Enter Job Position"  >
         							 </div>
@@ -571,15 +667,24 @@ $('#userPassport').on('change', function() {
   <select name="examsList[]" id="examsList" class="examslist form-control"  multiple  ></select>
 </div>
 
+<<<<<<< HEAD
        									 <button type="submit" id="addUsersThruForm" class="btn btn-primary">Submit</button>
+=======
+       									 <button type="submit" class="btn btn-primary">Submit</button>
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
    								 </form>
                       <!--  -->
                       
                     <form enctype="multipart/form-data" id="addUserForm1" style="display:none">
                     <h3>Add Large Candidates Records.</h3>
                     <div class="btn-group">
+<<<<<<< HEAD
     <button type="submit" class="btn btn-primary mt-2" id="largeDATA">Submit</button>
 				<input type="file" class=" btn btn-dark mt-2" name="user_batch_file" id="user_batch_file" value="Add Users File">
+=======
+    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+				<input type="file" class="btn btn-dark mt-2" name="user_batch_file" id="user_batch_file" value="Add Users File">
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 		</div>
           
     </form>
@@ -628,12 +733,17 @@ $('#userPassport').on('change', function() {
 													<div class="input-group mb-3">
   <input type="text" id="searchUsername" name="searchUsername" placeholder="SEARCH BY: USERNAME OR NAME OR PASSWORD" class="form-control">
   <div class="input-group-append">
+<<<<<<< HEAD
     <button class="btn btn-info" id="searchUserButton">Search</button>
+=======
+    <button class="btn btn-info">Search</button>
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   </div>
 </div>
     										</form>
 											<br>
 													<div id="searchUsers" class="responsive"></div>
+<<<<<<< HEAD
                           
                           <!-- accordion starts here -->
                                     <!-- Accordion container -->
@@ -705,6 +815,9 @@ $('#userPassport').on('change', function() {
 </div>
 
                           <!-- Accordion ends here -->
+=======
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 						<!-- modal effects for searched results when an edit button is clicked -->
 					
 
@@ -741,7 +854,11 @@ $('#userPassport').on('change', function() {
                         <input type="password" class="form-control" id="edit-password" name="edit-password" required>
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
                         <label for="edit-examName">Exam Name: <b style="color:red; font-size:12px">*  (Use comma to separate exam name if you are adding more than one with no space in between. Always check (Manage Exam) section before adding exam names.)</b></label>
+=======
+                        <label for="edit-examName">Exam Name: <b style="color:red; font-size:12px">*  (Use comma to separate exam if you are adding more than one with no space in between!)</b></label>
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                         <input type="text" class="form-control" id="edit-examName" name="edit-examName" required>
                     </div>
                     
@@ -845,7 +962,11 @@ $(document).ready(function() {
 
 
 														
+<<<<<<< HEAD
 												<form id="addExamForm" enctype="multipart/form-data"  > 
+=======
+												<form id="addExamForm" enctype="multipart/form-data"  >
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 												<h2>Use This Form To Upload Small Records/Data</h2>
     												<div class="form-group">
      														   <label for="examName">Exam Name:</label>
@@ -873,10 +994,14 @@ $(document).ready(function() {
 													</form>
 
 													<form enctype="multipart/form-data" id="addExamForm1" style='display:none' >
+<<<<<<< HEAD
                           <hr>
     												<h2>Use This Form To Upload Bulky Records/Data</h2>
                             <h6 style='color:red'>You can only upload data in Microsoft Excel format!</h6>
                           <hr>
+=======
+    												<h2>Use This Form To Upload Bulky Records/Data</h2>
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 													<div class="form-group">
      														   <label for="examName">Exam Name:</label>
       														  <input type="text" class="form-control" id="exam_title1" name="exam_title1" placeholder="Enter exam name" >
@@ -955,7 +1080,11 @@ $(document).ready(function() {
 																			<th>ID</th>
           															     	<th>Exam Name</th>
             																<th>Description</th>
+<<<<<<< HEAD
 																			<th>Duration (minutes)</th>
+=======
+																			<th>Duration</th>
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             																<th>Number of Questions</th>
             																<th>Actions</th>
         				   												</tr>
@@ -977,7 +1106,11 @@ $(document).ready(function() {
 													<form id="exam_id">
 							
 							<div class="input-group mb-3">
+<<<<<<< HEAD
   <input type="text" id="examID" name="examID" placeholder="Enter exam ID" class="form-control">
+=======
+  <input type="text" id="examID" name="examID" placeholder="Enter exam ID"class="form-control">
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   <div class="input-group-append">
     <button class="btn btn-info">Search</button>
   </div>
@@ -1098,8 +1231,21 @@ $(document).ready(function() {
 						<div class="option-e-image-preview image-preview image_optionE-preview"></div>
 					</div>
 					<div class="form-group">
+<<<<<<< HEAD
 								<label for="editAnswer">Answer : <b style="color:red; font-size:12px"> * (Separate your answer options with a comma and with NO space in between the commas and options (i.e A,B,C)!)</b></label>
 								<input type="text" class="form-control" id="answer" name="answer">
+=======
+								<label for="editAnswer">Answer</label>
+								<!-- <input type="text" class="form-control" id="answer" name="answer"> -->
+                <select class="form-control" id="answer" name="answer" required>
+                  <option value="">Select Answer</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="E">E</option>
+                </select>
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 					</div>
 					<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1285,6 +1431,7 @@ function fetchUsers(examId, page) {
         });
 // Add export functionality
 var exportButton = $('.exportButton');
+<<<<<<< HEAD
             exportButton.off('click'); // Remove any existing click event handlers
 exportButton.on('click', function() 
       {
@@ -1325,6 +1472,47 @@ exportButton.on('click', function()
             }); */ 
   });
 
+=======
+exportButton.off('click'); // Remove any existing click event handlers
+exportButton.on('click', function() {
+  var selectedUserIds = [];
+  $('#usersTable tbody tr').each(function() {
+    var checkbox = $(this).find('input[type="checkbox"]');
+    if (checkbox.prop('checked')) {
+      selectedUserIds.push(checkbox.val());
+    }
+  });
+
+  if (selectedUserIds.length === 0) {
+    //alert();
+    Toastify({
+  text: 'No user(s) selected for export.',
+  duration: 5000,
+  gravity: 'top',
+  close: true,
+  style: {
+    background: 'linear-gradient(to right, #FFA0A0, #B88AFF, #A0A0FF)',
+  }
+}).showToast();
+
+
+    return;
+  }
+
+  var selectedRows = $('#usersTable tbody tr').filter(function() {
+    var checkbox = $(this).find('input[type="checkbox"]');
+    return checkbox.prop('checked');
+  });
+  var usersToExport = response.users;
+  var clonedTable = $('<table>').append(selectedRows.clone());
+  var workbook = XLSX.utils.table_to_book(clonedTable[0], { sheet: 'Sheet 1' });
+  XLSX.writeFile(workbook, 'usersExamDetails.xlsx');
+/*   usersToExport.forEach(usersExported => {
+    XLSX.writeFile(workbook, usersExported.exam_names + ' exam details.xlsx')
+  }); */ 
+});
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
       }
     },
     error: function() {
@@ -1380,7 +1568,11 @@ $('#nextPageButton').click(function() {
 // Delete selected button click event
 $('#deleteSelectedButton').click(function() {
   var selectedUserIds = [];
+<<<<<<< HEAD
   var examId = $('#searchExamId').val(); 
+=======
+  var examId = $('#searchExamId').val();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   $('#usersTable tbody input:checked').each(function() {
     selectedUserIds.push($(this).val());
   });
@@ -1430,6 +1622,7 @@ $('#deleteSelectedButton').click(function() {
 // Export selected button click event
 $('#exportSelectedButton').click(function() {
   var selectedUserIds = [];
+<<<<<<< HEAD
  
 
 
@@ -1439,16 +1632,25 @@ $('#exportSelectedButton').click(function() {
    
   });
   
+=======
+  $('#usersTable tbody input:checked').each(function() {
+    selectedUserIds.push($(this).val());
+  });
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
   if (selectedUserIds.length > 0) {
     // Create a form and submit it to the export script
     var form = $('<form method="POST" action="export_report.php">');
+<<<<<<< HEAD
         
      
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     form.append('<input type="hidden" name="userIds[]" value="' + selectedUserIds.join(',') + '">');
     $('body').append(form);
     form.submit();
   } else {
+<<<<<<< HEAD
                // Show a message that no users are selected
   
           }//end of else
@@ -1491,6 +1693,9 @@ $(document).on('click', '#exportSelectedButton', function() {
   } else {
     // No checked inputs found, handle this case (show an alert, etc.)
     console.log('No input field is checked.');
+=======
+    // Show a message that no users are selected
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   }
 });
 
@@ -1505,6 +1710,7 @@ $(document).on('click', '#exportSelectedButton', function() {
 		
      </div> <!-- End of <div class="tab-content mt-3"> -->
 
+<<<<<<< HEAD
      <div id="audit" class="tab-pane">
      <div id="audit_tray"><img src="img/audit_trail.png" alt="" class="img-fluid img-thumbnail">	</div>
      <hr>
@@ -1622,5 +1828,14 @@ $(document).on('click', '#exportSelectedButton', function() {
     // ...
   });
 </script>
+=======
+
+
+
+
+
+<script src="../bootstrap_v4/js/bootstrap.min.js"></script>
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 </body>
 </html>

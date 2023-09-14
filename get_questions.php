@@ -17,8 +17,13 @@ $status = $statusResult->fetch_assoc()['status'];
 $questions = [];
 
 if ($status != 'completed') {
+<<<<<<< HEAD
     // Retrieve the questions for the given examID(id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path)
     $sql = "SELECT *
+=======
+    // Retrieve the questions for the given examID
+    $sql = "SELECT id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             FROM questions
             WHERE exam_id = '$examID'
             ORDER BY ";
@@ -32,7 +37,11 @@ if ($status != 'completed') {
     
     $sql .= "RAND()";
 
+<<<<<<< HEAD
     $sql .= " LIMIT $offset, $questionsPerPage"; 
+=======
+    $sql .= " LIMIT $offset, $questionsPerPage";
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     $result = $conn->query($sql);
 
@@ -42,7 +51,10 @@ if ($status != 'completed') {
             $question = [
                 'id' => $row['id'],
                 'question' => $row['question'],
+<<<<<<< HEAD
                 'answer' => $row['answer'],
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 'options' => [
                     [
                         'option_id' => 'a',

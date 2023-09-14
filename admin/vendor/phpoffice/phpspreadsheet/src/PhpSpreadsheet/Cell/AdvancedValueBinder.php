@@ -51,9 +51,14 @@ class AdvancedValueBinder extends DefaultValueBinder implements IValueBinder
                 return $this->setImproperFraction($matches, $cell);
             }
 
+<<<<<<< HEAD
             $decimalSeparatorNoPreg = StringHelper::getDecimalSeparator();
             $decimalSeparator = preg_quote($decimalSeparatorNoPreg, '/');
             $thousandsSeparator = preg_quote(StringHelper::getThousandsSeparator(), '/');
+=======
+            $decimalSeparator = preg_quote(StringHelper::getDecimalSeparator());
+            $thousandsSeparator = preg_quote(StringHelper::getThousandsSeparator());
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
             // Check for percentage
             if (preg_match('/^\-?\d*' . $decimalSeparator . '?\d*\s?\%$/', preg_replace('/(\d)' . $thousandsSeparator . '(\d)/u', '$1$2', $value))) {
@@ -65,7 +70,11 @@ class AdvancedValueBinder extends DefaultValueBinder implements IValueBinder
                 // Convert value to number
                 $sign = ($matches['PrefixedSign'] ?? $matches['PrefixedSign2'] ?? $matches['PostfixedSign']) ?? null;
                 $currencyCode = $matches['PrefixedCurrency'] ?? $matches['PostfixedCurrency'];
+<<<<<<< HEAD
                 $value = (float) ($sign . trim(str_replace([$decimalSeparatorNoPreg, $currencyCode, ' ', '-'], ['.', '', '', ''], preg_replace('/(\d)' . $thousandsSeparator . '(\d)/u', '$1$2', $value)))); // @phpstan-ignore-line
+=======
+                $value = (float) ($sign . trim(str_replace([$decimalSeparator, $currencyCode, ' ', '-'], ['.', '', '', ''], preg_replace('/(\d)' . $thousandsSeparator . '(\d)/u', '$1$2', $value)))); // @phpstan-ignore-line
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
                 return $this->setCurrency($value, $cell, $currencyCode); // @phpstan-ignore-line
             }

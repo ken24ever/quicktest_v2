@@ -112,6 +112,7 @@ class Style extends WriterPart
         $objWriter->writeAttribute('count', (string) count($spreadsheet->getCellXfCollection()));
 
         // xf
+<<<<<<< HEAD
         $alignment = new Alignment();
         $defaultAlignHash = $alignment->getHashCode();
         if ($defaultAlignHash !== $spreadsheet->getDefaultStyle()->getAlignment()->getHashCode()) {
@@ -119,6 +120,10 @@ class Style extends WriterPart
         }
         foreach ($spreadsheet->getCellXfCollection() as $cellXf) {
             $this->writeCellStyleXf($objWriter, $cellXf, $spreadsheet, $defaultAlignHash);
+=======
+        foreach ($spreadsheet->getCellXfCollection() as $cellXf) {
+            $this->writeCellStyleXf($objWriter, $cellXf, $spreadsheet);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         }
 
         $objWriter->endElement();
@@ -359,6 +364,7 @@ class Style extends WriterPart
             $objWriter->endElement();
         }
 
+<<<<<<< HEAD
         if (!empty($font->getScheme())) {
             $this->startFont($objWriter, $fontStarted);
             $objWriter->startElement('scheme');
@@ -366,6 +372,8 @@ class Style extends WriterPart
             $objWriter->endElement();
         }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         if ($fontStarted) {
             $objWriter->endElement();
         }
@@ -412,7 +420,11 @@ class Style extends WriterPart
     /**
      * Write Cell Style Xf.
      */
+<<<<<<< HEAD
     private function writeCellStyleXf(XMLWriter $objWriter, \PhpOffice\PhpSpreadsheet\Style\Style $style, Spreadsheet $spreadsheet, string $defaultAlignHash): void
+=======
+    private function writeCellStyleXf(XMLWriter $objWriter, \PhpOffice\PhpSpreadsheet\Style\Style $style, Spreadsheet $spreadsheet): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         // xf
         $objWriter->startElement('xf');
@@ -436,11 +448,15 @@ class Style extends WriterPart
         $objWriter->writeAttribute('applyNumberFormat', ($spreadsheet->getDefaultStyle()->getNumberFormat()->getHashCode() != $style->getNumberFormat()->getHashCode()) ? '1' : '0');
         $objWriter->writeAttribute('applyFill', ($spreadsheet->getDefaultStyle()->getFill()->getHashCode() != $style->getFill()->getHashCode()) ? '1' : '0');
         $objWriter->writeAttribute('applyBorder', ($spreadsheet->getDefaultStyle()->getBorders()->getHashCode() != $style->getBorders()->getHashCode()) ? '1' : '0');
+<<<<<<< HEAD
         if ($defaultAlignHash !== '' && $defaultAlignHash === $style->getAlignment()->getHashCode()) {
             $applyAlignment = '0';
         } else {
             $applyAlignment = '1';
         }
+=======
+        $applyAlignment = ($spreadsheet->getDefaultStyle()->getAlignment()->getHashCode() != $style->getAlignment()->getHashCode()) ? '1' : '0';
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         $objWriter->writeAttribute('applyAlignment', $applyAlignment);
         if ($style->getProtection()->getLocked() != Protection::PROTECTION_INHERIT || $style->getProtection()->getHidden() != Protection::PROTECTION_INHERIT) {
             $objWriter->writeAttribute('applyProtection', 'true');

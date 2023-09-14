@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 
@@ -8,6 +9,10 @@ if (isset($_SESSION['user_id'])) {
    // exit();
 }
 ?>
+=======
+
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,9 +36,15 @@ if (isset($_SESSION['user_id'])) {
    /* Font import */
    @import url('../bubblegumFont/BubblegumSans-Regular.ttf');
 
+<<<<<<< HEAD
     /* Custom CSS for the layout */ 
     body {
       background-image: url('../img/login.png');
+=======
+    /* Custom CSS for the layout */
+    body {
+      background-image: url('../img/admin.png');
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;

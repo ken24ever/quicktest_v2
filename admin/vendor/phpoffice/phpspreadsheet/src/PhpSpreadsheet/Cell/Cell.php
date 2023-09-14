@@ -71,9 +71,12 @@ class Cell
      */
     private $formulaAttributes;
 
+<<<<<<< HEAD
     /** @var IgnoredErrors */
     private $ignoredErrors;
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Update the cell into the cell collection.
      *
@@ -122,7 +125,10 @@ class Cell
         } elseif (self::getValueBinder()->bindValue($this, $value) === false) {
             throw new Exception('Value could not be bound to cell.');
         }
+<<<<<<< HEAD
         $this->ignoredErrors = new IgnoredErrors();
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 
     /**
@@ -395,9 +401,13 @@ class Cell
                 }
 
                 throw new \PhpOffice\PhpSpreadsheet\Calculation\Exception(
+<<<<<<< HEAD
                     $this->getWorksheet()->getTitle() . '!' . $this->getCoordinate() . ' -> ' . $ex->getMessage(),
                     $ex->getCode(),
                     $ex
+=======
+                    $this->getWorksheet()->getTitle() . '!' . $this->getCoordinate() . ' -> ' . $ex->getMessage()
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 );
             }
 
@@ -800,9 +810,12 @@ class Cell
     {
         return (string) $this->getValue();
     }
+<<<<<<< HEAD
 
     public function getIgnoredErrors(): IgnoredErrors
     {
         return $this->ignoredErrors;
     }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 }

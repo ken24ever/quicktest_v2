@@ -107,9 +107,12 @@ class Font extends Supervisor
      */
     public $colorIndex;
 
+<<<<<<< HEAD
     /** @var string */
     protected $scheme = '';
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Create a new Font.
      *
@@ -234,12 +237,15 @@ class Font extends Supervisor
             if (isset($styleArray['size'])) {
                 $this->setSize($styleArray['size']);
             }
+<<<<<<< HEAD
             if (isset($styleArray['chartColor'])) {
                 $this->chartColor = $styleArray['chartColor'];
             }
             if (isset($styleArray['scheme'])) {
                 $this->setScheme($styleArray['scheme']);
             }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         }
 
         return $this;
@@ -287,11 +293,21 @@ class Font extends Supervisor
     }
 
     /**
+<<<<<<< HEAD
      * Set Name and turn off Scheme.
      *
      * @param string $fontname
      */
     public function setName($fontname): self
+=======
+     * Set Name.
+     *
+     * @param string $fontname
+     *
+     * @return $this
+     */
+    public function setName($fontname)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         if ($fontname == '') {
             $fontname = 'Calibri';
@@ -303,7 +319,11 @@ class Font extends Supervisor
             $this->name = $fontname;
         }
 
+<<<<<<< HEAD
         return $this->setScheme('');
+=======
+        return $this;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 
     public function setLatin(string $fontname): self
@@ -641,6 +661,7 @@ class Font extends Supervisor
         return $this;
     }
 
+<<<<<<< HEAD
     public function setChartColorFromObject(?ChartColor $chartColor): self
     {
         $this->chartColor = $chartColor;
@@ -648,6 +669,8 @@ class Font extends Supervisor
         return $this;
     }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Get Underline.
      *
@@ -788,7 +811,10 @@ class Font extends Supervisor
             $this->underline .
             ($this->strikethrough ? 't' : 'f') .
             $this->color->getHashCode() .
+<<<<<<< HEAD
             $this->scheme .
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             implode(
                 '*',
                 [
@@ -817,7 +843,10 @@ class Font extends Supervisor
         $this->exportArray2($exportedArray, 'italic', $this->getItalic());
         $this->exportArray2($exportedArray, 'latin', $this->getLatin());
         $this->exportArray2($exportedArray, 'name', $this->getName());
+<<<<<<< HEAD
         $this->exportArray2($exportedArray, 'scheme', $this->getScheme());
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         $this->exportArray2($exportedArray, 'size', $this->getSize());
         $this->exportArray2($exportedArray, 'strikethrough', $this->getStrikethrough());
         $this->exportArray2($exportedArray, 'strikeType', $this->getStrikeType());
@@ -828,6 +857,7 @@ class Font extends Supervisor
 
         return $exportedArray;
     }
+<<<<<<< HEAD
 
     public function getScheme(): string
     {
@@ -851,4 +881,6 @@ class Font extends Supervisor
 
         return $this;
     }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 }

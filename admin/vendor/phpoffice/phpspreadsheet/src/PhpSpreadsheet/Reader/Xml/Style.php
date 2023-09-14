@@ -2,7 +2,10 @@
 
 namespace PhpOffice\PhpSpreadsheet\Reader\Xml;
 
+<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Style\Protection;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 use SimpleXMLElement;
 
 class Style
@@ -31,7 +34,11 @@ class Style
             $styleID = (string) $style_ss['ID'];
             $this->styles[$styleID] = $this->styles['Default'] ?? [];
 
+<<<<<<< HEAD
             $alignment = $border = $font = $fill = $numberFormat = $protection = [];
+=======
+            $alignment = $border = $font = $fill = $numberFormat = [];
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
             foreach ($style as $styleType => $styleDatax) {
                 $styleData = self::getSxml($styleDatax);
@@ -66,6 +73,7 @@ class Style
                         }
 
                         break;
+<<<<<<< HEAD
                     case 'Protection':
                         $locked = $hidden = null;
                         $styleAttributesP = $styleData->attributes($namespaces['x']);
@@ -90,6 +98,12 @@ class Style
             }
 
             $this->styles[$styleID] = array_merge($alignment, $border, $font, $fill, $numberFormat, $protection);
+=======
+                }
+            }
+
+            $this->styles[$styleID] = array_merge($alignment, $border, $font, $fill, $numberFormat);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         }
 
         return $this->styles;

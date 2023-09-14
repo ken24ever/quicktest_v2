@@ -321,7 +321,11 @@ class AutoFilter
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected static function filterTestInSimpleDataSet($cellValue, $dataSet)
+=======
+    private static function filterTestInSimpleDataSet($cellValue, $dataSet)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $dataSetValues = $dataSet['filterValues'];
         $blanks = $dataSet['blanks'];
@@ -340,7 +344,11 @@ class AutoFilter
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected static function filterTestInDateGroupSet($cellValue, $dataSet)
+=======
+    private static function filterTestInDateGroupSet($cellValue, $dataSet)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $dateSet = $dataSet['filterValues'];
         $blanks = $dataSet['blanks'];
@@ -384,7 +392,11 @@ class AutoFilter
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected static function filterTestInCustomDataSet($cellValue, $ruleSet)
+=======
+    private static function filterTestInCustomDataSet($cellValue, $ruleSet)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         /** @var array[] */
         $dataSet = $ruleSet['filterRules'];
@@ -509,7 +521,11 @@ class AutoFilter
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected static function filterTestInPeriodDateSet($cellValue, $monthSet)
+=======
+    private static function filterTestInPeriodDateSet($cellValue, $monthSet)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         //    Blank cells are always ignored, so return a FALSE
         if (($cellValue == '') || ($cellValue === null)) {

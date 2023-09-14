@@ -5,10 +5,13 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
+<<<<<<< HEAD
 }else{
   
 $passport = $_SESSION['passport'];
 $src = "admin/".$passport;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 }
 ?>
 
@@ -35,7 +38,11 @@ $exams = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $examID = $row['exam_id'];
     $status = $row['status'];
+<<<<<<< HEAD
     $scores = $row['scores']; 
+=======
+    $scores = $row['scores'];
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     
     //$totatExamCount = $row['totalExams']; COUNT(exam_id) AS totalExams
     // Retrieve the specific exam details from the "exams" table based on the exam ID
@@ -175,10 +182,13 @@ mysqli_close($conn);
           </div>
           <div class="card-body">
             <h5 class="card-title">Confirm Datails Here.</h5>
+<<<<<<< HEAD
         <center> <div id="passportCont" style="width: 180px; height: 180px;">
                <img src="<?php echo $src; ?>" alt="" style="width: 180px; height: 180px;" class="rounded-circle img-thumbnail">
         </div></center>
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             <p class="card-text">Names: <?php echo $_SESSION['name'];  ?></p>
 			<p class="card-text">Username: <?php echo $_SESSION['username'];  ?></p>
             <p class="card-text">Default Role: Candidate</p>

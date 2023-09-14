@@ -48,6 +48,7 @@ class Legend
      */
     private $layout;
 
+<<<<<<< HEAD
     /** @var GridLines */
     private $borderLines;
 
@@ -57,6 +58,8 @@ class Legend
     /** @var ?AxisText */
     private $legendText;
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Create a new Legend.
      *
@@ -69,6 +72,7 @@ class Legend
         $this->setPosition($position);
         $this->layout = $layout;
         $this->setOverlay($overlay);
+<<<<<<< HEAD
         $this->borderLines = new GridLines();
         $this->fillColor = new ChartColor();
     }
@@ -76,6 +80,8 @@ class Legend
     public function getFillColor(): ChartColor
     {
         return $this->fillColor;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 
     /**
@@ -164,6 +170,7 @@ class Legend
     {
         return $this->layout;
     }
+<<<<<<< HEAD
 
     public function getLegendText(): ?AxisText
     {
@@ -188,4 +195,6 @@ class Legend
 
         return $this;
     }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 }

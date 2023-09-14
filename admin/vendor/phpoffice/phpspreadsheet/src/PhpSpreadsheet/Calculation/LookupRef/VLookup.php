@@ -26,7 +26,11 @@ class VLookup extends LookupBase
      */
     public static function lookup($lookupValue, $lookupArray, $indexNumber, $notExactMatch = true)
     {
+<<<<<<< HEAD
         if (is_array($lookupValue) || is_array($indexNumber)) {
+=======
+        if (is_array($lookupValue)) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             return self::evaluateArrayArgumentsIgnore([self::class, __FUNCTION__], 1, $lookupValue, $lookupArray, $indexNumber, $notExactMatch);
         }
 

@@ -75,11 +75,21 @@ class ReferenceHelper
      *
      * @return int
      */
+<<<<<<< HEAD
     public static function columnReverseSort(string $a, string $b)
+=======
+    public static function columnReverseSort($a, $b)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         return -strcasecmp(strlen($a) . $a, strlen($b) . $b);
     }
 
+<<<<<<< HEAD
+=======
+    /** @var int */
+    private static $scrutinizer0 = 0;
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Compare two cell addresses
      * Intended for use as a Callback function for sorting cell addresses by column and row.
@@ -89,6 +99,7 @@ class ReferenceHelper
      *
      * @return int
      */
+<<<<<<< HEAD
     public static function cellSort(string $a, string $b)
     {
         /** @scrutinizer be-damned */
@@ -99,6 +110,18 @@ class ReferenceHelper
         sscanf($b, '%[A-Z]%d', $bc, $br);
         /** @var int $br */
         /** @var string $bc */
+=======
+    public static function cellSort($a, $b)
+    {
+        $ac = $bc = '';
+        $ar = self::$scrutinizer0;
+        $br = 0;
+        sscanf($a, '%[A-Z]%d', $ac, $ar);
+        sscanf($b, '%[A-Z]%d', $bc, $br);
+
+        $ac = (string) $ac;
+        $bc = (string) $bc;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         if ($ar === $br) {
             return strcasecmp(strlen($ac) . $ac, strlen($bc) . $bc);
         }
@@ -115,6 +138,7 @@ class ReferenceHelper
      *
      * @return int
      */
+<<<<<<< HEAD
     public static function cellReverseSort(string $a, string $b)
     {
         /** @scrutinizer be-damned */
@@ -125,6 +149,18 @@ class ReferenceHelper
         sscanf($b, '%[A-Z]%d', $bc, $br);
         /** @var int $br */
         /** @var string $bc */
+=======
+    public static function cellReverseSort($a, $b)
+    {
+        $ac = $bc = '';
+        $ar = self::$scrutinizer0;
+        $br = 0;
+        sscanf($a, '%[A-Z]%d', $ac, $ar);
+        sscanf($b, '%[A-Z]%d', $bc, $br);
+
+        $ac = (string) $ac;
+        $bc = (string) $bc;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         if ($ar === $br) {
             return -strcasecmp(strlen($ac) . $ac, strlen($bc) . $bc);
         }
@@ -139,7 +175,11 @@ class ReferenceHelper
      * @param int $numberOfColumns Number of columns to insert/delete (negative values indicate deletion)
      * @param int $numberOfRows Number of rows to insert/delete (negative values indicate deletion)
      */
+<<<<<<< HEAD
     protected function adjustPageBreaks(Worksheet $worksheet, int $numberOfColumns, int $numberOfRows): void
+=======
+    protected function adjustPageBreaks(Worksheet $worksheet, $numberOfColumns, $numberOfRows): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $aBreaks = $worksheet->getBreaks();
         ($numberOfColumns > 0 || $numberOfRows > 0)
@@ -168,7 +208,11 @@ class ReferenceHelper
      *
      * @param Worksheet $worksheet The worksheet that we're editing
      */
+<<<<<<< HEAD
     protected function adjustComments(Worksheet $worksheet): void
+=======
+    protected function adjustComments($worksheet): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $aComments = $worksheet->getComments();
         $aNewComments = []; // the new array of all comments
@@ -192,7 +236,11 @@ class ReferenceHelper
      * @param int $numberOfColumns Number of columns to insert/delete (negative values indicate deletion)
      * @param int $numberOfRows Number of rows to insert/delete (negative values indicate deletion)
      */
+<<<<<<< HEAD
     protected function adjustHyperlinks(Worksheet $worksheet, int $numberOfColumns, int $numberOfRows): void
+=======
+    protected function adjustHyperlinks($worksheet, $numberOfColumns, $numberOfRows): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $aHyperlinkCollection = $worksheet->getHyperlinkCollection();
         ($numberOfColumns > 0 || $numberOfRows > 0)
@@ -217,7 +265,11 @@ class ReferenceHelper
      * @param int $numberOfColumns Number of columns to insert/delete (negative values indicate deletion)
      * @param int $numberOfRows Number of rows to insert/delete (negative values indicate deletion)
      */
+<<<<<<< HEAD
     protected function adjustConditionalFormatting(Worksheet $worksheet, int $numberOfColumns, int $numberOfRows): void
+=======
+    protected function adjustConditionalFormatting($worksheet, $numberOfColumns, $numberOfRows): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $aStyles = $worksheet->getConditionalStylesCollection();
         ($numberOfColumns > 0 || $numberOfRows > 0)
@@ -256,7 +308,11 @@ class ReferenceHelper
      * @param int $numberOfColumns Number of columns to insert/delete (negative values indicate deletion)
      * @param int $numberOfRows Number of rows to insert/delete (negative values indicate deletion)
      */
+<<<<<<< HEAD
     protected function adjustDataValidations(Worksheet $worksheet, int $numberOfColumns, int $numberOfRows): void
+=======
+    protected function adjustDataValidations(Worksheet $worksheet, $numberOfColumns, $numberOfRows): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $aDataValidationCollection = $worksheet->getDataValidationCollection();
         ($numberOfColumns > 0 || $numberOfRows > 0)
@@ -296,7 +352,11 @@ class ReferenceHelper
      * @param int $numberOfColumns Number of columns to insert/delete (negative values indicate deletion)
      * @param int $numberOfRows Number of rows to insert/delete (negative values indicate deletion)
      */
+<<<<<<< HEAD
     protected function adjustProtectedCells(Worksheet $worksheet, int $numberOfColumns, int $numberOfRows): void
+=======
+    protected function adjustProtectedCells(Worksheet $worksheet, $numberOfColumns, $numberOfRows): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $aProtectedCells = $worksheet->getProtectedCells();
         ($numberOfColumns > 0 || $numberOfRows > 0)
@@ -409,7 +469,11 @@ class ReferenceHelper
         $cellCollection = $worksheet->getCellCollection();
         $missingCoordinates = array_filter(
             array_map(function ($row) use ($highestColumn) {
+<<<<<<< HEAD
                 return "{$highestColumn}{$row}";
+=======
+                return $highestColumn . $row;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             }, range(1, $highestRow)),
             function ($coordinate) use ($cellCollection) {
                 return $cellCollection->has($coordinate) === false;
@@ -450,9 +514,15 @@ class ReferenceHelper
                 if ($cell->getDataType() === DataType::TYPE_FORMULA) {
                     // Formula should be adjusted
                     $worksheet->getCell($newCoordinate)
+<<<<<<< HEAD
                         ->setValue($this->updateFormulaReferences($cell->getValue(), $beforeCellAddress, $numberOfColumns, $numberOfRows, $worksheet->getTitle(), true));
                 } else {
                     // Cell value should not be adjusted
+=======
+                        ->setValue($this->updateFormulaReferences($cell->getValue(), $beforeCellAddress, $numberOfColumns, $numberOfRows, $worksheet->getTitle()));
+                } else {
+                    // Formula should not be adjusted
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                     $worksheet->getCell($newCoordinate)->setValueExplicit($cell->getValue(), $cell->getDataType());
                 }
 
@@ -460,10 +530,17 @@ class ReferenceHelper
                 $worksheet->getCellCollection()->delete($coordinate);
             } else {
                 /*    We don't need to update styles for rows/columns before our insertion position,
+<<<<<<< HEAD
                         but we do still need to adjust any formulae in those cells                    */
                 if ($cell->getDataType() === DataType::TYPE_FORMULA) {
                     // Formula should be adjusted
                     $cell->setValue($this->updateFormulaReferences($cell->getValue(), $beforeCellAddress, $numberOfColumns, $numberOfRows, $worksheet->getTitle(), true));
+=======
+                        but we do still need to adjust any formulae    in those cells                    */
+                if ($cell->getDataType() === DataType::TYPE_FORMULA) {
+                    // Formula should be adjusted
+                    $cell->setValue($this->updateFormulaReferences($cell->getValue(), $beforeCellAddress, $numberOfColumns, $numberOfRows, $worksheet->getTitle()));
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 }
             }
         }
@@ -606,7 +683,11 @@ class ReferenceHelper
                                 //    Max worksheet size is 1,048,576 rows by 16,384 columns in Excel 2007, so our adjustments need to be at least one digit more
                                 $column = 100000;
                                 $row = 10000000 + (int) trim($match[3], '$');
+<<<<<<< HEAD
                                 $cellIndex = "{$column}{$row}";
+=======
+                                $cellIndex = $column . $row;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString, '/');
                                 $cellTokens[$cellIndex] = '/(?<!\d\$\!)' . preg_quote($fromString, '/') . '(?!\d)/i';
@@ -631,7 +712,11 @@ class ReferenceHelper
                                 //    Max worksheet size is 1,048,576 rows by 16,384 columns in Excel 2007, so our adjustments need to be at least one digit more
                                 $column = Coordinate::columnIndexFromString(trim($match[3], '$')) + 100000;
                                 $row = 10000000;
+<<<<<<< HEAD
                                 $cellIndex = "{$column}{$row}";
+=======
+                                $cellIndex = $column . $row;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString, '/');
                                 $cellTokens[$cellIndex] = '/(?<![A-Z\$\!])' . preg_quote($fromString, '/') . '(?![A-Z])/i';
@@ -657,7 +742,11 @@ class ReferenceHelper
                                 //    Max worksheet size is 1,048,576 rows by 16,384 columns in Excel 2007, so our adjustments need to be at least one digit more
                                 $column = Coordinate::columnIndexFromString(trim($column, '$')) + 100000;
                                 $row = (int) trim($row, '$') + 10000000;
+<<<<<<< HEAD
                                 $cellIndex = "{$column}{$row}";
+=======
+                                $cellIndex = $column . $row;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
                                 $newCellTokens[$cellIndex] = preg_quote($toString, '/');
                                 $cellTokens[$cellIndex] = '/(?<![A-Z]\$\!)' . preg_quote($fromString, '/') . '(?!\d)/i';
@@ -914,6 +1003,7 @@ class ReferenceHelper
         $cellAddress = $definedName->getValue();
         $asFormula = ($cellAddress[0] === '=');
         if ($definedName->getWorksheet() !== null && $definedName->getWorksheet()->getHashCode() === $worksheet->getHashCode()) {
+<<<<<<< HEAD
             /**
              * If we delete the entire range that is referenced by a Named Range, MS Excel sets the value to #REF!
              * PhpSpreadsheet still only does a basic adjustment, so the Named Range will still reference Cells.
@@ -926,6 +1016,13 @@ class ReferenceHelper
                 $definedName->setValue($formula);
             } else {
                 $definedName->setValue($this->updateCellReference(ltrim($cellAddress, '='), true));
+=======
+            if ($asFormula === true) {
+                $formula = $this->updateFormulaReferences($cellAddress, $beforeCellAddress, $numberOfColumns, $numberOfRows, $worksheet->getTitle());
+                $definedName->setValue($formula);
+            } else {
+                $definedName->setValue($this->updateCellReference(ltrim($cellAddress, '=')));
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             }
         }
     }
@@ -933,6 +1030,7 @@ class ReferenceHelper
     private function updateNamedFormula(DefinedName $definedName, Worksheet $worksheet, string $beforeCellAddress, int $numberOfColumns, int $numberOfRows): void
     {
         if ($definedName->getWorksheet() !== null && $definedName->getWorksheet()->getHashCode() === $worksheet->getHashCode()) {
+<<<<<<< HEAD
             /**
              * If we delete the entire range that is referenced by a Named Formula, MS Excel sets the value to #REF!
              * PhpSpreadsheet still only does a basic adjustment, so the Named Formula will still reference Cells.
@@ -942,6 +1040,10 @@ class ReferenceHelper
              */
             $formula = $definedName->getValue();
             $formula = $this->updateFormulaReferences($formula, $beforeCellAddress, $numberOfColumns, $numberOfRows, $worksheet->getTitle(), true);
+=======
+            $formula = $definedName->getValue();
+            $formula = $this->updateFormulaReferences($formula, $beforeCellAddress, $numberOfColumns, $numberOfRows, $worksheet->getTitle());
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $definedName->setValue($formula);
         }
     }

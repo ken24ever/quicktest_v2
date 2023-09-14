@@ -2,8 +2,11 @@
 
 namespace PhpOffice\PhpSpreadsheet\Chart;
 
+<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Style\Font;
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 class Layout
 {
     /**
@@ -129,11 +132,16 @@ class Layout
     /** @var ?ChartColor */
     private $labelBorderColor;
 
+<<<<<<< HEAD
     /** @var ?Font */
     private $labelFont;
 
     /** @var Properties */
     private $labelEffects;
+=======
+    /** @var ?ChartColor */
+    private $labelFontColor;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Create a new Layout.
@@ -177,6 +185,7 @@ class Layout
         $this->initBoolean($layout, 'numFmtLinked');
         $this->initColor($layout, 'labelFillColor');
         $this->initColor($layout, 'labelBorderColor');
+<<<<<<< HEAD
         $labelFont = $layout['labelFont'] ?? null;
         if ($labelFont instanceof Font) {
             $this->labelFont = $labelFont;
@@ -189,6 +198,9 @@ class Layout
         if ($labelEffects instanceof Properties) {
             $this->labelEffects = $labelEffects;
         }
+=======
+        $this->initColor($layout, 'labelFontColor');
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 
     private function initBoolean(array $layout, string $name): void
@@ -509,6 +521,7 @@ class Layout
         return $this;
     }
 
+<<<<<<< HEAD
     public function getLabelFont(): ?Font
     {
         return $this->labelFont;
@@ -526,15 +539,24 @@ class Layout
         }
 
         return $this->labelFont->getChartColor();
+=======
+    public function getLabelFontColor(): ?ChartColor
+    {
+        return $this->labelFontColor;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 
     public function setLabelFontColor(?ChartColor $chartColor): self
     {
+<<<<<<< HEAD
         if ($this->labelFont === null) {
             $this->labelFont = new Font();
             $this->labelFont->setSize(null, true);
         }
         $this->labelFont->setChartColorFromObject($chartColor);
+=======
+        $this->labelFontColor = $chartColor;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         return $this;
     }

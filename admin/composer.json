@@ -13,7 +13,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "phpoffice/phpspreadsheet": "^1.28",
         "cboden/ratchet": "^0.4.4"
+=======
+        "phpoffice/phpspreadsheet": "^1.28"
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 }

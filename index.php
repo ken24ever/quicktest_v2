@@ -99,7 +99,11 @@
 </head> 
 <body>
 
+<<<<<<< HEAD
 <!-- Navbar -->
+=======
+<!-- Navbar  -->
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 <nav class="navbar navbar-expand-md bg-white navbar-dark">
   <a class="navbar-brand text-dark" href="#"><img src="img/quickTest.png" alt="" width="80" height="80" class="heartbeat-image"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

@@ -6,8 +6,11 @@ session_start();
   // Retrieve the exam details from the query string
   $examID = $_GET["examID"];
   $userID = $_SESSION['id'] ;
+<<<<<<< HEAD
   $passport = $_SESSION['passport'];
   $src = "admin/".$passport;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
   // Retrieve and display the exam details from the database
   $sql = "SELECT title, duration FROM exams WHERE id = '$examID'";
@@ -151,7 +154,11 @@ $conn->close();
     /* radio button styling */
 
     /* CSS */
+<<<<<<< HEAD
 input[type="radio"], input[type="checkbox"] {
+=======
+input[type="radio"] {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   /* Increase the size of the radio button */
   width: 20px;
   height: 20px;
@@ -171,7 +178,11 @@ input[type="radio"] {
 }
 
 /* Optional: Style the radio button when checked */
+<<<<<<< HEAD
 input[type="radio"]:checked, input[type="checkbox"]:checked {
+=======
+input[type="radio"]:checked {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   /* Add custom styles for the checked radio button */
   background-color: DodgerBlue;
   border-color: #000000;
@@ -238,6 +249,7 @@ input[type="radio"]:checked, input[type="checkbox"]:checked {
       </ul>
     </div>
   </nav>
+<<<<<<< HEAD
     
   <!--  -->
   <hr>
@@ -257,6 +269,12 @@ input[type="radio"]:checked, input[type="checkbox"]:checked {
                           </div>
                           <hr>
 <!--  -->
+=======
+
+          <center><h3><p>TIME:<div class="simpleDisplay" style="font-size:38px!important"></div></p></h3></center>
+        
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   <div class="container-fluid mt-10">
   <div class="row">
     <div class="col-lg-8">
@@ -501,13 +519,22 @@ function submitExam() {
   });
 }
 
+<<<<<<< HEAD
 function displayQuestions(questions, currentPage, totalPages) {
+=======
+/* display questions function */
+function displayQuestions(questions, currentPage) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   var questionsContainer = $('#questions-container');
   questionsContainer.empty(); // Clear the questions container
 
   // Display the current page
   var currentPageElement = $('<p>').addClass('current-page');
+<<<<<<< HEAD
   currentPageElement.text('QUESTION: ' + currentPage + ' of ' + totalPages);
+=======
+  currentPageElement.text('QUESTION: ' + currentPage);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   questionsContainer.append(currentPageElement);
 
   // Retrieve the selected options from the server
@@ -516,16 +543,22 @@ function displayQuestions(questions, currentPage, totalPages) {
     method: 'POST',
     dataType: 'json',
     success: function(data) {
+<<<<<<< HEAD
       // Function to get option label by index (0 = A, 1 = B, 2 = C, etc.)
       function getOptionLabel(index) {
         return String.fromCharCode(65 + index); // ASCII code for 'A' is 65
       }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
       // Iterate over the questions and create the HTML elements
       for (var i = 0; i < questions.length; i++) {
         var question = questions[i];
         var questionNumber = i + 1;
+<<<<<<< HEAD
         var correctAnswerSize = question.answer.length;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         // Create the question container
         var questionContainer = $('<div>').addClass('question-container mb-4 font-weight-bold text-lg');
@@ -547,6 +580,7 @@ function displayQuestions(questions, currentPage, totalPages) {
           questionContainer.append(questionImage);
         }
 
+<<<<<<< HEAD
         // Iterate over the options and create the appropriate input elements
         for (var j = 0; j < question.options.length; j++) {
           var option = question.options[j];
@@ -560,15 +594,31 @@ function displayQuestions(questions, currentPage, totalPages) {
           // Create the input element (radio or checkbox)
           var inputElement = $('<br><input><span style="padding:2px !important"></span>').addClass('option-input').attr({
             type: inputType,
+=======
+        // Iterate over the options and create the radio buttons
+        for (var j = 0; j < question.options.length; j++) {
+          var option = question.options[j];
+
+          // Create the radio button
+          var radioButton = $('<br><input><span style="padding:2px !important"></span>').attr({
+            type: 'radio',
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             name: 'question' + questionNumber,
             value: option.option_id
           });
 
           // Set the data-question-id attribute to capture the question ID
+<<<<<<< HEAD
           inputElement.attr('data-question-id', question.id);
 
           // Create the label for the input element with the option label (A, B, C, D, ...)
           var label = $('<label>').text('('+ getOptionLabel(j) + ')' + '. ' + option.option_text);
+=======
+          radioButton.attr('data-question-id', question.id);
+
+          // Create the label for the radio button
+          var label = $('<label>').text(option.option_text);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
           // Check if there's an image option
           if (option.option_image_path) {
@@ -580,6 +630,7 @@ function displayQuestions(questions, currentPage, totalPages) {
             optionsContainer.append(optionImage);
           }
 
+<<<<<<< HEAD
           // Append the input element and label to the options container
           optionsContainer.append(inputElement);
           optionsContainer.append(label);
@@ -587,6 +638,16 @@ function displayQuestions(questions, currentPage, totalPages) {
           // Check if the option is selected in the retrieved data
           if (data[question.id] && data[question.id].includes(option.option_id)) {
             inputElement.prop('checked', true);
+=======
+          // Append the radio button and label to the options container
+          optionsContainer.append(radioButton);
+          optionsContainer.append(label);
+
+          // Set the selected option if it exists in the retrieved data
+          var selectedOption = data[question.id];
+          if (selectedOption && selectedOption === option.option_id) {
+            radioButton.prop('checked', true);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
           }
         }
 
@@ -619,6 +680,7 @@ function displayQuestions(questions, currentPage, totalPages) {
   });
 }
 
+<<<<<<< HEAD
 
 // Add event listener to input elements to handle option selection
 $(document).on('change', 'input.option-input', handleOptionSelection);
@@ -654,12 +716,28 @@ function handleOptionSelection() {
 
 
 
+=======
+    // Function to handle radio button selection
+    $(document).on('change', 'input[type="radio"]', function() {
+  var questionId = $(this).attr('data-question-id');
+  var selectedOption = $(this).val();
+
+  // Update the selectedOptions object
+  selectedOptions[questionId] = selectedOption;
+
+ submitExam(); // Call the submitExam function here
+});
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
 
  // Function to load and display the exam questions
 function loadQuestions(page) {
   $.ajax({
+<<<<<<< HEAD
     url: 'get_questions.php',  
+=======
+    url: 'get_questions.php', 
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     type: 'GET',
     data: {
       examID: <?php echo $examID; ?>,
@@ -676,8 +754,13 @@ function loadQuestions(page) {
         // Update the pagination buttons
         updatePagination(currentPage, totalPages);
 
+<<<<<<< HEAD
           // Display the questions and total pages
           displayQuestions(questions, currentPage, totalPages);
+=======
+        // Display the questions
+        displayQuestions(questions, currentPage);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         // Update the pagination buttons again (to handle the case when there are no questions on the last page)
        // updatePagination(currentPage, totalPages);
@@ -696,11 +779,14 @@ function updatePagination(currentPage, totalPages) {
   var paginationContainer = $('#pagination-container');
   paginationContainer.empty(); // Clear the pagination container
 
+<<<<<<< HEAD
   // Create the pagination text (e.g., "1 of 50")
   var paginationText = $('<p>').addClass('pagination-text');
   paginationText.text('QUESTION: ' + currentPage + ' of ' + totalPages);
   paginationContainer.append(paginationText);
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   // Create the previous button
   var previousButton = $('<button>').addClass('btn btn-primary mr-2');
   previousButton.text('Previous');
@@ -730,7 +816,10 @@ function updatePagination(currentPage, totalPages) {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   // Load and display the exam questions
   loadQuestions(1);
  
@@ -849,6 +938,7 @@ startTimer(startTimeString, durationInSeconds, display);
 
     // Confirm before submitting the exam
     Swal.fire({
+<<<<<<< HEAD
                    title: 'Are You Sure You Want To Submit Exam?',
                    html: '<img src="img/quickTest.png"  height="50" width="50">',
                    icon: 'question',
@@ -863,6 +953,21 @@ startTimer(startTimeString, durationInSeconds, display);
                                  finalSubmission();
                            }
                        });//end of thenables
+=======
+        title: 'Are You Sure You Want To Submit Exam?',
+        html: '<img src="img/quickTest.png"  height="50" width="50">',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: 'darkGreen',
+        cancelButtonColor: 'darkRed',
+        confirmButtonText: 'Yes, Submit!',
+        showLoaderOnConfirm: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            finalSubmission();
+        }
+    });//end of thenables
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 });//end of click event
 
 

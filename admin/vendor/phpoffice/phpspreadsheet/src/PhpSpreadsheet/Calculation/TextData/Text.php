@@ -193,7 +193,11 @@ class Text
         if (is_array($delimiter) && count($valueSet) > 1) {
             $quotedDelimiters = array_map(
                 function ($delimiter) {
+<<<<<<< HEAD
                     return preg_quote($delimiter ?? '', '/');
+=======
+                    return preg_quote($delimiter ?? '');
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 },
                 $valueSet
             );
@@ -202,7 +206,11 @@ class Text
             return '(' . $delimiters . ')';
         }
 
+<<<<<<< HEAD
         return '(' . preg_quote(/** @scrutinizer ignore-type */ Functions::flattenSingleValue($delimiter), '/') . ')';
+=======
+        return '(' . preg_quote(/** @scrutinizer ignore-type */ Functions::flattenSingleValue($delimiter)) . ')';
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 
     private static function matchFlags(bool $matchMode): string

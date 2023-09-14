@@ -21,6 +21,31 @@ class Engineering
     public const EULER = 2.71828182845904523536;
 
     /**
+<<<<<<< HEAD
+=======
+     * parseComplex.
+     *
+     * Parses a complex number into its real and imaginary parts, and an I or J suffix
+     *
+     * @deprecated 1.12.0 No longer used by internal code. Please use the \Complex\Complex class instead
+     *
+     * @param string $complexNumber The complex number
+     *
+     * @return mixed[] Indexed on "real", "imaginary" and "suffix"
+     */
+    public static function parseComplex($complexNumber)
+    {
+        $complex = new Complex($complexNumber);
+
+        return [
+            'real' => $complex->getReal(),
+            'imaginary' => $complex->getImaginary(),
+            'suffix' => $complex->getSuffix(),
+        ];
+    }
+
+    /**
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
      * BESSELI.
      *
      *    Returns the modified Bessel function In(x), which is equivalent to the Bessel function evaluated

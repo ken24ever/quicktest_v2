@@ -26,7 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $examName = $row['examName'];
           $emailAddrs= $row['email'];
           $app= $row['application'];
+<<<<<<< HEAD
           $passport= $row['userPassport'];
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         // User found, start session and redirect to dashboard
         session_start();
@@ -39,7 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['emailAddrs'] = $emailAddrs;
         $_SESSION['examName'] = $examName;
         $_SESSION['app'] = $app;
+<<<<<<< HEAD
         $_SESSION['passport'] = $passport;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         // Return empty response for successful login
         echo "";

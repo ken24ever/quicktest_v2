@@ -40,7 +40,11 @@ class ConvertBinary extends ConvertBase
             return $e->getMessage();
         }
 
+<<<<<<< HEAD
         if (strlen($value) == 10 && $value[0] === '1') {
+=======
+        if (strlen($value) == 10) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             //    Two's Complement
             $value = substr($value, -9);
 
@@ -91,7 +95,11 @@ class ConvertBinary extends ConvertBase
             return $e->getMessage();
         }
 
+<<<<<<< HEAD
         if (strlen($value) == 10 && $value[0] === '1') {
+=======
+        if (strlen($value) == 10) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $high2 = substr($value, 0, 2);
             $low8 = substr($value, 2);
             $xarr = ['00' => '00000000', '01' => '00000001', '10' => 'FFFFFFFE', '11' => 'FFFFFFFF'];
@@ -144,7 +152,11 @@ class ConvertBinary extends ConvertBase
             return $e->getMessage();
         }
 
+<<<<<<< HEAD
         if (strlen($value) == 10 && $value[0] === '1') { //    Two's Complement
+=======
+        if (strlen($value) == 10 && substr($value, 0, 1) === '1') { //    Two's Complement
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             return str_repeat('7', 6) . strtoupper(decoct((int) bindec("11$value")));
         }
         $octVal = (string) decoct((int) bindec($value));

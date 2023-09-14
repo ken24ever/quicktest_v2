@@ -2,10 +2,14 @@
 
 namespace PhpOffice\PhpSpreadsheet\Style;
 
+<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Calculation\Functions;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Exception;
 use PhpOffice\PhpSpreadsheet\Shared\StringHelper;
+=======
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class Style extends Supervisor
@@ -125,7 +129,11 @@ class Style extends Supervisor
     public function getSharedComponent(): self
     {
         $activeSheet = $this->getActiveSheet();
+<<<<<<< HEAD
         $selectedCell = Functions::trimSheetFromCellReference($this->getActiveCell()); // e.g. 'A1'
+=======
+        $selectedCell = $this->getActiveCell(); // e.g. 'A1'
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         if ($activeSheet->cellExists($selectedCell)) {
             $xfIndex = $activeSheet->getCell($selectedCell)->getXfIndex();
@@ -206,6 +214,7 @@ class Style extends Supervisor
         if ($this->isSupervisor) {
             $pRange = $this->getSelectedCells();
 
+<<<<<<< HEAD
             // Uppercase coordinate and strip any Worksheet reference from the selected range
             $pRange = strtoupper($pRange);
             if (strpos($pRange, '!') !== false) {
@@ -215,6 +224,10 @@ class Style extends Supervisor
                 }
                 $pRange = strtoupper(Functions::trimSheetFromCellReference($pRange));
             }
+=======
+            // Uppercase coordinate
+            $pRange = strtoupper($pRange);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
             // Is it a cell range or a single cell?
             if (strpos($pRange, ':') === false) {

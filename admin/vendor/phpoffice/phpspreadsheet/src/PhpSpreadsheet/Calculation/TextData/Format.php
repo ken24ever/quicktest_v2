@@ -129,7 +129,11 @@ class Format
         $format = Helpers::extractString($format);
 
         if (!is_numeric($value) && Date::isDateTimeFormatCode($format)) {
+<<<<<<< HEAD
             $value = DateTimeExcel\DateValue::fromString($value) + DateTimeExcel\TimeValue::fromString($value);
+=======
+            $value = DateTimeExcel\DateValue::fromString($value);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         }
 
         return (string) NumberFormat::toFormattedString($value, $format);
@@ -140,7 +144,11 @@ class Format
      *
      * @return mixed
      */
+<<<<<<< HEAD
     private static function convertValue($value, bool $spacesMeanZero = false)
+=======
+    private static function convertValue($value)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         $value = $value ?? 0;
         if (is_bool($value)) {
@@ -150,12 +158,15 @@ class Format
                 throw new CalcExp(ExcelError::VALUE());
             }
         }
+<<<<<<< HEAD
         if (is_string($value)) {
             $value = trim($value);
             if ($spacesMeanZero && $value === '') {
                 $value = 0;
             }
         }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         return $value;
     }
@@ -187,9 +198,12 @@ class Format
                 '',
                 trim($value, " \t\n\r\0\x0B" . StringHelper::getCurrencyCode())
             );
+<<<<<<< HEAD
             if ($numberValue === '') {
                 return ExcelError::VALUE();
             }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             if (is_numeric($numberValue)) {
                 return (float) $numberValue;
             }
@@ -286,7 +300,11 @@ class Format
         }
 
         try {
+<<<<<<< HEAD
             $value = self::convertValue($value, true);
+=======
+            $value = self::convertValue($value);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $decimalSeparator = self::getDecimalSeparator($decimalSeparator);
             $groupSeparator = self::getGroupSeparator($groupSeparator);
         } catch (CalcExp $e) {
@@ -294,12 +312,21 @@ class Format
         }
 
         if (!is_numeric($value)) {
+<<<<<<< HEAD
             $decimalPositions = preg_match_all('/' . preg_quote($decimalSeparator, '/') . '/', $value, $matches, PREG_OFFSET_CAPTURE);
             if ($decimalPositions > 1) {
                 return ExcelError::VALUE();
             }
             $decimalOffset = array_pop($matches[0])[1] ?? null;
             if ($decimalOffset === null || strpos($value, $groupSeparator, $decimalOffset) !== false) {
+=======
+            $decimalPositions = preg_match_all('/' . preg_quote($decimalSeparator) . '/', $value, $matches, PREG_OFFSET_CAPTURE);
+            if ($decimalPositions > 1) {
+                return ExcelError::VALUE();
+            }
+            $decimalOffset = array_pop($matches[0])[1]; // @phpstan-ignore-line
+            if (strpos($value, $groupSeparator, $decimalOffset) !== false) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 return ExcelError::VALUE();
             }
 

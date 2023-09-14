@@ -1,9 +1,12 @@
 <?php
+<<<<<<< HEAD
 
 session_start();
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id']; 
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 // Set database connection variables
 include("../connection.php");
 
@@ -11,13 +14,18 @@ include("../connection.php");
 if (isset($_POST["username"])) {
     // Retrieve the usernames to be deleted
     $usernames = $_POST["username"];
+<<<<<<< HEAD
     $action = 'Single User Delete'; 
     $description = 'Logged in admin user: (' . $fullNames . ') deleted user record with username: "' . $usernames . '"';
+=======
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     // Ensure that $usernames is an array
     if (!is_array($usernames)) {
         $usernames = [$usernames];
     }
 
+<<<<<<< HEAD
       // Prepare the SQL statement to insert the record into the audit_tray table
       $sql = "INSERT INTO audit_tray (user_name, user_id, description, action) VALUES (?,?,?,?)";
       $stmt = $conn->prepare($sql);
@@ -34,6 +42,8 @@ if (isset($_POST["username"])) {
          // error_log("Failed to add record to audit_tray: " . $stmt->error);
       }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     // Escape special characters in usernames
     $usernames = array_map(function ($username) use ($conn) {
         return mysqli_real_escape_string($conn, $username);

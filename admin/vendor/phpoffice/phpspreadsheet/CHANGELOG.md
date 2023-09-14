@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com)
 and this project adheres to [Semantic Versioning](https://semver.org).
 
+<<<<<<< HEAD
 ## 1.29.0 - 2023-06-15
 
 ### Added
@@ -66,6 +67,8 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 - HyperlinkBase Property and Html Handling of Properties [Issue #3573](https://github.com/PHPOffice/PhpSpreadsheet/issues/3573) [PR #3589](https://github.com/PHPOffice/PhpSpreadsheet/pull/3589)
 - Improvements for Data Validation [Issue #3592](https://github.com/PHPOffice/PhpSpreadsheet/issues/3592) [Issue #3594](https://github.com/PHPOffice/PhpSpreadsheet/issues/3594) [PR #3605](https://github.com/PHPOffice/PhpSpreadsheet/pull/3605)
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 ## 1.28.0 - 2023-02-25
 
 ### Added

@@ -66,8 +66,13 @@ class Sum
                 $returnValue += (int) $arg;
             } elseif (ErrorValue::isError($arg)) {
                 return $arg;
+<<<<<<< HEAD
             } elseif ($arg !== null && !Functions::isCellValue($k)) {
                 // ignore non-numerics from cell, but fail as literals (except null)
+=======
+            // ignore non-numerics from cell, but fail as literals (except null)
+            } elseif ($arg !== null && !Functions::isCellValue($k)) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 return ExcelError::VALUE();
             }
         }

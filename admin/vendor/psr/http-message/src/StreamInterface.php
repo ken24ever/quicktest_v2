@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 namespace Psr\Http\Message;
 
 /**
@@ -25,14 +30,22 @@ interface StreamInterface
      * @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
      * @return string
      */
+<<<<<<< HEAD
     public function __toString(): string;
+=======
+    public function __toString();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Closes the stream and any underlying resources.
      *
      * @return void
      */
+<<<<<<< HEAD
     public function close(): void;
+=======
+    public function close();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Separates any underlying resources from the stream.
@@ -48,7 +61,11 @@ interface StreamInterface
      *
      * @return int|null Returns the size in bytes if known, or null if unknown.
      */
+<<<<<<< HEAD
     public function getSize(): ?int;
+=======
+    public function getSize();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Returns the current position of the file read/write pointer
@@ -56,21 +73,33 @@ interface StreamInterface
      * @return int Position of the file pointer
      * @throws \RuntimeException on error.
      */
+<<<<<<< HEAD
     public function tell(): int;
+=======
+    public function tell();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Returns true if the stream is at the end of the stream.
      *
      * @return bool
      */
+<<<<<<< HEAD
     public function eof(): bool;
+=======
+    public function eof();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Returns whether or not the stream is seekable.
      *
      * @return bool
      */
+<<<<<<< HEAD
     public function isSeekable(): bool;
+=======
+    public function isSeekable();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Seek to a position in the stream.
@@ -84,7 +113,11 @@ interface StreamInterface
      *     SEEK_END: Set position to end-of-stream plus offset.
      * @throws \RuntimeException on failure.
      */
+<<<<<<< HEAD
     public function seek(int $offset, int $whence = SEEK_SET): void;
+=======
+    public function seek(int $offset, int $whence = SEEK_SET);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Seek to the beginning of the stream.
@@ -96,14 +129,22 @@ interface StreamInterface
      * @link http://www.php.net/manual/en/function.fseek.php
      * @throws \RuntimeException on failure.
      */
+<<<<<<< HEAD
     public function rewind(): void;
+=======
+    public function rewind();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Returns whether or not the stream is writable.
      *
      * @return bool
      */
+<<<<<<< HEAD
     public function isWritable(): bool;
+=======
+    public function isWritable();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Write data to the stream.
@@ -112,14 +153,22 @@ interface StreamInterface
      * @return int Returns the number of bytes written to the stream.
      * @throws \RuntimeException on failure.
      */
+<<<<<<< HEAD
     public function write(string $string): int;
+=======
+    public function write(string $string);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Returns whether or not the stream is readable.
      *
      * @return bool
      */
+<<<<<<< HEAD
     public function isReadable(): bool;
+=======
+    public function isReadable();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Read data from the stream.
@@ -131,7 +180,11 @@ interface StreamInterface
      *     if no bytes are available.
      * @throws \RuntimeException if an error occurs.
      */
+<<<<<<< HEAD
     public function read(int $length): string;
+=======
+    public function read(int $length);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Returns the remaining contents in a string
@@ -140,7 +193,11 @@ interface StreamInterface
      * @throws \RuntimeException if unable to read or an error occurs while
      *     reading.
      */
+<<<<<<< HEAD
     public function getContents(): string;
+=======
+    public function getContents();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
     /**
      * Get stream metadata as an associative array or retrieve a specific key.

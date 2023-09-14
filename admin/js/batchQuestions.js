@@ -15,7 +15,11 @@ $(document).on('submit','#addExamForm1',function(e) {
         style: {
           background: 'linear-gradient(to right, #FFA0A0, #B88AFF, #A0A0FF)',
         }
+<<<<<<< HEAD
       }).showToast(); 
+=======
+      }).showToast();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
       return false;
     } 

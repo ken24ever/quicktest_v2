@@ -2,7 +2,10 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->exclude('vendor')
+<<<<<<< HEAD
     ->notPath('src/PhpSpreadsheet/Writer/ZipStream3.php')
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     ->in(__DIR__);
 
 $config = new PhpCsFixer\Config();

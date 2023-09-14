@@ -92,19 +92,28 @@ $(document).ready(function(){
    
 // Handle download button click events
 $(document).on("click", ".download", function() {
+<<<<<<< HEAD
    // Get the exam ID 
    var examId = $(this).closest("tr").find("td:first-child").text();
 
     // Get the exam TITLE
     var exam_Title = $(this).closest("tr").find("td:nth-child(2)").text();
+=======
+   // Get the exam ID
+   var examId = $(this).closest("tr").find("td:first-child").text();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
  
    // Initiate the download by sending a POST request to the download_questions.php script
    $.ajax({
      type: "POST",
      url: "download_questions.php",
      data: {
+<<<<<<< HEAD
        examID: examId, 
        exam_Title:exam_Title
+=======
+       examID: examId
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
      },
      xhrFields: {
        responseType: 'blob' // Set the response type to 'blob' to handle binary data
@@ -125,8 +134,12 @@ $(document).on("click", ".download", function() {
        $(document).on("click", ".btn-delete", function(){
            // Get the exam ID
            var examId = $(this).closest("tr").find("td:first-child").text();
+<<<<<<< HEAD
            // Get the exam TITLE
            var exam_Title = $(this).closest("tr").find("td:nth-child(2)").text();
+=======
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
               // Show confirmation dialog using SweetAlert
          Swal.fire({
           icon: 'question',
@@ -137,7 +150,11 @@ $(document).on("click", ".download", function() {
           confirmButtonText: 'Oh, Yep!'
       }).then((result) => {
 
+<<<<<<< HEAD
         if (result.isConfirmed) 
+=======
+        if (result.isConfirmed)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         {
          
 
@@ -147,7 +164,11 @@ $(document).on("click", ".download", function() {
                 url: "delete_exam.php",
                 dataType:'json',
                 cache:false,
+<<<<<<< HEAD
                 data: { examId: examId, exam_Title:exam_Title },
+=======
+                data: { examId: examId },
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 success: function(response) {
                   // Reload the table data
                        if(response.status == 'success'){
@@ -158,7 +179,11 @@ $(document).on("click", ".download", function() {
                       html: '<b style="color:green">'+response.message+'</b>'
                              });
                               // Reload the exam table after the exam has been deleted
+<<<<<<< HEAD
                               fetchExams(1);
+=======
+                              fetchExams();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                            
                           } else {
                                     // Show error message with the username and exam title
@@ -242,11 +267,19 @@ var examDuration = tr.find("td:nth-child(4)").text(); // update nth-child from 3
            examId: examId,
            examTitle: examTitle,
            examDesc: examDesc,
+<<<<<<< HEAD
            examDuration: examDuration 
        },
        success: function(response){
            // Reload the exam table after the exam has been updated
            fetchExams(1);
+=======
+           examDuration: examDuration
+       },
+       success: function(response){
+           // Reload the exam table after the exam has been updated
+           fetchExams();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
           
             // Show display when edit is completed
        Swal.fire({

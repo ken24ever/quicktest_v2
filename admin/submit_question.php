@@ -1,9 +1,12 @@
 <?php
+<<<<<<< HEAD
 session_start();
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id']; 
 
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 // Connect to the database
 include("../connection.php");
 
@@ -26,6 +29,7 @@ $imgOptD = isset($_FILES['image_optionD']['name']) ? $_FILES['image_optionD']['n
 $imgOptE = isset($_FILES['image_optionE']['name']) ? $_FILES['image_optionE']['name'] : null;
 $answer = isset($_POST['answer']) ? $_POST['answer'] : null;
 
+<<<<<<< HEAD
 //tracker set up here
 $action = 'Question Edit'; 
 $description = 'Logged in admin user: (' . $fullNames . ') edited exam question ID: "'. $questionId .'" ';
@@ -46,6 +50,8 @@ if ($stmtsqlDel->execute()) {
  // error_log("Failed to add record to audit_tray: " . $stmt->error);
 }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 // Prepare the SQL statement
 $sql = "UPDATE questions SET question=?, option_a=?, option_b=?, option_c=?, option_d=?, option_e=?, answer=?, image_ques=?, option_a_image_path=?, option_b_image_path=?, option_c_image_path=?, option_d_image_path=?, option_e_image_path=? WHERE id=?";
 

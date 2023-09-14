@@ -452,6 +452,7 @@ class StringHelper
     }
 
     /**
+<<<<<<< HEAD
      * Get character count using mb_strwidth rather than mb_strlen.
      *
      * @param string $encoding Encoding
@@ -464,6 +465,8 @@ class StringHelper
     }
 
     /**
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
      * Get a substring of a UTF-8 encoded string.
      *
      * @param string $textValue UTF-8 encoded string

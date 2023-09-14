@@ -1,9 +1,12 @@
 <?php
+<<<<<<< HEAD
 
 session_start();
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id']; 
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 // Set database connection variables
 include("../connection.php");
 
@@ -31,7 +34,11 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
         // Update the status of the user's exams to pending
         $query = "UPDATE users_exam 
                   SET status = 'pending' 
+<<<<<<< HEAD
                   WHERE user_id = '$userId' AND exam_id='$examId' "; 
+=======
+                  WHERE user_id = '$userId' AND exam_id='$examId' ";
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         if (mysqli_query($conn, $query)) {
             // Delete the selected options for the specific user and exam
@@ -40,6 +47,7 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
             if (mysqli_query($conn, $truncateTable)) {
                 // Return success message with the username and exam
                 echo json_encode(array("status" => "success", "message" => "Exams reset for the user: " . $username, "with exam title as" => $title));
+<<<<<<< HEAD
             
                 $action = 'Single User Reset'; 
                 $description = 'Logged in admin user: (' . $fullNames . ') reseted exam title: "'. $title .'" for user with username: "' . $username . '" ';
@@ -60,6 +68,8 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
          // error_log("Failed to add record to audit_tray: " . $stmt->error);
       }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             } else {
                 // Return error message
                 echo json_encode(array("status" => "error", "message" => "Failed to delete selected options."));

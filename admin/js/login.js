@@ -24,10 +24,16 @@ $(document).ready(function() {
         url: 'login.php',
         method: 'POST',
         data: {
+<<<<<<< HEAD
           username: username, 
           password: password
         },
         dataType: 'json',
+=======
+          username: username,
+          password: password
+        },
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         beforeSend: function() {
           var modalContent = '<div class="loading-modal">' +
             '  <img src="../img/quickTest.png" alt="" width="110" height="80" alt="Loading" />' +
@@ -45,7 +51,11 @@ $(document).ready(function() {
         success: function(response) {
           $('.modal').modal('hide'); // Hide the modal
   
+<<<<<<< HEAD
           if (response.success) {
+=======
+          if (response === "") {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             // Successful login, show success message with SweetAlert
             Swal.fire({
               icon: 'success',

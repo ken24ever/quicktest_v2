@@ -1,7 +1,10 @@
 <?php
+<<<<<<< HEAD
 session_start();
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id']; 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
 // Check if the form was submitted
 if (isset($_POST['examId'])) {
@@ -29,6 +32,7 @@ if (isset($_POST['examId'])) {
     } else {
         echo "<b style='color:red !important'>Error updating exam with the ID of ".$examId.": </b>" . mysqli_error($conn);
     }
+<<<<<<< HEAD
 
             $action = 'Exam Details Edited'; 
             $description = 'Logged in admin user: (' . $fullNames . ') edited exam title "' . $examTitle . '"';
@@ -48,6 +52,9 @@ if (isset($_POST['examId'])) {
               // You may log the error for debugging purposes
              // error_log("Failed to add record to audit_tray: " . $stmt->error);
           }
+=======
+    
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     // Close the database connection
     mysqli_close($conn);
 }

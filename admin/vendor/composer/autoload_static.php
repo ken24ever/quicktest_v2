@@ -7,12 +7,15 @@ namespace Composer\Autoload;
 class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
 {
     public static $files = array (
+<<<<<<< HEAD
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     );
 
@@ -21,6 +24,7 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
         array (
             'ZipStream\\' => 10,
         ),
+<<<<<<< HEAD
         'S' => 
         array (
             'Symfony\\Polyfill\\Php83\\' => 23,
@@ -40,6 +44,8 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
             'Ratchet\\RFC6455\\' => 16,
             'Ratchet\\' => 8,
         ),
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
@@ -49,6 +55,7 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
         ),
         'M' => 
         array (
+<<<<<<< HEAD
             'Matrix\\' => 7,
         ),
         'G' => 
@@ -59,6 +66,11 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
         array (
             'Evenement\\' => 10,
         ),
+=======
+            'MyCLabs\\Enum\\' => 13,
+            'Matrix\\' => 7,
+        ),
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         'C' => 
         array (
             'Complex\\' => 8,
@@ -74,6 +86,7 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
         ),
+<<<<<<< HEAD
         'Symfony\\Polyfill\\Php83\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php83',
@@ -126,14 +139,21 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
         array (
             0 => __DIR__ . '/..' . '/cboden/ratchet/src/Ratchet',
         ),
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
+<<<<<<< HEAD
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
             1 => __DIR__ . '/..' . '/psr/http-message/src',
+=======
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -143,10 +163,18 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
         ),
+<<<<<<< HEAD
+=======
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
+        ),
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
+<<<<<<< HEAD
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -155,6 +183,8 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
         array (
             0 => __DIR__ . '/..' . '/evenement/evenement/src',
         ),
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
@@ -176,12 +206,17 @@ class ComposerStaticInit102ebaa0bb55d607eafd7202de59ff99
     );
 
     public static $classMap = array (
+<<<<<<< HEAD
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+=======
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Stringable' => __DIR__ . '/..' . '/myclabs/php-enum/stubs/Stringable.php',
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     );
 
     public static function getInitializer(ClassLoader $loader)

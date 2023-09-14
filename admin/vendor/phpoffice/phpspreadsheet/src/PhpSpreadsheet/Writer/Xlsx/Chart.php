@@ -14,7 +14,10 @@ use PhpOffice\PhpSpreadsheet\Chart\Title;
 use PhpOffice\PhpSpreadsheet\Chart\TrendLine;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\Namespaces;
 use PhpOffice\PhpSpreadsheet\Shared\XMLWriter;
+<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Style\Font;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 use PhpOffice\PhpSpreadsheet\Writer\Exception as WriterException;
 
 class Chart extends WriterPart
@@ -110,6 +113,7 @@ class Chart extends WriterPart
         $objWriter->endElement();
 
         $objWriter->endElement(); // c:chart
+<<<<<<< HEAD
 
         $objWriter->startElement('c:spPr');
         if ($chart->getNoFill()) {
@@ -124,6 +128,14 @@ class Chart extends WriterPart
         $this->writeLineStyles($objWriter, $borderLines);
         $this->writeEffects($objWriter, $borderLines);
         $objWriter->endElement(); // c:spPr
+=======
+        if ($chart->getNoFill()) {
+            $objWriter->startElement('c:spPr');
+            $objWriter->startElement('a:noFill');
+            $objWriter->endElement(); // a:noFill
+            $objWriter->endElement(); // c:spPr
+        }
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         $this->writePrintSettings($objWriter);
 
@@ -210,6 +222,7 @@ class Chart extends WriterPart
         $objWriter->writeAttribute('val', ($legend->getOverlay()) ? '1' : '0');
         $objWriter->endElement();
 
+<<<<<<< HEAD
         $objWriter->startElement('c:spPr');
         $fillColor = $legend->getFillColor();
         if ($fillColor->isUsable()) {
@@ -221,6 +234,8 @@ class Chart extends WriterPart
         $objWriter->endElement(); // c:spPr
 
         $legendText = $legend->getLegendText();
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         $objWriter->startElement('c:txPr');
         $objWriter->startElement('a:bodyPr');
         $objWriter->endElement();
@@ -233,6 +248,7 @@ class Chart extends WriterPart
         $objWriter->writeAttribute('rtl', '0');
 
         $objWriter->startElement('a:defRPr');
+<<<<<<< HEAD
         if ($legendText !== null) {
             $this->writeColor($objWriter, $legendText->getFillColorObject());
             $this->writeEffects($objWriter, $legendText);
@@ -248,6 +264,19 @@ class Chart extends WriterPart
         $objWriter->endElement(); // c:txPr
 
         $objWriter->endElement(); // c:legend
+=======
+        $objWriter->endElement();
+        $objWriter->endElement();
+
+        $objWriter->startElement('a:endParaRPr');
+        $objWriter->writeAttribute('lang', 'en-US');
+        $objWriter->endElement();
+
+        $objWriter->endElement();
+        $objWriter->endElement();
+
+        $objWriter->endElement();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 
     /**
@@ -331,6 +360,7 @@ class Chart extends WriterPart
                 $objWriter->startElement('c:hiLowLines');
                 $objWriter->endElement();
 
+<<<<<<< HEAD
                 $gapWidth = $plotArea->getGapWidth();
                 $upBars = $plotArea->getUseUpBars();
                 $downBars = $plotArea->getUseDownBars();
@@ -351,6 +381,21 @@ class Chart extends WriterPart
                     }
                     $objWriter->endElement(); // c:upDownBars
                 }
+=======
+                $objWriter->startElement('c:upDownBars');
+
+                $objWriter->startElement('c:gapWidth');
+                $objWriter->writeAttribute('val', '300');
+                $objWriter->endElement();
+
+                $objWriter->startElement('c:upBars');
+                $objWriter->endElement();
+
+                $objWriter->startElement('c:downBars');
+                $objWriter->endElement();
+
+                $objWriter->endElement();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             }
 
             //    Generate 3 unique numbers to use for axId values
@@ -459,8 +504,13 @@ class Chart extends WriterPart
             }
             $objWriter->endElement(); // c:spPr
         }
+<<<<<<< HEAD
         $labelFont = $chartLayout->getLabelFont();
         if ($labelFont !== null) {
+=======
+        $fontColor = $chartLayout->getLabelFontColor();
+        if ($fontColor && $fontColor->isUsable()) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $objWriter->startElement('c:txPr');
 
             $objWriter->startElement('a:bodyPr');
@@ -476,7 +526,18 @@ class Chart extends WriterPart
 
             $objWriter->startElement('a:lstStyle');
             $objWriter->endElement(); // a:lstStyle
+<<<<<<< HEAD
             $this->writeLabelFont($objWriter, $labelFont, $chartLayout->getLabelEffects());
+=======
+
+            $objWriter->startElement('a:p');
+            $objWriter->startElement('a:pPr');
+            $objWriter->startElement('a:defRPr');
+            $this->writeColor($objWriter, $fontColor);
+            $objWriter->endElement(); // a:defRPr
+            $objWriter->endElement(); // a:pPr
+            $objWriter->endElement(); // a:p
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
             $objWriter->endElement(); // c:txPr
         }
@@ -632,6 +693,7 @@ class Chart extends WriterPart
         }
 
         $textRotation = $yAxis->getAxisOptionsProperty('textRotation');
+<<<<<<< HEAD
         $axisText = $yAxis->getAxisText();
 
         if ($axisText !== null || is_numeric($textRotation)) {
@@ -644,12 +706,31 @@ class Chart extends WriterPart
             $objWriter->startElement('a:lstStyle');
             $objWriter->endElement(); // a:lstStyle
             $this->writeLabelFont($objWriter, ($axisText === null) ? null : $axisText->getFont(), $axisText);
+=======
+        if (is_numeric($textRotation)) {
+            $objWriter->startElement('c:txPr');
+            $objWriter->startElement('a:bodyPr');
+            $objWriter->writeAttribute('rot', Properties::angleToXml((float) $textRotation));
+            $objWriter->endElement(); // a:bodyPr
+            $objWriter->startElement('a:lstStyle');
+            $objWriter->endElement(); // a:lstStyle
+            $objWriter->startElement('a:p');
+            $objWriter->startElement('a:pPr');
+            $objWriter->startElement('a:defRPr');
+            $objWriter->endElement(); // a:defRPr
+            $objWriter->endElement(); // a:pPr
+            $objWriter->endElement(); // a:p
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $objWriter->endElement(); // c:txPr
         }
 
         $objWriter->startElement('c:spPr');
         $this->writeColor($objWriter, $yAxis->getFillColorObject());
+<<<<<<< HEAD
         $this->writeLineStyles($objWriter, $yAxis, $yAxis->getNoFill());
+=======
+        $this->writeLineStyles($objWriter, $yAxis);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         $this->writeEffects($objWriter, $yAxis);
         $objWriter->endElement(); // spPr
 
@@ -849,6 +930,7 @@ class Chart extends WriterPart
         }
 
         $textRotation = $xAxis->getAxisOptionsProperty('textRotation');
+<<<<<<< HEAD
         $axisText = $xAxis->getAxisText();
 
         if ($axisText !== null || is_numeric($textRotation)) {
@@ -863,12 +945,31 @@ class Chart extends WriterPart
 
             $this->writeLabelFont($objWriter, ($axisText === null) ? null : $axisText->getFont(), $axisText);
 
+=======
+        if (is_numeric($textRotation)) {
+            $objWriter->startElement('c:txPr');
+            $objWriter->startElement('a:bodyPr');
+            $objWriter->writeAttribute('rot', Properties::angleToXml((float) $textRotation));
+            $objWriter->endElement(); // a:bodyPr
+            $objWriter->startElement('a:lstStyle');
+            $objWriter->endElement(); // a:lstStyle
+            $objWriter->startElement('a:p');
+            $objWriter->startElement('a:pPr');
+            $objWriter->startElement('a:defRPr');
+            $objWriter->endElement(); // a:defRPr
+            $objWriter->endElement(); // a:pPr
+            $objWriter->endElement(); // a:p
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $objWriter->endElement(); // c:txPr
         }
 
         $objWriter->startElement('c:spPr');
         $this->writeColor($objWriter, $xAxis->getFillColorObject());
+<<<<<<< HEAD
         $this->writeLineStyles($objWriter, $xAxis, $xAxis->getNoFill());
+=======
+        $this->writeLineStyles($objWriter, $xAxis);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         $this->writeEffects($objWriter, $xAxis);
         $objWriter->endElement(); //end spPr
 
@@ -1079,6 +1180,17 @@ class Chart extends WriterPart
                 $labelFill = $plotLabel->getFillColorObject();
                 $labelFill = ($labelFill instanceof ChartColor) ? $labelFill : null;
             }
+<<<<<<< HEAD
+=======
+            if ($plotLabel && $groupType !== DataSeries::TYPE_LINECHART) {
+                $fillColor = $plotLabel->getFillColorObject();
+                if ($fillColor !== null && !is_array($fillColor) && $fillColor->isUsable()) {
+                    $objWriter->startElement('c:spPr');
+                    $this->writeColor($objWriter, $fillColor);
+                    $objWriter->endElement(); // c:spPr
+                }
+            }
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
             //    Values
             $plotSeriesValues = $plotGroup->getPlotValuesByIndex($plotSeriesIdx);
@@ -1110,12 +1222,15 @@ class Chart extends WriterPart
                 $plotSeriesValues !== false
             ) {
                 $objWriter->startElement('c:spPr');
+<<<<<<< HEAD
                 if ($plotLabel && $groupType !== DataSeries::TYPE_LINECHART) {
                     $fillColor = $plotLabel->getFillColorObject();
                     if ($fillColor !== null && !is_array($fillColor) && $fillColor->isUsable()) {
                         $this->writeColor($objWriter, $fillColor);
                     }
                 }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 $fillObject = $labelFill ?? $plotSeriesValues->getFillColorObject();
                 $callLineStyles = true;
                 if ($fillObject instanceof ChartColor && $fillObject->isUsable()) {
@@ -1420,7 +1535,11 @@ class Chart extends WriterPart
             $count = $plotSeriesValues->getPointCount();
             $source = $plotSeriesValues->getDataSource();
             $values = $plotSeriesValues->getDataValues();
+<<<<<<< HEAD
             if ($count > 1 || ($count === 1 && array_key_exists(0, $values) && "=$source" !== (string) $values[0])) {
+=======
+            if ($count > 1 || ($count === 1 && "=$source" !== (string) $values[0])) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 $objWriter->startElement('c:' . $dataType . 'Cache');
 
                 if (($groupType != DataSeries::TYPE_PIECHART) && ($groupType != DataSeries::TYPE_PIECHART_3D) && ($groupType != DataSeries::TYPE_DONUTCHART)) {
@@ -1792,6 +1911,7 @@ class Chart extends WriterPart
             }
         }
     }
+<<<<<<< HEAD
 
     private function writeLabelFont(XMLWriter $objWriter, ?Font $labelFont, ?Properties $axisText): void
     {
@@ -1839,4 +1959,6 @@ class Chart extends WriterPart
         $objWriter->endElement(); // a:pPr
         $objWriter->endElement(); // a:p
     }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 }

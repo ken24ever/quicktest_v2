@@ -93,10 +93,13 @@ class Properties
                 $docProps->setManager($stringValue);
 
                 break;
+<<<<<<< HEAD
             case 'HyperlinkBase':
                 $docProps->setHyperlinkBase($stringValue);
 
                 break;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             case 'Keywords':
                 $docProps->setKeywords($stringValue);
 
@@ -114,10 +117,24 @@ class Properties
         ?SimpleXMLElement $propertyValue,
         SimpleXMLElement $propertyAttributes
     ): void {
+<<<<<<< HEAD
         switch ((string) $propertyAttributes) {
             case 'boolean':
                 $propertyType = DocumentProperties::PROPERTY_TYPE_BOOLEAN;
                 $propertyValue = (bool) (string) $propertyValue;
+=======
+        $propertyType = DocumentProperties::PROPERTY_TYPE_UNKNOWN;
+
+        switch ((string) $propertyAttributes) {
+            case 'string':
+                $propertyType = DocumentProperties::PROPERTY_TYPE_STRING;
+                $propertyValue = trim((string) $propertyValue);
+
+                break;
+            case 'boolean':
+                $propertyType = DocumentProperties::PROPERTY_TYPE_BOOLEAN;
+                $propertyValue = (bool) $propertyValue;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
                 break;
             case 'integer':
@@ -131,16 +148,22 @@ class Properties
 
                 break;
             case 'dateTime.tz':
+<<<<<<< HEAD
             case 'dateTime.iso8601tz':
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 $propertyType = DocumentProperties::PROPERTY_TYPE_DATE;
                 $propertyValue = trim((string) $propertyValue);
 
                 break;
+<<<<<<< HEAD
             default:
                 $propertyType = DocumentProperties::PROPERTY_TYPE_STRING;
                 $propertyValue = trim((string) $propertyValue);
 
                 break;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         }
 
         $docProps->setCustomProperty($propertyName, $propertyValue, $propertyType);

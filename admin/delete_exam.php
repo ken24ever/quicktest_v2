@@ -1,8 +1,11 @@
 <?php
+<<<<<<< HEAD
 session_start();
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id']; 
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 header('Content-Type: application/json');
 
 // Check if the exam ID is set
@@ -10,6 +13,7 @@ if (isset($_POST['examId'])) {
     // Get the exam ID from the POST data
     $examId = $_POST['examId'];
     
+<<<<<<< HEAD
     //get exam title
     $exam_Title = $_POST['exam_Title'];
 
@@ -35,6 +39,11 @@ if (isset($_POST['examId'])) {
      // error_log("Failed to add record to audit_tray: " . $stmt->error);
   }
 
+=======
+    // Get database connection
+    include("../connection.php");
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     // Prepare the SQL statement to retrieve all the questions associated with the exam
     $stmt = $conn->prepare("SELECT exam_id, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path FROM questions WHERE exam_id = ?");
     
@@ -42,7 +51,11 @@ if (isset($_POST['examId'])) {
     $stmt->bind_param("i", $examId);
     
     // Execute the statement
+<<<<<<< HEAD
     $stmt->execute(); 
+=======
+    $stmt->execute();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     
     // Bind the results to variables
     $stmt->bind_result($id, $image, $option1, $option2, $option3, $option4, $option5);

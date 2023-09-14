@@ -18,6 +18,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet as PhpspreadsheetWorksheet;
 
 class Worksheet extends WriterPart
 {
+<<<<<<< HEAD
     /** @var string */
     private $numberStoredAsText = '';
 
@@ -30,6 +31,8 @@ class Worksheet extends WriterPart
     /** @var string */
     private $evalError = '';
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Write worksheet to XML format.
      *
@@ -40,10 +43,13 @@ class Worksheet extends WriterPart
      */
     public function writeWorksheet(PhpspreadsheetWorksheet $worksheet, $stringTable = [], $includeCharts = false)
     {
+<<<<<<< HEAD
         $this->numberStoredAsText = '';
         $this->formula = '';
         $this->twoDigitTextYear = '';
         $this->evalError = '';
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         // Create XML writer
         $objWriter = null;
         if ($this->getParentWriter()->getUseDiskCaching()) {
@@ -134,9 +140,12 @@ class Worksheet extends WriterPart
         // AlternateContent
         $this->writeAlternateContent($objWriter, $worksheet);
 
+<<<<<<< HEAD
         // IgnoredErrors
         $this->writeIgnoredErrors($objWriter);
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         // Table
         $this->writeTable($objWriter, $worksheet);
 
@@ -150,6 +159,7 @@ class Worksheet extends WriterPart
         return $objWriter->getData();
     }
 
+<<<<<<< HEAD
     private function writeIgnoredError(XMLWriter $objWriter, bool &$started, string $attr, string $cells): void
     {
         if ($cells !== '') {
@@ -176,6 +186,8 @@ class Worksheet extends WriterPart
         }
     }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Write SheetPr.
      */
@@ -1179,6 +1191,7 @@ class Worksheet extends WriterPart
                         array_pop($columnsInRow);
                         foreach ($columnsInRow as $column) {
                             // Write cell
+<<<<<<< HEAD
                             $coord = "$column$currentRow";
                             if ($worksheet->getCell($coord)->getIgnoredErrors()->getNumberStoredAsText()) {
                                 $this->numberStoredAsText .= " $coord";
@@ -1193,6 +1206,9 @@ class Worksheet extends WriterPart
                                 $this->evalError .= " $coord";
                             }
                             $this->writeCell($objWriter, $worksheet, $coord, $aFlippedStringTable);
+=======
+                            $this->writeCell($objWriter, $worksheet, "{$column}{$currentRow}", $aFlippedStringTable);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                         }
                     }
 

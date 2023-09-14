@@ -1,15 +1,27 @@
 <?xml version="1.0"?>
+<<<<<<< HEAD
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="test/bootstrap.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd" cacheDirectory=".phpunit.cache">
   <coverage/>
+=======
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="test/bootstrap.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+  </coverage>
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
   <testsuites>
     <testsuite name="Application">
       <directory>test</directory>
     </testsuite>
   </testsuites>
   <logging/>
+<<<<<<< HEAD
   <source>
     <include>
       <directory suffix=".php">src</directory>
     </include>
   </source>
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 </phpunit>

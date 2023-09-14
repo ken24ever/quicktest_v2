@@ -163,6 +163,7 @@ class PlotArea
     {
         return $this->gradientFillStops;
     }
+<<<<<<< HEAD
 
     /** @var ?int */
     private $gapWidth;
@@ -208,4 +209,6 @@ class PlotArea
 
         return $this;
     }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 }

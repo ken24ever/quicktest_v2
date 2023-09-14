@@ -1,8 +1,11 @@
 <?php
+<<<<<<< HEAD
 session_start();
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id']; 
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 include("../connection.php");
 require_once 'vendor/autoload.php'; // Require the library for Excel generation
 
@@ -17,6 +20,7 @@ if ($conn->connect_error) {
 // Get the exam ID from the request
 $examID = $_POST['examID'];
 
+<<<<<<< HEAD
     //get exam title
     $exam_Title = $_POST['exam_Title'];
 
@@ -38,6 +42,12 @@ $examID = $_POST['examID'];
       // You may log the error for debugging purposes
      // error_log("Failed to add record to audit_tray: " . $stmt->error);
   }
+=======
+/* $sqlForExamTitle = "SELECT title FROM exams WHERE id = '$examID'";
+$results = mysqli_query($conn, $sqlForExamTitle);
+$row = mysqli_fetch_assoc($results);
+$examTitle = $row['title']; */
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
 // Select the questions for the specified exam ID from the QUESTIONS table
 $questionsSql = "SELECT * FROM questions WHERE exam_id = ?";

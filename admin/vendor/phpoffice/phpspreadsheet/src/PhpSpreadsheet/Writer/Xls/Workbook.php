@@ -643,8 +643,14 @@ class Workbook extends BIFFwriter
 
                 // store the DEFINEDNAME record
                 $chunk .= $this->writeData($this->writeDefinedNameBiff8(pack('C', 0x07), $formulaData, $i + 1, true));
+<<<<<<< HEAD
             } elseif ($sheetSetup->isColumnsToRepeatAtLeftSet() || $sheetSetup->isRowsToRepeatAtTopSet()) {
                 // (exclusive) either repeatColumns or repeatRows.
+=======
+
+            // (exclusive) either repeatColumns or repeatRows
+            } elseif ($sheetSetup->isColumnsToRepeatAtLeftSet() || $sheetSetup->isRowsToRepeatAtTopSet()) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 // Columns to repeat
                 if ($sheetSetup->isColumnsToRepeatAtLeftSet()) {
                     $repeat = $sheetSetup->getColumnsToRepeatAtLeft();
@@ -1101,15 +1107,26 @@ class Workbook extends BIFFwriter
                     // 2. space remaining is greater than or equal to minimum space needed
                     //        here we write as much as we can in the current block, then move to next record data block
 
+<<<<<<< HEAD
                     if ($space_remaining < $min_space_needed) {
                         // 1. space remaining is less than minimum space needed.
+=======
+                    // 1. space remaining is less than minimum space needed
+                    if ($space_remaining < $min_space_needed) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                         // we close the block, store the block data
                         $recordDatas[] = $recordData;
 
                         // and start new record data block where we start writing the string
                         $recordData = '';
+<<<<<<< HEAD
                     } else {
                         // 2. space remaining is greater than or equal to minimum space needed.
+=======
+
+                    // 2. space remaining is greater than or equal to minimum space needed
+                    } else {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                         // initialize effective remaining space, for Unicode strings this may need to be reduced by 1, see below
                         $effective_space_remaining = $space_remaining;
 

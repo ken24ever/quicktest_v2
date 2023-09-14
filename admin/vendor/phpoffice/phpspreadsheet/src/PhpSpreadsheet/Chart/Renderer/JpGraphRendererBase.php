@@ -434,6 +434,7 @@ abstract class JpGraphRendererBase implements IRenderer
 
         //    Loop through each data series in turn
         for ($i = 0; $i < $seriesCount; ++$i) {
+<<<<<<< HEAD
             $plotCategoryByIndex = $this->chart->getPlotArea()->getPlotGroupByIndex($groupID)->getPlotCategoryByIndex($i);
             if ($plotCategoryByIndex === false) {
                 $plotCategoryByIndex = $this->chart->getPlotArea()->getPlotGroupByIndex($groupID)->getPlotCategoryByIndex(0);
@@ -461,6 +462,14 @@ abstract class JpGraphRendererBase implements IRenderer
                 }
             }
             //var_dump($dataValuesY, $dataValuesX, $bubbleSize);
+=======
+            $dataValuesY = $this->chart->getPlotArea()->getPlotGroupByIndex($groupID)->getPlotCategoryByIndex($i)->getDataValues();
+            $dataValuesX = $this->chart->getPlotArea()->getPlotGroupByIndex($groupID)->getPlotValuesByIndex($i)->getDataValues();
+
+            foreach ($dataValuesY as $k => $dataValueY) {
+                $dataValuesY[$k] = $k;
+            }
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
             $seriesPlot = new ScatterPlot($dataValuesX, $dataValuesY);
             if ($scatterStyle == 'lineMarker') {
@@ -504,7 +513,11 @@ abstract class JpGraphRendererBase implements IRenderer
 
             $dataValues = [];
             foreach ($dataValuesY as $k => $dataValueY) {
+<<<<<<< HEAD
                 $dataValues[$k] = is_array($dataValueY) ? implode(' ', array_reverse($dataValueY)) : $dataValueY;
+=======
+                $dataValues[$k] = implode(' ', array_reverse($dataValueY));
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             }
             $tmp = array_shift($dataValues);
             $dataValues[] = $tmp;

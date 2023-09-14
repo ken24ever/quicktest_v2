@@ -7,8 +7,11 @@ use DOMElement;
 use DOMNode;
 use DOMText;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Document\Properties;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 use PhpOffice\PhpSpreadsheet\Helper\Dimension as CssDimension;
 use PhpOffice\PhpSpreadsheet\Reader\Security\XmlScanner;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -285,13 +288,18 @@ class Html extends BaseReader
      * @param int|string $row
      * @param mixed $cellContent
      */
+<<<<<<< HEAD
     protected function flushCell(Worksheet $sheet, $column, $row, &$cellContent, array $attributeArray): void
+=======
+    protected function flushCell(Worksheet $sheet, $column, $row, &$cellContent): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     {
         if (is_string($cellContent)) {
             //    Simple String content
             if (trim($cellContent) > '') {
                 //    Only actually write it if there's content in the string
                 //    Write to worksheet to be done here...
+<<<<<<< HEAD
                 //    ... we return the cell, so we can mess about with styles more easily
 
                 // Set cell value explicitly if there is data-type attribute
@@ -314,6 +322,10 @@ class Html extends BaseReader
                 } else {
                     $sheet->setCellValue($column . $row, $cellContent);
                 }
+=======
+                //    ... we return the cell so we can mess about with styles more easily
+                $sheet->setCellValue($column . $row, $cellContent);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 $this->dataArray[$row][$column] = $cellContent;
             }
         } else {
@@ -327,7 +339,11 @@ class Html extends BaseReader
     private function processDomElementBody(Worksheet $sheet, int &$row, string &$column, string &$cellContent, DOMElement $child): void
     {
         $attributeArray = [];
+<<<<<<< HEAD
         foreach ($child->attributes as $attribute) {
+=======
+        foreach (($child->attributes ?? []) as $attribute) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $attributeArray[$attribute->name] = $attribute->value;
         }
 
@@ -377,7 +393,11 @@ class Html extends BaseReader
     private function processDomElementHr(Worksheet $sheet, int &$row, string &$column, string &$cellContent, DOMElement $child, array &$attributeArray): void
     {
         if ($child->nodeName === 'hr') {
+<<<<<<< HEAD
             $this->flushCell($sheet, $column, $row, $cellContent, $attributeArray);
+=======
+            $this->flushCell($sheet, $column, $row, $cellContent);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             ++$row;
             if (isset($this->formats[$child->nodeName])) {
                 $sheet->getStyle($column . $row)->applyFromArray($this->formats[$child->nodeName]);
@@ -397,7 +417,11 @@ class Html extends BaseReader
                 $sheet->getStyle($column . $row)->getAlignment()->setWrapText(true);
             } else {
                 //    Otherwise flush our existing content and move the row cursor on
+<<<<<<< HEAD
                 $this->flushCell($sheet, $column, $row, $cellContent, $attributeArray);
+=======
+                $this->flushCell($sheet, $column, $row, $cellContent);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 ++$row;
             }
         } else {
@@ -443,11 +467,19 @@ class Html extends BaseReader
                 $this->processDomElement($child, $sheet, $row, $column, $cellContent);
             } else {
                 if ($cellContent > '') {
+<<<<<<< HEAD
                     $this->flushCell($sheet, $column, $row, $cellContent, $attributeArray);
                     ++$row;
                 }
                 $this->processDomElement($child, $sheet, $row, $column, $cellContent);
                 $this->flushCell($sheet, $column, $row, $cellContent, $attributeArray);
+=======
+                    $this->flushCell($sheet, $column, $row, $cellContent);
+                    ++$row;
+                }
+                $this->processDomElement($child, $sheet, $row, $column, $cellContent);
+                $this->flushCell($sheet, $column, $row, $cellContent);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
                 if (isset($this->formats[$child->nodeName])) {
                     $sheet->getStyle($column . $row)->applyFromArray($this->formats[$child->nodeName]);
@@ -470,11 +502,19 @@ class Html extends BaseReader
                 $this->processDomElement($child, $sheet, $row, $column, $cellContent);
             } else {
                 if ($cellContent > '') {
+<<<<<<< HEAD
                     $this->flushCell($sheet, $column, $row, $cellContent, $attributeArray);
                 }
                 ++$row;
                 $this->processDomElement($child, $sheet, $row, $column, $cellContent);
                 $this->flushCell($sheet, $column, $row, $cellContent, $attributeArray);
+=======
+                    $this->flushCell($sheet, $column, $row, $cellContent);
+                }
+                ++$row;
+                $this->processDomElement($child, $sheet, $row, $column, $cellContent);
+                $this->flushCell($sheet, $column, $row, $cellContent);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 $column = 'A';
             }
         } else {
@@ -491,6 +531,7 @@ class Html extends BaseReader
         }
     }
 
+<<<<<<< HEAD
     private string $currentColumn = 'A';
 
     private function processDomElementTable(Worksheet $sheet, int &$row, string &$column, string &$cellContent, DOMElement $child, array &$attributeArray): void
@@ -498,6 +539,12 @@ class Html extends BaseReader
         if ($child->nodeName === 'table') {
             $this->currentColumn = 'A';
             $this->flushCell($sheet, $column, $row, $cellContent, $attributeArray);
+=======
+    private function processDomElementTable(Worksheet $sheet, int &$row, string &$column, string &$cellContent, DOMElement $child, array &$attributeArray): void
+    {
+        if ($child->nodeName === 'table') {
+            $this->flushCell($sheet, $column, $row, $cellContent);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $column = $this->setTableStartColumn($column);
             if ($this->tableLevel > 1 && $row > 1) {
                 --$row;
@@ -516,10 +563,14 @@ class Html extends BaseReader
 
     private function processDomElementTr(Worksheet $sheet, int &$row, string &$column, string &$cellContent, DOMElement $child, array &$attributeArray): void
     {
+<<<<<<< HEAD
         if ($child->nodeName === 'col') {
             $this->applyInlineStyle($sheet, -1, $this->currentColumn, $attributeArray);
             ++$this->currentColumn;
         } elseif ($child->nodeName === 'tr') {
+=======
+        if ($child->nodeName === 'tr') {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $column = $this->getTableStartColumn();
             $cellContent = '';
             $this->processDomElement($child, $sheet, $row, $column, $cellContent);
@@ -602,7 +653,11 @@ class Html extends BaseReader
         // apply inline style
         $this->applyInlineStyle($sheet, $row, $column, $attributeArray);
 
+<<<<<<< HEAD
         $this->flushCell($sheet, $column, $row, $cellContent, $attributeArray);
+=======
+        $this->flushCell($sheet, $column, $row, $cellContent);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         $this->processDomElementBgcolor($sheet, $row, $column, $attributeArray);
         $this->processDomElementWidth($sheet, $column, $attributeArray);
@@ -692,11 +747,15 @@ class Html extends BaseReader
         if ($loaded === false) {
             throw new Exception('Failed to load ' . $filename . ' as a DOM Document', 0, $e ?? null);
         }
+<<<<<<< HEAD
         self::loadProperties($dom, $spreadsheet);
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         return $this->loadDocument($dom, $spreadsheet);
     }
 
+<<<<<<< HEAD
     private static function loadProperties(DOMDocument $dom, Spreadsheet $spreadsheet): void
     {
         $properties = $spreadsheet->getProperties();
@@ -780,6 +839,8 @@ class Html extends BaseReader
         }
     }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     private static function replaceNonAscii(array $matches): string
     {
         return '&#' . mb_ord($matches[0], 'UTF-8') . ';';
@@ -810,10 +871,15 @@ class Html extends BaseReader
         if ($loaded === false) {
             throw new Exception('Failed to load content as a DOM Document', 0, $e ?? null);
         }
+<<<<<<< HEAD
         $spreadsheet = $spreadsheet ?? new Spreadsheet();
         self::loadProperties($dom, $spreadsheet);
 
         return $this->loadDocument($dom, $spreadsheet);
+=======
+
+        return $this->loadDocument($dom, $spreadsheet ?? new Spreadsheet());
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 
     /**
@@ -883,9 +949,13 @@ class Html extends BaseReader
             return;
         }
 
+<<<<<<< HEAD
         if ($row <= 0 || $column === '') {
             $cellStyle = new Style();
         } elseif (isset($attributeArray['rowspan'], $attributeArray['colspan'])) {
+=======
+        if (isset($attributeArray['rowspan'], $attributeArray['colspan'])) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
             $columnTo = $column;
             for ($i = 0; $i < (int) $attributeArray['colspan'] - 1; ++$i) {
                 ++$columnTo;
@@ -1017,20 +1087,32 @@ class Html extends BaseReader
                     break;
 
                 case 'width':
+<<<<<<< HEAD
                     if ($column !== '') {
                         $sheet->getColumnDimension($column)->setWidth(
                             (new CssDimension($styleValue ?? ''))->width()
                         );
                     }
+=======
+                    $sheet->getColumnDimension($column)->setWidth(
+                        (new CssDimension($styleValue ?? ''))->width()
+                    );
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
                     break;
 
                 case 'height':
+<<<<<<< HEAD
                     if ($row > 0) {
                         $sheet->getRowDimension($row)->setRowHeight(
                             (new CssDimension($styleValue ?? ''))->height()
                         );
                     }
+=======
+                    $sheet->getRowDimension($row)->setRowHeight(
+                        (new CssDimension($styleValue ?? ''))->height()
+                    );
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
                     break;
 

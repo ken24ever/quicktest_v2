@@ -31,6 +31,10 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Workbook;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Worksheet;
 use ZipArchive;
 use ZipStream\Exception\OverflowException;
+<<<<<<< HEAD
+=======
+use ZipStream\Option\Archive;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 use ZipStream\ZipStream;
 
 class Xlsx extends BaseWriter
@@ -376,7 +380,11 @@ class Xlsx extends BaseWriter
         }
 
         // Add theme to ZIP file
+<<<<<<< HEAD
         $zipContent['xl/theme/theme1.xml'] = $this->getWriterPartTheme()->writeTheme($this->spreadSheet);
+=======
+        $zipContent['xl/theme/theme1.xml'] = $this->getWriterPartTheme()->writeTheme();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         // Add string table to ZIP file
         $zipContent['xl/sharedStrings.xml'] = $this->getWriterPartStringTable()->writeStringTable($this->stringTable);
@@ -545,7 +553,15 @@ class Xlsx extends BaseWriter
 
         $this->openFileHandle($filename);
 
+<<<<<<< HEAD
         $this->zip = ZipStream0::newZipStream($this->fileHandle);
+=======
+        $options = new Archive();
+        $options->setEnableZip64(false);
+        $options->setOutputStream($this->fileHandle);
+
+        $this->zip = new ZipStream(null, $options);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         $this->addZipFiles($zipContent);
 

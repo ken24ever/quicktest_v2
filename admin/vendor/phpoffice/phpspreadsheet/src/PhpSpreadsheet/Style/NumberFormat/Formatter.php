@@ -3,7 +3,10 @@
 namespace PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 use PhpOffice\PhpSpreadsheet\Calculation\Calculation;
+<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Reader\Xls\Color\BIFF8;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
@@ -68,19 +71,27 @@ class Formatter
         //   3 sections:  [POSITIVE/TEXT] [NEGATIVE] [ZERO]
         //   4 sections:  [POSITIVE] [NEGATIVE] [ZERO] [TEXT]
         $sectionCount = count($sections);
+<<<<<<< HEAD
         // Colour could be a named colour, or a numeric index entry in the colour-palette
         $color_regex = '/\\[(' . implode('|', Color::NAMED_COLORS) . '|color\\s*(\\d+))\\]/mui';
+=======
+        $color_regex = '/\\[(' . implode('|', Color::NAMED_COLORS) . ')\\]/mui';
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         $cond_regex = '/\\[(>|>=|<|<=|=|<>)([+-]?\\d+([.]\\d+)?)\\]/';
         $colors = ['', '', '', '', ''];
         $conditionOperations = ['', '', '', '', ''];
         $conditionComparisonValues = [0, 0, 0, 0, 0];
         for ($idx = 0; $idx < $sectionCount; ++$idx) {
             if (preg_match($color_regex, $sections[$idx], $matches)) {
+<<<<<<< HEAD
                 if (isset($matches[2])) {
                     $colors[$idx] = '#' . BIFF8::lookup((int) $matches[2] + 7)['rgb'];
                 } else {
                     $colors[$idx] = $matches[0];
                 }
+=======
+                $colors[$idx] = $matches[0];
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 $sections[$idx] = (string) preg_replace($color_regex, '', $sections[$idx]);
             }
             if (preg_match($cond_regex, $sections[$idx], $matches)) {
@@ -176,11 +187,18 @@ class Formatter
         $format = (string) preg_replace('/_.?/ui', ' ', $format);
 
         // Let's begin inspecting the format and converting the value to a formatted string
+<<<<<<< HEAD
         if (
             //  Check for date/time characters (not inside quotes)
             (preg_match('/(\[\$[A-Z]*-[0-9A-F]*\])*[hmsdy](?=(?:[^"]|"[^"]*")*$)/miu', $format))
             // A date/time with a decimal time shouldn't have a digit placeholder before the decimal point
             && (preg_match('/[0\?#]\.(?![^\[]*\])/miu', $format) === 0)
+=======
+        //  Check for date/time characters (not inside quotes)
+        if (
+            (preg_match('/(\[\$[A-Z]*-[0-9A-F]*\])*[hmsdy](?=(?:[^"]|"[^"]*")*$)/miu', $format)) &&
+            (preg_match('/0(?![^\[]*\])/miu', $format) === 0)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         ) {
             // datetime format
             $value = DateFormatter::format($value, $format);
@@ -201,6 +219,12 @@ class Formatter
             $value = $writerInstance->$function($value, $colors);
         }
 
+<<<<<<< HEAD
         return str_replace(chr(0x00), '.', $value);
+=======
+        $value = str_replace(chr(0x00), '.', $value);
+
+        return $value;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     }
 }

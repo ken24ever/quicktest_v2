@@ -1,4 +1,5 @@
 $(document).ready(function(){
+<<<<<<< HEAD
   
 // Constants for pagination
 const ITEMS_PER_PAGE = 150;
@@ -285,6 +286,9 @@ fetchUsersDetails(currentPage);
 
   
   $('#searchUserForm').submit(function(e){
+=======
+    $('#searchUserForm').submit(function(e){
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
       e.preventDefault();
    var search = $('#searchUsername').val()
       if (search == ''){
@@ -367,7 +371,11 @@ fetchUsersDetails(currentPage);
                     // User confirmed and entered the reset code
                     // Send AJAX request to reset the user's exams
                     $.ajax({
+<<<<<<< HEAD
                         url: 'reset_exams.php', 
+=======
+                        url: 'reset_exams.php',
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                         method: 'GET',
                         dataType: 'JSON',
                         data: { user: username, resetCode: resetCode },
@@ -454,7 +462,11 @@ fetchUsersDetails(currentPage);
             url: 'deleteUsers.php',
             type: 'POST',
             data: { username: username },
+<<<<<<< HEAD
             success: function(response) { 
+=======
+            success: function(response) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
               // Reload the table data
               
                // Show success message with the username and exam title

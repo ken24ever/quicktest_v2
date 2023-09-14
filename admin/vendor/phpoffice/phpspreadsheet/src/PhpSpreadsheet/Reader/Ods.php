@@ -8,7 +8,10 @@ use DOMElement;
 use DOMNode;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
+<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Helper\Dimension as HelperDimension;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 use PhpOffice\PhpSpreadsheet\Reader\Ods\AutoFilter;
 use PhpOffice\PhpSpreadsheet\Reader\Ods\DefinedNames;
 use PhpOffice\PhpSpreadsheet\Reader\Ods\FormulaTranslator;
@@ -296,12 +299,16 @@ class Ods extends BaseReader
         $tableNs = $dom->lookupNamespaceUri('table');
         $textNs = $dom->lookupNamespaceUri('text');
         $xlinkNs = $dom->lookupNamespaceUri('xlink');
+<<<<<<< HEAD
         $styleNs = $dom->lookupNamespaceUri('style');
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         $pageSettings->readStyleCrossReferences($dom);
 
         $autoFilterReader = new AutoFilter($spreadsheet, $tableNs);
         $definedNameReader = new DefinedNames($spreadsheet, $tableNs);
+<<<<<<< HEAD
         $columnWidths = [];
         $automaticStyle0 = $dom->getElementsByTagNameNS($officeNs, 'automatic-styles')->item(0);
         $automaticStyles = ($automaticStyle0 === null) ? [] : $automaticStyle0->getElementsByTagNameNS($styleNs, 'style');
@@ -319,6 +326,8 @@ class Ods extends BaseReader
                 }
             }
         }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 
         // Content
         $item0 = $dom->getElementsByTagNameNS($officeNs, 'body')->item(0);
@@ -359,7 +368,10 @@ class Ods extends BaseReader
 
                 // Go through every child of table element
                 $rowID = 1;
+<<<<<<< HEAD
                 $tableColumnIndex = 1;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                 foreach ($worksheetDataSet->childNodes as $childNode) {
                     /** @var DOMElement $childNode */
 
@@ -387,6 +399,7 @@ class Ods extends BaseReader
 //                                break;
 //                            }
                             break;
+<<<<<<< HEAD
                         case 'table-column':
                             if ($childNode->hasAttributeNS($tableNs, 'number-columns-repeated')) {
                                 $rowRepeats = (int) $childNode->getAttributeNS($tableNs, 'number-columns-repeated');
@@ -407,6 +420,8 @@ class Ods extends BaseReader
                             $tableColumnIndex += $rowRepeats;
 
                             break;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
                         case 'table-row':
                             if ($childNode->hasAttributeNS($tableNs, 'number-rows-repeated')) {
                                 $rowRepeats = (int) $childNode->getAttributeNS($tableNs, 'number-rows-repeated');

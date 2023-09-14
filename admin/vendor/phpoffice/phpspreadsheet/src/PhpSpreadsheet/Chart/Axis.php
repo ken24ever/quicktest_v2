@@ -52,9 +52,12 @@ class Axis extends Properties
     /** @var string */
     private $axisType = '';
 
+<<<<<<< HEAD
     /** @var ?AxisText */
     private $axisText;
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Axis Options.
      *
@@ -91,9 +94,12 @@ class Axis extends Properties
         Properties::FORMAT_CODE_DATE_ISO8601,
     ];
 
+<<<<<<< HEAD
     /** @var bool */
     private $noFill = false;
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * Get Series Data Type.
      *
@@ -189,6 +195,7 @@ class Axis extends Properties
      */
     public function getAxisOptionsProperty($property)
     {
+<<<<<<< HEAD
         if ($property === 'textRotation') {
             if ($this->axisText !== null) {
                 if ($this->axisText->getRotation() !== null) {
@@ -197,6 +204,8 @@ class Axis extends Properties
             }
         }
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         return $this->axisOptions[$property];
     }
 
@@ -309,6 +318,7 @@ class Axis extends Properties
 
         return $this;
     }
+<<<<<<< HEAD
 
     public function getAxisText(): ?AxisText
     {
@@ -333,4 +343,6 @@ class Axis extends Properties
     {
         return $this->noFill;
     }
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
 }

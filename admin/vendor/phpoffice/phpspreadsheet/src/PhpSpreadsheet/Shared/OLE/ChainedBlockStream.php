@@ -6,9 +6,12 @@ use PhpOffice\PhpSpreadsheet\Shared\OLE;
 
 class ChainedBlockStream
 {
+<<<<<<< HEAD
     /** @var mixed */
     public $context;
 
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
     /**
      * The OLE container of the file that is being read.
      *
@@ -163,7 +166,11 @@ class ChainedBlockStream
             $this->pos = $offset;
         } elseif ($whence == SEEK_CUR && -$offset <= $this->pos) {
             $this->pos += $offset;
+<<<<<<< HEAD
             // @phpstan-ignore-next-line
+=======
+        // @phpstan-ignore-next-line
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
         } elseif ($whence == SEEK_END && -$offset <= count(/** @scrutinizer ignore-type */ $this->data)) {
             $this->pos = strlen($this->data) + $offset;
         } else {
