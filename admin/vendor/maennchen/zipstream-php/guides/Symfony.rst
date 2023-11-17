@@ -31,7 +31,15 @@ stored in an AWS S3 bucket by key:
     */
     public function zipStreamAction()
     {
+<<<<<<< HEAD
         // sample test file on s3
+=======
+<<<<<<< HEAD
+        // sample test file on s3
+=======
+        //sample test file on s3
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $s3keys = array(
         "ziptestfolder/file1.txt"
         );
@@ -39,6 +47,10 @@ stored in an AWS S3 bucket by key:
         $s3Client = $this->get('app.amazon.s3'); //s3client service
         $s3Client->registerStreamWrapper(); //required
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         // using StreamedResponse to wrap ZipStream functionality
         // for files on AWS s3.
         $response = new StreamedResponse(function() use($s3keys, $s3Client)
@@ -51,6 +63,23 @@ stored in an AWS S3 bucket by key:
                 defaultEnableZeroHeader: true,
                 contentType: 'application/octet-stream',
             );
+<<<<<<< HEAD
+=======
+=======
+        //using StreamedResponse to wrap ZipStream functionality for files on AWS s3.
+        $response = new StreamedResponse(function() use($s3keys, $s3Client)
+        {
+            // Define suitable options for ZipStream Archive.
+            $options = new \ZipStream\Option\Archive();
+            $options->setContentType('application/octet-stream');
+            // this is needed to prevent issues with truncated zip files
+            $options->setZeroHeader(true);
+            $options->setComment('test zip file.');
+
+            //initialise zipstream with output zip filename and options.
+            $zip = new ZipStream\ZipStream('test.zip', $options);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
             //loop keys - useful for multiple files
             foreach ($s3keys as $key) {
@@ -58,19 +87,42 @@ stored in an AWS S3 bucket by key:
                 //file using the same name.
                 $fileName = basename($key);
 
+<<<<<<< HEAD
                 // concatenate s3path.
                 // replace with your bucket name or get from parameters file.
                 $bucket = 'bucketname';
+=======
+<<<<<<< HEAD
+                // concatenate s3path.
+                // replace with your bucket name or get from parameters file.
+                $bucket = 'bucketname';
+=======
+                //concatenate s3path.
+                $bucket = 'bucketname'; //replace with your bucket name or get from parameters file.
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 $s3path = "s3://" . $bucket . "/" . $key;
 
                 //addFileFromStream
                 if ($streamRead = fopen($s3path, 'r')) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     $zip->addFileFromStream(
                         fileName: $fileName,
                         stream: $streamRead,
                     );
                 } else {
                     die('Could not open stream for reading');
+<<<<<<< HEAD
+=======
+=======
+                $zip->addFileFromStream($fileName, $streamRead);
+                } else {
+                die('Could not open stream for reading');
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 }
             }
 
@@ -127,4 +179,12 @@ You need to add correct permissions
         's3' => ['ACL' => 'public-read'],
     ]);
 
+<<<<<<< HEAD
     fopen($path, 'w', null, $outputContext);
+=======
+<<<<<<< HEAD
+    fopen($path, 'w', null, $outputContext);
+=======
+    fopen($path, 'w', null, $outputContext);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742

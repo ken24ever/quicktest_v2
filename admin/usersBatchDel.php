@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 session_start();
 $fullNames = $_SESSION['user_name'];
@@ -38,11 +42,24 @@ if ($result) {
     }
   }
 }
+<<<<<<< HEAD
+=======
+=======
+include('../connection.php');
+
+// Retrieve the selected user IDs to delete
+$userIds = $_POST['userIds'];
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 // Prepare the SQL statement to delete the selected users
 $deleteQuery = "DELETE FROM users WHERE id IN (" . implode(',', $userIds) . ")";
 $result = $conn->query($deleteQuery);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 // Prepare the SQL statement to delete the user exams of the selected users
 $deleteQueryUserExams = "DELETE FROM users_exam WHERE user_id IN (" . implode(',', $userIds) . ")";
 $res = $conn->query($deleteQueryUserExams);
@@ -66,6 +83,19 @@ if ($result && $res && $success) {
   $response = ['success' => true, 'message' => 'Selected user(s) and their passport(s) deleted successfully.'];
 } else {
   $response = ['success' => false, 'message' => 'Failed to delete selected users and/or their passports.'];
+<<<<<<< HEAD
+=======
+=======
+// Prepare the SQL statement to delete the selected users
+$deleteQueryUserExams = "DELETE FROM users_exam WHERE user_id IN (" . implode(',', $userIds) . ")";
+$res = $conn->query($deleteQueryUserExams);
+
+if ($result && $res) {
+  $response = ['success' => true, 'message' => 'Selected users deleted successfully.'];
+} else {
+  $response = ['success' => false, 'message' => 'Failed to delete selected users.'];
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }
 
 // Send the response as JSON

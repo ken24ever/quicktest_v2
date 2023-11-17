@@ -45,6 +45,14 @@ $(document).ready(function(){
     }
   });
   
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  
+  
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
   $("#addExamForm").submit(function(event){
     // Prevent default form submission behavior
@@ -85,6 +93,10 @@ $(document).ready(function(){
           formData.append(name, files[i]);
         }
       } else {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         formData.append(name, value); 
       }
     });
@@ -113,6 +125,15 @@ $(document).ready(function(){
 
 
 // console.log(correctAnswersJSON )
+<<<<<<< HEAD
+=======
+=======
+        formData.append(name, value);
+      }
+    });
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     // Send the form data using an AJAX request
     $.ajax({
       url:"add_exam.php",
@@ -120,7 +141,15 @@ $(document).ready(function(){
       data: formData,
       contentType: false,
       processData: false,
+<<<<<<< HEAD
       success: function(response){ 
+=======
+<<<<<<< HEAD
+      success: function(response){ 
+=======
+      success: function(response){
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         // output 
        // alert(response);
         console.log(response)

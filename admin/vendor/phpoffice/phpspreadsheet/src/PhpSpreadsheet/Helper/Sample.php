@@ -2,9 +2,19 @@
 
 namespace PhpOffice\PhpSpreadsheet\Helper;
 
+<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Chart\Chart;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Settings;
+=======
+<<<<<<< HEAD
+use PhpOffice\PhpSpreadsheet\Chart\Chart;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Settings;
+=======
+use PhpOffice\PhpSpreadsheet\IOFactory;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use PhpOffice\PhpSpreadsheet\Writer\IWriter;
@@ -14,7 +24,14 @@ use RecursiveRegexIterator;
 use ReflectionClass;
 use RegexIterator;
 use RuntimeException;
+<<<<<<< HEAD
 use Throwable;
+=======
+<<<<<<< HEAD
+use Throwable;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 /**
  * Helper class to be used in sample code.
@@ -123,7 +140,15 @@ class Sample
      * @param string $filename
      * @param string[] $writers
      */
+<<<<<<< HEAD
     public function write(Spreadsheet $spreadsheet, $filename, array $writers = ['Xlsx', 'Xls'], bool $withCharts = false, ?callable $writerCallback = null): void
+=======
+<<<<<<< HEAD
+    public function write(Spreadsheet $spreadsheet, $filename, array $writers = ['Xlsx', 'Xls'], bool $withCharts = false, ?callable $writerCallback = null): void
+=======
+    public function write(Spreadsheet $spreadsheet, $filename, array $writers = ['Xlsx', 'Xls']): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $spreadsheet->setActiveSheetIndex(0);
@@ -132,6 +157,10 @@ class Sample
         foreach ($writers as $writerType) {
             $path = $this->getFilename($filename, mb_strtolower($writerType));
             $writer = IOFactory::createWriter($spreadsheet, $writerType);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             $writer->setIncludeCharts($withCharts);
             if ($writerCallback !== null) {
                 $writerCallback($writer);
@@ -142,6 +171,14 @@ class Sample
             if ($this->isCli() === false) {
                 echo '<a href="/download.php?type=' . pathinfo($path, PATHINFO_EXTENSION) . '&name=' . basename($path) . '">Download ' . basename($path) . '</a><br />';
             }
+<<<<<<< HEAD
+=======
+=======
+            $callStartTime = microtime(true);
+            $writer->save($path);
+            $this->logWrite($writer, $path, /** @scrutinizer ignore-type */ $callStartTime);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
 
         $this->logEndingNotes();
@@ -157,7 +194,15 @@ class Sample
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getTemporaryFolder()
+=======
+<<<<<<< HEAD
+    public function getTemporaryFolder()
+=======
+    private function getTemporaryFolder()
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $tempFolder = sys_get_temp_dir() . '/phpspreadsheet';
         if (!$this->isDirOrMkdir($tempFolder)) {
@@ -172,8 +217,20 @@ class Sample
      *
      * @param string $filename
      * @param string $extension
+<<<<<<< HEAD
      */
     public function getFilename($filename, $extension = 'xlsx'): string
+=======
+<<<<<<< HEAD
+     */
+    public function getFilename($filename, $extension = 'xlsx'): string
+=======
+     *
+     * @return string
+     */
+    public function getFilename($filename, $extension = 'xlsx')
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $originalExtension = pathinfo($filename, PATHINFO_EXTENSION);
 
@@ -203,6 +260,10 @@ class Sample
     public function log(string $message): void
     {
         $eol = $this->isCli() ? PHP_EOL : '<br />';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         echo($this->isCli() ? date('H:i:s ') : '') . $message . $eol;
     }
 
@@ -226,6 +287,12 @@ class Sample
         } catch (Throwable $e) {
             $this->log('Error rendering chart: ' . $e->getMessage() . PHP_EOL);
         }
+<<<<<<< HEAD
+=======
+=======
+        echo date('H:i:s ') . $message . $eol;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     public function titles(string $category, string $functionName, ?string $description = null): void
@@ -276,10 +343,20 @@ class Sample
         $callTime = $callEndTime - $callStartTime;
         $reflection = new ReflectionClass($writer);
         $format = $reflection->getShortName();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         $message = ($this->isCli() === true)
             ? "Write {$format} format to {$path}  in " . sprintf('%.4f', $callTime) . ' seconds'
             : "Write {$format} format to <code>{$path}</code>  in " . sprintf('%.4f', $callTime) . ' seconds';
+<<<<<<< HEAD
+=======
+=======
+        $message = "Write {$format} format to <code>{$path}</code>  in " . sprintf('%.4f', $callTime) . ' seconds';
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         $this->log($message);
     }

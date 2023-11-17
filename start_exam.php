@@ -6,8 +6,16 @@ session_start();
   // Retrieve the exam details from the query string
   $examID = $_GET["examID"];
   $userID = $_SESSION['id'] ;
+<<<<<<< HEAD
   $passport = $_SESSION['passport'];
   $src = "admin/".$passport;
+=======
+<<<<<<< HEAD
+  $passport = $_SESSION['passport'];
+  $src = "admin/".$passport;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
   // Retrieve and display the exam details from the database
   $sql = "SELECT title, duration FROM exams WHERE id = '$examID'";
@@ -151,7 +159,15 @@ $conn->close();
     /* radio button styling */
 
     /* CSS */
+<<<<<<< HEAD
 input[type="radio"], input[type="checkbox"] {
+=======
+<<<<<<< HEAD
+input[type="radio"], input[type="checkbox"] {
+=======
+input[type="radio"] {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   /* Increase the size of the radio button */
   width: 20px;
   height: 20px;
@@ -171,7 +187,15 @@ input[type="radio"] {
 }
 
 /* Optional: Style the radio button when checked */
+<<<<<<< HEAD
 input[type="radio"]:checked, input[type="checkbox"]:checked {
+=======
+<<<<<<< HEAD
+input[type="radio"]:checked, input[type="checkbox"]:checked {
+=======
+input[type="radio"]:checked {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   /* Add custom styles for the checked radio button */
   background-color: DodgerBlue;
   border-color: #000000;
@@ -238,6 +262,10 @@ input[type="radio"]:checked, input[type="checkbox"]:checked {
       </ul>
     </div>
   </nav>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     
   <!--  -->
   <hr>
@@ -257,6 +285,15 @@ input[type="radio"]:checked, input[type="checkbox"]:checked {
                           </div>
                           <hr>
 <!--  -->
+<<<<<<< HEAD
+=======
+=======
+
+          <center><h3><p>TIME:<div class="simpleDisplay" style="font-size:38px!important"></div></p></h3></center>
+        
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   <div class="container-fluid mt-10">
   <div class="row">
     <div class="col-lg-8">
@@ -501,31 +538,68 @@ function submitExam() {
   });
 }
 
+<<<<<<< HEAD
 function displayQuestions(questions, currentPage, totalPages) {
+=======
+<<<<<<< HEAD
+function displayQuestions(questions, currentPage, totalPages) {
+=======
+/* display questions function */
+function displayQuestions(questions, currentPage) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   var questionsContainer = $('#questions-container');
   questionsContainer.empty(); // Clear the questions container
 
   // Display the current page
   var currentPageElement = $('<p>').addClass('current-page');
+<<<<<<< HEAD
   currentPageElement.text('QUESTION: ' + currentPage + ' of ' + totalPages);
+=======
+<<<<<<< HEAD
+  currentPageElement.text('QUESTION: ' + currentPage + ' of ' + totalPages);
+=======
+  currentPageElement.text('QUESTION: ' + currentPage);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   questionsContainer.append(currentPageElement);
 
   // Retrieve the selected options from the server
   $.ajax({
+<<<<<<< HEAD
     url: 'retrieve_selected_options.php', 
     method: 'POST',
     dataType: 'json',
     success: function(data) {
+=======
+    url: 'retrieve_selected_options.php',
+    method: 'POST',
+    dataType: 'json',
+    success: function(data) {
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       // Function to get option label by index (0 = A, 1 = B, 2 = C, etc.)
       function getOptionLabel(index) {
         return String.fromCharCode(65 + index); // ASCII code for 'A' is 65
       }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       // Iterate over the questions and create the HTML elements
       for (var i = 0; i < questions.length; i++) {
         var question = questions[i];
         var questionNumber = i + 1;
+<<<<<<< HEAD
         var correctAnswerSize = question.answer.length;
+=======
+<<<<<<< HEAD
+        var correctAnswerSize = question.answer.length;
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         // Create the question container
         var questionContainer = $('<div>').addClass('question-container mb-4 font-weight-bold text-lg');
@@ -547,6 +621,10 @@ function displayQuestions(questions, currentPage, totalPages) {
           questionContainer.append(questionImage);
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         // Iterate over the options and create the appropriate input elements
         for (var j = 0; j < question.options.length; j++) {
           var option = question.options[j];
@@ -560,15 +638,40 @@ function displayQuestions(questions, currentPage, totalPages) {
           // Create the input element (radio or checkbox)
           var inputElement = $('<br><input><span style="padding:2px !important"></span>').addClass('option-input').attr({
             type: inputType,
+<<<<<<< HEAD
+=======
+=======
+        // Iterate over the options and create the radio buttons
+        for (var j = 0; j < question.options.length; j++) {
+          var option = question.options[j];
+
+          // Create the radio button
+          var radioButton = $('<br><input><span style="padding:2px !important"></span>').attr({
+            type: 'radio',
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             name: 'question' + questionNumber,
             value: option.option_id
           });
 
           // Set the data-question-id attribute to capture the question ID
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
           inputElement.attr('data-question-id', question.id);
 
           // Create the label for the input element with the option label (A, B, C, D, ...)
           var label = $('<label>').text('('+ getOptionLabel(j) + ')' + '. ' + option.option_text);
+<<<<<<< HEAD
+=======
+=======
+          radioButton.attr('data-question-id', question.id);
+
+          // Create the label for the radio button
+          var label = $('<label>').text(option.option_text);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
           // Check if there's an image option
           if (option.option_image_path) {
@@ -580,6 +683,10 @@ function displayQuestions(questions, currentPage, totalPages) {
             optionsContainer.append(optionImage);
           }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
           // Append the input element and label to the options container
           optionsContainer.append(inputElement);
           optionsContainer.append(label);
@@ -587,6 +694,19 @@ function displayQuestions(questions, currentPage, totalPages) {
           // Check if the option is selected in the retrieved data
           if (data[question.id] && data[question.id].includes(option.option_id)) {
             inputElement.prop('checked', true);
+<<<<<<< HEAD
+=======
+=======
+          // Append the radio button and label to the options container
+          optionsContainer.append(radioButton);
+          optionsContainer.append(label);
+
+          // Set the selected option if it exists in the retrieved data
+          var selectedOption = data[question.id];
+          if (selectedOption && selectedOption === option.option_id) {
+            radioButton.prop('checked', true);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
           }
         }
 
@@ -619,6 +739,10 @@ function displayQuestions(questions, currentPage, totalPages) {
   });
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 // Add event listener to input elements to handle option selection
 $(document).on('change', 'input.option-input', handleOptionSelection);
@@ -654,12 +778,37 @@ function handleOptionSelection() {
 
 
 
+<<<<<<< HEAD
 
 
 // Function to load and display the exam questions
 function loadQuestions(page) {
   $.ajax({
     url: 'get_questions.php',  
+=======
+=======
+    // Function to handle radio button selection
+    $(document).on('change', 'input[type="radio"]', function() {
+  var questionId = $(this).attr('data-question-id');
+  var selectedOption = $(this).val();
+
+  // Update the selectedOptions object
+  selectedOptions[questionId] = selectedOption;
+
+ submitExam(); // Call the submitExam function here
+});
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+
+
+ // Function to load and display the exam questions
+function loadQuestions(page) {
+  $.ajax({
+<<<<<<< HEAD
+    url: 'get_questions.php',  
+=======
+    url: 'get_questions.php', 
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     type: 'GET',
     data: {
       examID: <?php echo $examID; ?>,
@@ -667,6 +816,10 @@ function loadQuestions(page) {
     },
     dataType: 'json',
     success: function(response) {
+<<<<<<< HEAD
+=======
+       // console.log(response)
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       if (response.status === 'success') {
         var questions = response.questions;
         var currentPage = page; // Use the provided page parameter
@@ -675,6 +828,7 @@ function loadQuestions(page) {
         // Update the pagination buttons
         updatePagination(currentPage, totalPages);
 
+<<<<<<< HEAD
         // Display the questions and total pages
         displayQuestions(questions, currentPage, totalPages);
 
@@ -685,6 +839,18 @@ function loadQuestions(page) {
         if (questions.message) {
           displayCompletionMessage(questions.message);
         }
+=======
+<<<<<<< HEAD
+          // Display the questions and total pages
+          displayQuestions(questions, currentPage, totalPages);
+=======
+        // Display the questions
+        displayQuestions(questions, currentPage);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+
+        // Update the pagination buttons again (to handle the case when there are no questions on the last page)
+       // updatePagination(currentPage, totalPages);
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       } else {
         alert('Failed to retrieve questions.');
       }
@@ -695,6 +861,7 @@ function loadQuestions(page) {
   });
 }
 
+<<<<<<< HEAD
 // Function to display the completion message
 function displayCompletionMessage(message) {
   var questionsContainer = $('#questions-container');
@@ -706,16 +873,27 @@ function displayCompletionMessage(message) {
 
 
 
+=======
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 // Function to update the pagination buttons
 function updatePagination(currentPage, totalPages) {
   var paginationContainer = $('#pagination-container');
   paginationContainer.empty(); // Clear the pagination container
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   // Create the pagination text (e.g., "1 of 50")
   var paginationText = $('<p>').addClass('pagination-text');
   paginationText.text('QUESTION: ' + currentPage + ' of ' + totalPages);
   paginationContainer.append(paginationText);
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   // Create the previous button
   var previousButton = $('<button>').addClass('btn btn-primary mr-2');
   previousButton.text('Previous');
@@ -745,7 +923,14 @@ function updatePagination(currentPage, totalPages) {
 
 
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   // Load and display the exam questions
   loadQuestions(1);
  
@@ -864,6 +1049,10 @@ startTimer(startTimeString, durationInSeconds, display);
 
     // Confirm before submitting the exam
     Swal.fire({
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                    title: 'Are You Sure You Want To Submit Exam?',
                    html: '<img src="img/quickTest.png"  height="50" width="50">',
                    icon: 'question',
@@ -878,6 +1067,24 @@ startTimer(startTimeString, durationInSeconds, display);
                                  finalSubmission();
                            }
                        });//end of thenables
+<<<<<<< HEAD
+=======
+=======
+        title: 'Are You Sure You Want To Submit Exam?',
+        html: '<img src="img/quickTest.png"  height="50" width="50">',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: 'darkGreen',
+        cancelButtonColor: 'darkRed',
+        confirmButtonText: 'Yes, Submit!',
+        showLoaderOnConfirm: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            finalSubmission();
+        }
+    });//end of thenables
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 });//end of click event
 
 

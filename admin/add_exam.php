@@ -1,4 +1,8 @@
 <?php 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 session_start();
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id']; 
@@ -11,6 +15,22 @@ ini_set('display_errors', 1);
 
 // Variable to handle error messages and success messages
 $description = $action = $questionImageDestination = $optionAImgDest = $optionBImgDest = $optionCImgDest = $optionDImgDest = $optionEImgDest = $display = '';
+<<<<<<< HEAD
+=======
+=======
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+
+// Set database connection variables
+include("../connection.php");
+
+// Define the maximum file size for the images (2MB)
+$maxFileSize = 2 * 1024 * 1024;
+
+// Variable to handle error messages and success messages
+$questionImageDestination = $optionAImgDest = $optionBImgDest = $optionCImgDest = $optionDImgDest = $optionEImgDest = $display = '';
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 if(isset($_POST['exam_title']) && isset($_POST['exam_description']) && isset($_POST['exam_duration']) || isset($_POST['question_count']))
 {
@@ -32,6 +52,10 @@ if(isset($_POST['exam_title']) && isset($_POST['exam_description']) && isset($_P
         $title = $row['title'];
         for($i = 1; $i <= $questionCount; $i++) 
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
    // Get the correct answers for each question
    $correctAnswersJSON = isset($_POST['correctAnswers']) ? $_POST['correctAnswers'] : '';
    $correctAnswers = json_decode($correctAnswersJSON, true);
@@ -47,6 +71,22 @@ if(isset($_POST['exam_title']) && isset($_POST['exam_description']) && isset($_P
   $option_c = mysqli_real_escape_string($conn, $_POST['option_c'.$i]);
   $option_d = mysqli_real_escape_string($conn, $_POST['option_d'.$i]);
   $option_e = mysqli_real_escape_string($conn, $_POST['option_e'.$i]); // Added new option
+<<<<<<< HEAD
+=======
+=======
+    // Get the question text
+    $questionText = mysqli_real_escape_string($conn,$_POST['question'.$i]);
+    $option_a = mysqli_real_escape_string($conn, $_POST['option_a'.$i]);
+    $option_b = mysqli_real_escape_string($conn, $_POST['option_b'.$i]);
+    $option_c = mysqli_real_escape_string($conn, $_POST['option_c'.$i]);
+    $option_d = mysqli_real_escape_string($conn, $_POST['option_d'.$i]);
+    $option_e = mysqli_real_escape_string($conn, $_POST['option_e'.$i]); // Added new option
+    $answer = mysqli_real_escape_string($conn, $_POST['correct'.$i]);
+
+    // Check if a question image and options image has been uploaded
+ 
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
        // Check if an image has been uploaded for question
 $questionImageName = isset($_FILES["question_image_".$i]['name']) ? basename($_FILES["question_image_".$i]['name']) : "";
@@ -107,7 +147,15 @@ if (!empty($questionImageName) || !empty($optionAImageName) || !empty($optionBIm
      
                 // The image file has been moved successfully, add the question to the database
                 $insertQuestionQuery = "INSERT INTO questions (exam_id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path, answer) 
+<<<<<<< HEAD
                 VALUES ('$examId', '$questionText', '$option_a', '$option_b', '$option_c', '$option_d', '$option_e', '$questionImageDestination', '$optionAImgDest', '$optionBImgDest', '$optionCImgDest', '$optionDImgDest', '$optionEImgDest', '$combinedAnswers')";
+=======
+<<<<<<< HEAD
+                VALUES ('$examId', '$questionText', '$option_a', '$option_b', '$option_c', '$option_d', '$option_e', '$questionImageDestination', '$optionAImgDest', '$optionBImgDest', '$optionCImgDest', '$optionDImgDest', '$optionEImgDest', '$combinedAnswers')";
+=======
+                VALUES ('$examId', '$questionText', '$option_a', '$option_b', '$option_c', '$option_d', '$option_e', '$questionImageDestination', '$optionAImgDest', '$optionBImgDest', '$optionCImgDest', '$optionDImgDest', '$optionEImgDest', '$answer')";
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                if ( mysqli_query($conn, $insertQuestionQuery)){
                     $display .= "Question(s) Added Successfully To Exam title: ".$title ." Questions Count ". $i . "<br>";
                }
@@ -115,12 +163,27 @@ if (!empty($questionImageName) || !empty($optionAImageName) || !empty($optionBIm
                {
                 $display .= "Error: There was an error adding questions to exam title: " . $title . "<br>";
                }
+<<<<<<< HEAD
        
      
+=======
+<<<<<<< HEAD
+       
+     
+=======
+            
+         
+        
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
           //Activities log and action taken respectively are declared here.
           $action = 'More Questions Added'; 
           $description = 'Logged in admin user: (' . $fullNames . ') added these numbers ("'. $questionCount .'") of questions to exam title: "' . $examTitle . '"';
@@ -130,6 +193,11 @@ if (!empty($questionImageName) || !empty($optionAImageName) || !empty($optionBIm
   ('$fullNames', '$userID', '$description', '$action')";
  $returnRes = mysqli_query($conn, $sqlAudit);
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 echo $display;
 
 
@@ -148,6 +216,10 @@ echo $display;
             // Loop through each question and its options
             for($i = 1; $i <= $questionCount; $i++) 
             {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
      // Get the correct answers for each question
      $correctAnswersJSON = isset($_POST['correctAnswers']) ? $_POST['correctAnswers'] : '';
@@ -171,6 +243,21 @@ echo $display;
 
 
 
+<<<<<<< HEAD
+=======
+=======
+                // Get the question text
+                $questionText =mysqli_real_escape_string($conn, $_POST['question'.$i]);
+                $option_a = mysqli_real_escape_string($conn, $_POST['option_a'.$i]);
+                $option_b = mysqli_real_escape_string($conn, $_POST['option_b'.$i]);
+                $option_c = mysqli_real_escape_string($conn, $_POST['option_c'.$i]);
+                $option_d = mysqli_real_escape_string($conn, $_POST['option_d'.$i]);
+                $option_e = mysqli_real_escape_string($conn, $_POST['option_e'.$i]); // Added new option
+                $answer = mysqli_real_escape_string($conn, $_POST['correct'.$i]);
+
+                // Check if an image has been uploaded for question
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     // Check if an image has been uploaded for question
 $questionImageName = isset($_FILES["question_image_".$i]['name']) ? basename($_FILES["question_image_".$i]['name']) : "";
 $questionImageTmpName = isset($_FILES["question_image_".$i]['tmp_name']) ? $_FILES["question_image_".$i]['tmp_name'] : "";
@@ -229,7 +316,15 @@ if (!empty($questionImageName) || !empty($optionAImageName) || !empty($optionBIm
 
                         // The question image has been uploaded successfully, insert the question into the questions table
                         $sql2 = "INSERT INTO questions (exam_id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path, answer) 
+<<<<<<< HEAD
                         VALUES ('$examId', '$questionText', '$option_a', '$option_b', '$option_c', '$option_d', '$option_e', '$questionImageDestination', '$optionAImgDest', '$optionBImgDest', '$optionCImgDest', '$optionDImgDest', '$optionEImgDest', '$combinedAnswers')";
+=======
+<<<<<<< HEAD
+                        VALUES ('$examId', '$questionText', '$option_a', '$option_b', '$option_c', '$option_d', '$option_e', '$questionImageDestination', '$optionAImgDest', '$optionBImgDest', '$optionCImgDest', '$optionDImgDest', '$optionEImgDest', '$combinedAnswers')";
+=======
+                        VALUES ('$examId', '$questionText', '$option_a', '$option_b', '$option_c', '$option_d', '$option_e', '$questionImageDestination', '$optionAImgDest', '$optionBImgDest', '$optionCImgDest', '$optionDImgDest', '$optionEImgDest', '$answer')";
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                         if (mysqli_query($conn, $sql2)) 
                         {
                             $display .= "Question " . $i . " has been added successfully! ".$questionImageNewName;
@@ -238,6 +333,10 @@ if (!empty($questionImageName) || !empty($optionAImageName) || !empty($optionBIm
                         {
                             $display .= "Error: " . mysqli_error($conn) . "<br>";
                         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
                               //Activities log and action taken respectively are declared here.
                $action1 = 'Exam Creation'; 
@@ -248,6 +347,11 @@ if (!empty($questionImageName) || !empty($optionAImageName) || !empty($optionBIm
                         ('$fullNames', '$userID', '$description1', '$action1')";
                         $returnRes1 = mysqli_query($conn, $sqlAudit1);
                         
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     } 
                    /*   else 
                     {

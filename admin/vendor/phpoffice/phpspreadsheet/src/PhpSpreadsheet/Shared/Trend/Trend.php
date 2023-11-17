@@ -105,6 +105,13 @@ class Trend
                     $className = '\PhpOffice\PhpSpreadsheet\Shared\Trend\\' . $trendType . 'BestFit';
                     //* @phpstan-ignore-next-line
                     $bestFit[$trendMethod] = new $className($yValues, $xValues, $const);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                    //* @phpstan-ignore-next-line
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     $bestFitValue[$trendMethod] = $bestFit[$trendMethod]->getGoodnessOfFit();
                 }
                 if ($trendType != self::TREND_BEST_FIT_NO_POLY) {

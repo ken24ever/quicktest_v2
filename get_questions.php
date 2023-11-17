@@ -17,8 +17,18 @@ $status = $statusResult->fetch_assoc()['status'];
 $questions = [];
 
 if ($status != 'completed') {
+<<<<<<< HEAD
     // Retrieve the questions for the given examID(id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path)
     $sql = "SELECT *
+=======
+<<<<<<< HEAD
+    // Retrieve the questions for the given examID(id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path)
+    $sql = "SELECT *
+=======
+    // Retrieve the questions for the given examID
+    $sql = "SELECT id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             FROM questions
             WHERE exam_id = '$examID'
             ORDER BY ";
@@ -26,11 +36,24 @@ if ($status != 'completed') {
     if ($status == 'in_progress') {
         // Display attempted questions sequentially
         $sql .= "FIND_IN_SET(id, (SELECT GROUP_CONCAT(question_id ORDER BY id) FROM selected_options WHERE user_exam_id = '$userId')) DESC, ";
+<<<<<<< HEAD
+=======
+       //$sql .= "SELECT  question_id FROM selected_options WHERE user_exam_id = '$userId' ORDER BY question_id DESC ";
+
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
     
     $sql .= "RAND()";
 
+<<<<<<< HEAD
     $sql .= " LIMIT $offset, $questionsPerPage"; 
+=======
+<<<<<<< HEAD
+    $sql .= " LIMIT $offset, $questionsPerPage"; 
+=======
+    $sql .= " LIMIT $offset, $questionsPerPage";
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     $result = $conn->query($sql);
 
@@ -40,7 +63,14 @@ if ($status != 'completed') {
             $question = [
                 'id' => $row['id'],
                 'question' => $row['question'],
+<<<<<<< HEAD
                 'answer' => $row['answer'],
+=======
+<<<<<<< HEAD
+                'answer' => $row['answer'],
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 'options' => [
                     [
                         'option_id' => 'a',
@@ -74,11 +104,14 @@ if ($status != 'completed') {
             $questions[] = $question;
         }
     }
+<<<<<<< HEAD
 } else {
     // Exam already completed
     $questions = [
         'message' => 'You have already completed this exam. Thank you!'
     ];
+=======
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }
 
 // Calculate the total number of questions for the given examID

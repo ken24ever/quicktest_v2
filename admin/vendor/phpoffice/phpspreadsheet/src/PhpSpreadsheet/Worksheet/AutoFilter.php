@@ -321,7 +321,15 @@ class AutoFilter
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected static function filterTestInSimpleDataSet($cellValue, $dataSet)
+=======
+<<<<<<< HEAD
+    protected static function filterTestInSimpleDataSet($cellValue, $dataSet)
+=======
+    private static function filterTestInSimpleDataSet($cellValue, $dataSet)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $dataSetValues = $dataSet['filterValues'];
         $blanks = $dataSet['blanks'];
@@ -340,7 +348,15 @@ class AutoFilter
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected static function filterTestInDateGroupSet($cellValue, $dataSet)
+=======
+<<<<<<< HEAD
+    protected static function filterTestInDateGroupSet($cellValue, $dataSet)
+=======
+    private static function filterTestInDateGroupSet($cellValue, $dataSet)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $dateSet = $dataSet['filterValues'];
         $blanks = $dataSet['blanks'];
@@ -384,7 +400,15 @@ class AutoFilter
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected static function filterTestInCustomDataSet($cellValue, $ruleSet)
+=======
+<<<<<<< HEAD
+    protected static function filterTestInCustomDataSet($cellValue, $ruleSet)
+=======
+    private static function filterTestInCustomDataSet($cellValue, $ruleSet)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         /** @var array[] */
         $dataSet = $ruleSet['filterRules'];
@@ -509,7 +533,15 @@ class AutoFilter
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected static function filterTestInPeriodDateSet($cellValue, $monthSet)
+=======
+<<<<<<< HEAD
+    protected static function filterTestInPeriodDateSet($cellValue, $monthSet)
+=======
+    private static function filterTestInPeriodDateSet($cellValue, $monthSet)
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         //    Blank cells are always ignored, so return a FALSE
         if (($cellValue == '') || ($cellValue === null)) {

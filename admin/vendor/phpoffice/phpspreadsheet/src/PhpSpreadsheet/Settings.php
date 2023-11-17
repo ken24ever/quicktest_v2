@@ -155,7 +155,15 @@ class Settings
     /**
      * Sets the implementation of cache that should be used for cell collection.
      */
+<<<<<<< HEAD
     public static function setCache(?CacheInterface $cache): void
+=======
+<<<<<<< HEAD
+    public static function setCache(?CacheInterface $cache): void
+=======
+    public static function setCache(CacheInterface $cache): void
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         self::$cache = $cache;
     }

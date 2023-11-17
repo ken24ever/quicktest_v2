@@ -1,8 +1,16 @@
 $(document).ready(function(){
+<<<<<<< HEAD
   
 // Constants for pagination
 const ITEMS_PER_PAGE = 1000; 
 let currentPage = 1; 
+=======
+<<<<<<< HEAD
+  
+// Constants for pagination
+const ITEMS_PER_PAGE = 150;
+let currentPage = 1;
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 
 // Function to render the table rows for a specific page
@@ -15,11 +23,17 @@ function renderTableRows(data, start, end, usersTableBody) {
       var user = users[i];
       var userRow = $('<tr>'); // Create the user row element
 
+<<<<<<< HEAD
       // Add data-user-id and data-user-name attributes to the checkbox
       var checkbox = $('<input type="checkbox" class="user-checkbox" value="' + user.id + '">');
       checkbox.attr('data-user-id', user.id);
       checkbox.attr('data-user-name', user.name); // Use data-user-name consistently
 
+=======
+      // Add data-user-id attribute to the checkbox
+      var checkbox = $('<input type="checkbox" class="user-checkbox" value="' + user.id + '">');
+      checkbox.attr('data-user-id', user.id);
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       userRow.append($('<td>').html(checkbox)); // Append checkbox to user row
 
       var examStatusElement = $('<div class="exam-status-container">\
@@ -50,13 +64,20 @@ function renderTableRows(data, start, end, usersTableBody) {
 
       // Append other user data to the user row
       userRow.append($('<td>').text(user.id));
+<<<<<<< HEAD
       userRow.append($('<td>').text(user.name).attr('data-user-name', user.name)); // Use data-user-name consistently
+=======
+      userRow.append($('<td>').text(user.name));
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       userRow.append($('<td>').html('<img src="' + user.userPassport + '" width="50" height="50" alt="User Image">'));
       userRow.append($('<td>').text(user.username));
       userRow.append($('<td>').text(user.email));
       userRow.append($('<td>').text(user.password));
       userRow.append($('<td>').text(user.examName));
+<<<<<<< HEAD
       userRow.append($('<td>').text(user.application));
+=======
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       userRow.append($('<td>').append(examStatusElement));
       usersTableBody.append(userRow);
 
@@ -100,8 +121,11 @@ function handleSearchInput(data) {
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 // Function to fetch users' details with pagination
 function fetchUsersDetails(page) {
   $.ajax({
@@ -109,6 +133,7 @@ function fetchUsersDetails(page) {
     method: 'GET',
     dataType: 'json',
     data: { page: page, itemsPerPage: ITEMS_PER_PAGE },
+<<<<<<< HEAD
     success: function (data) {
       // Reset currentPage to 1 when new data is fetched
       page = 1;
@@ -131,11 +156,27 @@ function fetchUsersDetails(page) {
       $('#search-input').on('input', function () {
         handleSearchInput(initialData);
       });
+=======
+    success: function(data) {
+      // Reset currentPage to 1 when new data is fetched
+      page = 1;
+
+       // Save the data in a variable and render the initial table
+       var initialData = data;
+       renderTableRows(initialData, 0, ITEMS_PER_PAGE, $('#users-table-body'));
+ 
+       // Attach an event listener to the search input to call the handleSearchInput function
+       $('#search-input').on('input', function () {
+         handleSearchInput(initialData); // Pass the initialData to the handleSearchInput function
+       });
+
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
       // Calculate the start and end index for the current page
       var start = (page - 1) * ITEMS_PER_PAGE;
       var end = start + ITEMS_PER_PAGE;
 
+<<<<<<< HEAD
       // Get the table body element by ID
       var usersTableBody = $('#users-table-body');
 
@@ -149,6 +190,19 @@ function fetchUsersDetails(page) {
 
     },
     error: function (xhr, status, error) {
+=======
+          // Get the table body element by ID
+          var usersTableBody = $('#users-table-body');
+
+          // Render the table rows for the current page
+          renderTableRows(data, start, end, usersTableBody);
+    
+
+      // Update the pagination buttons
+      updatePaginationButtons(page, Math.ceil(data.totalUsers / ITEMS_PER_PAGE));
+    },
+    error: function(xhr, status, error) {
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       console.error('Error: ' + error);
     }
   });
@@ -156,10 +210,13 @@ function fetchUsersDetails(page) {
 
 
 
+<<<<<<< HEAD
 // Call the fetchUsersDetails function initially
 fetchUsersDetails(1);
 
 
+=======
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 // Function to update the pagination buttons
 function updatePaginationButtons(currentPage, totalPages) {
   $('#pagination').empty();
@@ -187,7 +244,11 @@ fetchUsersDetails(currentPage);
 
 
  // Function to reset selected users' exams
+<<<<<<< HEAD
 function resetSelectedUsersExams(userIds) {
+=======
+ function resetSelectedUsersExams(userIds) {
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   $.ajax({
     url: 'reset_selected_users_exam.php', // Replace with the actual PHP script path 
     method: 'POST', // Use POST method to send the user IDs
@@ -225,13 +286,19 @@ function resetSelectedUsersExams(userIds) {
   });
 }
 
+<<<<<<< HEAD
 // Handle the click event for the "Reset User Exams" button
 $('#reset-exams').on('click', function() {
   // Get the selected user's ID and name
+=======
+// Handle the click event for the "Reset Selected Users Exam" button
+$('#reset-exams').on('click', function() {
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   var selectedUserIds = $('.user-checkbox:checked').map(function() {
     return $(this).data('user-id');
   }).get();
 
+<<<<<<< HEAD
   var selectedUserCount = selectedUserIds.length;
   var selectedUserName;
 
@@ -263,10 +330,21 @@ $('#reset-exams').on('click', function() {
 // Delete selected button click event
 $('#deleteSelectedUsers').click(function () {
   var selectedUserIds = $('.user-checkbox:checked').map(function () {
+=======
+  // Call the function to reset selected users' exams
+  resetSelectedUsersExams(selectedUserIds);
+});
+
+
+// Delete selected button click event
+$('#deleteSelectedUsers').click(function() {
+  var selectedUserIds = $('.user-checkbox:checked').map(function() {
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     return $(this).data('user-id');
   }).get();
 
   if (selectedUserIds.length > 0) {
+<<<<<<< HEAD
     var selectedUserCount = selectedUserIds.length;
     var selectedUserName;
 
@@ -336,6 +414,51 @@ function deleteSelectedUsers(userIds) {
         // Handle error case
         Toastify({
           text: response.message,
+=======
+    $.ajax({
+      url: 'usersBatchDel.php',   
+      method: 'POST',
+      data: { userIds: selectedUserIds },
+      dataType: 'json',
+      success: function(response) {
+        if (response.success) {
+          // Handle success case
+          Toastify({
+        text: response.message,
+        duration: 5000,
+        gravity: 'top',
+        close: true,
+        style: {
+          background: 'linear-gradient(to right, #FFA0A0, #B88AFF, #A0A0FF)',
+        }
+      }).showToast();
+
+         // Initial call to fetchUsersDetails to load the first page
+fetchUsersDetails(currentPage);
+
+        } else {
+          // Handle error case
+          Toastify({
+        text: response.message,
+        duration: 5000,
+        gravity: 'top',
+        close: true,
+        style: {
+          background: 'linear-gradient(to right, #FFA0A0, #B88AFF, #A0A0FF)',
+        }
+      }).showToast();
+        }
+      },
+      error: function() {
+        // Handle error case
+      }
+    });
+  } else {
+    // Show a message that no users are selected
+        // Handle error case
+        Toastify({
+          text: 'No User(s) Was Selected!',
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
           duration: 5000,
           gravity: 'top',
           close: true,
@@ -343,6 +466,7 @@ function deleteSelectedUsers(userIds) {
             background: 'linear-gradient(to right, #FFA0A0, #B88AFF, #A0A0FF)',
           }
         }).showToast();
+<<<<<<< HEAD
       }
     },
     error: function () {
@@ -351,6 +475,10 @@ function deleteSelectedUsers(userIds) {
   });
 }
 
+=======
+  }
+});
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 
 
@@ -361,6 +489,12 @@ function deleteSelectedUsers(userIds) {
 
   
   $('#searchUserForm').submit(function(e){
+<<<<<<< HEAD
+=======
+=======
+    $('#searchUserForm').submit(function(e){
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       e.preventDefault();
    var search = $('#searchUsername').val()
       if (search == ''){
@@ -443,7 +577,15 @@ function deleteSelectedUsers(userIds) {
                     // User confirmed and entered the reset code
                     // Send AJAX request to reset the user's exams
                     $.ajax({
+<<<<<<< HEAD
                         url: 'reset_exams.php', 
+=======
+<<<<<<< HEAD
+                        url: 'reset_exams.php', 
+=======
+                        url: 'reset_exams.php',
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                         method: 'GET',
                         dataType: 'JSON',
                         data: { user: username, resetCode: resetCode },
@@ -530,7 +672,15 @@ function deleteSelectedUsers(userIds) {
             url: 'deleteUsers.php',
             type: 'POST',
             data: { username: username },
+<<<<<<< HEAD
             success: function(response) { 
+=======
+<<<<<<< HEAD
+            success: function(response) { 
+=======
+            success: function(response) {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
               // Reload the table data
               
                // Show success message with the username and exam title
@@ -559,7 +709,10 @@ function deleteSelectedUsers(userIds) {
         
       
       });//end of on click delete user
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     });    
   

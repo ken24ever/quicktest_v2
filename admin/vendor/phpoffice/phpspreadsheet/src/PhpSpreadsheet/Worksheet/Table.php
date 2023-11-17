@@ -180,7 +180,15 @@ class Table
 
     private function updateStructuredReferencesInCells(Worksheet $worksheet, string $newName): void
     {
+<<<<<<< HEAD
         $pattern = '/' . preg_quote($this->name, '/') . '\[/mui';
+=======
+<<<<<<< HEAD
+        $pattern = '/' . preg_quote($this->name, '/') . '\[/mui';
+=======
+        $pattern = '/' . preg_quote($this->name) . '\[/mui';
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         foreach ($worksheet->getCoordinates(false) as $coordinate) {
             $cell = $worksheet->getCell($coordinate);
@@ -196,7 +204,15 @@ class Table
 
     private function updateStructuredReferencesInNamedFormulae(Spreadsheet $spreadsheet, string $newName): void
     {
+<<<<<<< HEAD
         $pattern = '/' . preg_quote($this->name, '/') . '\[/mui';
+=======
+<<<<<<< HEAD
+        $pattern = '/' . preg_quote($this->name, '/') . '\[/mui';
+=======
+        $pattern = '/' . preg_quote($this->name) . '\[/mui';
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         foreach ($spreadsheet->getNamedFormulae() as $namedFormula) {
             $formula = $namedFormula->getValue();

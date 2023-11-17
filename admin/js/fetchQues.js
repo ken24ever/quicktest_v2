@@ -234,7 +234,14 @@ $('.view-image-options-btn').click(function() {
             // Show the question image preview
             if (question.image_ques) {
               $('#editQuestionForm .question-image-preview').html('<img src="' + question.image_ques + '" class="img-thumbnail " width="70px" height="70px">');
+<<<<<<< HEAD
               //  $('#question_image_').attr('value', question.image_ques);
+=======
+<<<<<<< HEAD
+              //  $('#question_image_').attr('value', question.image_ques);
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             } else {
               $('#editQuestionForm .question-image-preview').html('');
             }

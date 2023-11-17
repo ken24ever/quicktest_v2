@@ -24,10 +24,22 @@ $(document).ready(function() {
         url: 'login.php',
         method: 'POST',
         data: {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
           username: username, 
           password: password
         },
         dataType: 'json',
+<<<<<<< HEAD
+=======
+=======
+          username: username,
+          password: password
+        },
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         beforeSend: function() {
           var modalContent = '<div class="loading-modal">' +
             '  <img src="../img/quickTest.png" alt="" width="110" height="80" alt="Loading" />' +
@@ -45,7 +57,15 @@ $(document).ready(function() {
         success: function(response) {
           $('.modal').modal('hide'); // Hide the modal
   
+<<<<<<< HEAD
           if (response.success) {
+=======
+<<<<<<< HEAD
+          if (response.success) {
+=======
+          if (response === "") {
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             // Successful login, show success message with SweetAlert
             Swal.fire({
               icon: 'success',

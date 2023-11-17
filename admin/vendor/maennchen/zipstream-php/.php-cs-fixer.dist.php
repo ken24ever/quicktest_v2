@@ -26,7 +26,15 @@ $config = new Config();
 return $config->setRules([
         '@PER' => true,
         '@PER:risky' => true,
+<<<<<<< HEAD
         '@PHP82Migration' => true,
+=======
+<<<<<<< HEAD
+        '@PHP82Migration' => true,
+=======
+        '@PHP81Migration' => true,
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         '@PHPUnit84Migration:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
         'class_attributes_separation' => true,
@@ -68,4 +76,12 @@ return $config->setRules([
         ],
     ])
     ->setFinder($finder)
+<<<<<<< HEAD
     ->setRiskyAllowed(true);
+=======
+<<<<<<< HEAD
+    ->setRiskyAllowed(true);
+=======
+    ->setRiskyAllowed(true);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742

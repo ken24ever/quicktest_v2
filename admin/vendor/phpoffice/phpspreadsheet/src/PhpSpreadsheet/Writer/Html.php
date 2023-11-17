@@ -7,11 +7,23 @@ use PhpOffice\PhpSpreadsheet\Calculation\Calculation;
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Chart\Chart;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 use PhpOffice\PhpSpreadsheet\Document\Properties;
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 use PhpOffice\PhpSpreadsheet\RichText\Run;
 use PhpOffice\PhpSpreadsheet\Settings;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+<<<<<<< HEAD
+=======
+=======
+use PhpOffice\PhpSpreadsheet\RichText\RichText;
+use PhpOffice\PhpSpreadsheet\RichText\Run;
+use PhpOffice\PhpSpreadsheet\Settings;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 use PhpOffice\PhpSpreadsheet\Shared\Drawing as SharedDrawing;
 use PhpOffice\PhpSpreadsheet\Shared\File;
 use PhpOffice\PhpSpreadsheet\Shared\Font as SharedFont;
@@ -344,13 +356,25 @@ class Html extends BaseWriter
 
     private static function generateMeta(?string $val, string $desc): string
     {
+<<<<<<< HEAD
         return ($val || $val === '0')
+=======
+<<<<<<< HEAD
+        return ($val || $val === '0')
+=======
+        return $val
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             ? ('      <meta name="' . $desc . '" content="' . htmlspecialchars($val, Settings::htmlEntityFlags()) . '" />' . PHP_EOL)
             : '';
     }
 
     public const BODY_LINE = '  <body>' . PHP_EOL;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     private const CUSTOM_TO_META = [
         Properties::PROPERTY_TYPE_BOOLEAN => 'bool',
         Properties::PROPERTY_TYPE_DATE => 'date',
@@ -359,6 +383,11 @@ class Html extends BaseWriter
         Properties::PROPERTY_TYPE_STRING => 'string',
     ];
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /**
      * Generate HTML header.
      *
@@ -384,6 +413,10 @@ class Html extends BaseWriter
         $html .= self::generateMeta($properties->getCategory(), 'category');
         $html .= self::generateMeta($properties->getCompany(), 'company');
         $html .= self::generateMeta($properties->getManager(), 'manager');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $html .= self::generateMeta($properties->getLastModifiedBy(), 'lastModifiedBy');
         $date = Date::dateTimeFromTimestamp((string) $properties->getCreated());
         $date->setTimeZone(Date::getDefaultOrLocalTimeZone());
@@ -414,6 +447,11 @@ class Html extends BaseWriter
         if (!empty($properties->getHyperlinkBase())) {
             $html .= '      <base href="' . $properties->getHyperlinkBase() . '" />' . PHP_EOL;
         }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         $html .= $includeStyles ? $this->generateStyles(true) : $this->generatePageDeclarations(true);
 
@@ -733,8 +771,17 @@ class Html extends BaseWriter
                     //  max-width: 100% ensures that image doesnt overflow containing cell
                     //  width: X sets width of supplied image.
                     //  As a result, images bigger than cell will be contained and images smaller will not get stretched
+<<<<<<< HEAD
                     $html .= '<img alt="' . $filedesc . '" src="' . $dataUri . '" style="max-width:100%;width:' . $drawing->getWidth() . 'px;left: ' .
                     $drawing->getOffsetX() . 'px; top: ' . $drawing->getOffsetY() . 'px;position: absolute; z-index: 1;" />';
+=======
+<<<<<<< HEAD
+                    $html .= '<img alt="' . $filedesc . '" src="' . $dataUri . '" style="max-width:100%;width:' . $drawing->getWidth() . 'px;left: ' .
+                    $drawing->getOffsetX() . 'px; top: ' . $drawing->getOffsetY() . 'px;position: absolute; z-index: 1;" />';
+=======
+                    $html .= '<img alt="' . $filedesc . '" src="' . $dataUri . '" style="max-width:100%;width:' . $drawing->getWidth() . 'px;" />';
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 }
             }
         }

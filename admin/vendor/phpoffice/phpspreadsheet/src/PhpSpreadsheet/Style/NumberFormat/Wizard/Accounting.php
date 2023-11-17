@@ -89,13 +89,29 @@ class Accounting extends Currency
             (
                 $this->currencySymbolPosition === self::LEADING_SYMBOL &&
                 $this->currencySymbolSpacing === self::SYMBOL_WITH_SPACING
+<<<<<<< HEAD
             ) ? "\u{a0}" : '',
+=======
+<<<<<<< HEAD
+            ) ? "\u{a0}" : '',
+=======
+            ) ? ' ' : '',
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             $this->thousandsSeparator ? '#,##' : null,
             $this->decimals > 0 ? '.' . str_repeat('0', $this->decimals) : null,
             (
                 $this->currencySymbolPosition === self::TRAILING_SYMBOL &&
                 $this->currencySymbolSpacing === self::SYMBOL_WITH_SPACING
+<<<<<<< HEAD
             ) ? "\u{a0}" : '',
+=======
+<<<<<<< HEAD
+            ) ? "\u{a0}" : '',
+=======
+            ) ? ' ' : '',
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             $this->currencySymbolPosition === self::TRAILING_SYMBOL ? $this->formatCurrencyCode() : null
         );
     }

@@ -12,6 +12,13 @@ use PhpOffice\PhpSpreadsheet\Writer\Ods\Settings;
 use PhpOffice\PhpSpreadsheet\Writer\Ods\Styles;
 use PhpOffice\PhpSpreadsheet\Writer\Ods\Thumbnails;
 use ZipStream\Exception\OverflowException;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+use ZipStream\Option\Archive;
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 use ZipStream\ZipStream;
 
 class Ods extends BaseWriter
@@ -157,7 +164,19 @@ class Ods extends BaseWriter
         }
 
         // Create new ZIP stream
+<<<<<<< HEAD
         return ZipStream0::newZipStream($this->fileHandle);
+=======
+<<<<<<< HEAD
+        return ZipStream0::newZipStream($this->fileHandle);
+=======
+        $options = new Archive();
+        $options->setEnableZip64(false);
+        $options->setOutputStream($this->fileHandle);
+
+        return new ZipStream(null, $options);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     /**

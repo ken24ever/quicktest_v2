@@ -1,5 +1,13 @@
 <?php
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 namespace Psr\Http\Message;
 
 /**
@@ -39,7 +47,15 @@ interface RequestInterface extends MessageInterface
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getRequestTarget(): string;
+=======
+<<<<<<< HEAD
+    public function getRequestTarget(): string;
+=======
+    public function getRequestTarget();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specific request-target.
@@ -58,15 +74,32 @@ interface RequestInterface extends MessageInterface
      * @param string $requestTarget
      * @return static
      */
+<<<<<<< HEAD
     public function withRequestTarget(string $requestTarget): RequestInterface;
 
+=======
+<<<<<<< HEAD
+    public function withRequestTarget(string $requestTarget): RequestInterface;
+
+=======
+    public function withRequestTarget(string $requestTarget);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieves the HTTP method of the request.
      *
      * @return string Returns the request method.
      */
+<<<<<<< HEAD
     public function getMethod(): string;
+=======
+<<<<<<< HEAD
+    public function getMethod(): string;
+=======
+    public function getMethod();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the provided HTTP method.
@@ -83,7 +116,15 @@ interface RequestInterface extends MessageInterface
      * @return static
      * @throws \InvalidArgumentException for invalid HTTP methods.
      */
+<<<<<<< HEAD
     public function withMethod(string $method): RequestInterface;
+=======
+<<<<<<< HEAD
+    public function withMethod(string $method): RequestInterface;
+=======
+    public function withMethod(string $method);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieves the URI instance.
@@ -94,7 +135,15 @@ interface RequestInterface extends MessageInterface
      * @return UriInterface Returns a UriInterface instance
      *     representing the URI of the request.
      */
+<<<<<<< HEAD
     public function getUri(): UriInterface;
+=======
+<<<<<<< HEAD
+    public function getUri(): UriInterface;
+=======
+    public function getUri();
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Returns an instance with the provided URI.
@@ -126,5 +175,13 @@ interface RequestInterface extends MessageInterface
      * @param bool $preserveHost Preserve the original state of the Host header.
      * @return static
      */
+<<<<<<< HEAD
     public function withUri(UriInterface $uri, bool $preserveHost = false): RequestInterface;
+=======
+<<<<<<< HEAD
+    public function withUri(UriInterface $uri, bool $preserveHost = false): RequestInterface;
+=======
+    public function withUri(UriInterface $uri, bool $preserveHost = false);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }

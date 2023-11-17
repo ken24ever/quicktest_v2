@@ -42,11 +42,20 @@ class TimeValue
             return self::evaluateSingleArgumentArray([self::class, __FUNCTION__], $timeValue);
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         // try to parse as time iff there is at least one digit
         if (is_string($timeValue) && preg_match('/\\d/', $timeValue) !== 1) {
             return ExcelError::VALUE();
         }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $timeValue = trim($timeValue ?? '', '"');
         $timeValue = str_replace(['/', '.'], '-', $timeValue);
 

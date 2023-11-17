@@ -16,7 +16,11 @@ if (isset($_POST["searchUsername"])) {
     // Display the search results in a table
     if ($result->num_rows > 0) {
         echo "<table class='table'>";
+<<<<<<< HEAD
         echo "<thead><tr><th>ID</th><th>Name</th><th>Username</th><th>Email</th><th>Password</th><th>Exam Name</th><th>Job Position</th><th>Exam Scores</th><th>Action</th></tr></thead>";
+=======
+        echo "<thead><tr><th>ID</th><th>Name</th><th>Username</th><th>Email</th><th>Password</th><th>Exam Name</th><th>Exam Scores</th><th>Action</th></tr></thead>";
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         while ($row = $result->fetch_assoc()) {
             $id = $row["id"];
             $name = $row["name"];
@@ -24,7 +28,11 @@ if (isset($_POST["searchUsername"])) {
             $email = $row['email'];
             $password = $row['password']; 
             $examName = $row['examName'];
+<<<<<<< HEAD
             $app = $row['application'];
+=======
+
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             // Retrieve the user's exam scores from USERS_EXAM table
             $query = "SELECT exam_id, scores, updated_at FROM users_exam WHERE user_id = '$id'";
             $examResult = mysqli_query($conn, $query);
@@ -41,7 +49,10 @@ if (isset($_POST["searchUsername"])) {
                     $examID = $examRow['exam_id'];
                     $examScore = $examRow['scores'];
                     $examDate = $examRow['updated_at'];
+<<<<<<< HEAD
                     
+=======
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
                     // Retrieve the exam name from the "exams" table based on the exam ID
                     $examQuery = "SELECT title, duration FROM exams WHERE id = '$examID'";
@@ -73,7 +84,10 @@ if (isset($_POST["searchUsername"])) {
             echo "<td>" . $email . "</td>";
             echo "<td>" . $password . "</td>";
             echo "<td>" . $examName . "</td>";
+<<<<<<< HEAD
             echo "<td>" . $app . "</td>";
+=======
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             echo "<td>$scores</td>";
             echo "<td>
                     <div class='btn-group'>

@@ -27,6 +27,10 @@ class DataValidations
             $range = strtoupper((string) $dataValidation['sqref']);
             $rangeSet = explode(' ', $range);
             foreach ($rangeSet as $range) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 if (preg_match('/^[A-Z]{1,3}\\d{1,7}/', $range, $matches) === 1) {
                     // Ensure left/top row of range exists, thereby
                     // adjusting high row/column.
@@ -39,6 +43,11 @@ class DataValidations
             $range = strtoupper((string) $dataValidation['sqref']);
             $rangeSet = explode(' ', $range);
             foreach ($rangeSet as $range) {
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 $stRange = $this->worksheet->shrinkRangeToFit($range);
 
                 // Extract all cell references in $range

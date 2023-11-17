@@ -5,10 +5,19 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }else{
   
 $passport = $_SESSION['passport'];
 $src = "admin/".$passport;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }
 ?>
 
@@ -35,7 +44,15 @@ $exams = array();
 while ($row = mysqli_fetch_assoc($result)) {
     $examID = $row['exam_id'];
     $status = $row['status'];
+<<<<<<< HEAD
     $scores = $row['scores']; 
+=======
+<<<<<<< HEAD
+    $scores = $row['scores']; 
+=======
+    $scores = $row['scores'];
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     
     //$totatExamCount = $row['totalExams']; COUNT(exam_id) AS totalExams
     // Retrieve the specific exam details from the "exams" table based on the exam ID
@@ -175,10 +192,19 @@ mysqli_close($conn);
           </div>
           <div class="card-body">
             <h5 class="card-title">Confirm Datails Here.</h5>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         <center> <div id="passportCont" style="width: 180px; height: 180px;">
                <img src="<?php echo $src; ?>" alt="" style="width: 180px; height: 180px;" class="rounded-circle img-thumbnail">
         </div></center>
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             <p class="card-text">Names: <?php echo $_SESSION['name'];  ?></p>
 			<p class="card-text">Username: <?php echo $_SESSION['username'];  ?></p>
             <p class="card-text">Default Role: Candidate</p>
@@ -231,7 +257,11 @@ mysqli_close($conn);
 
  <!-- View Profile Modal -->
  <div class="modal fade" id="viewProfileModal" tabindex="-1" role="dialog" aria-labelledby="viewProfileModalLabel" aria-hidden="true">
+<<<<<<< HEAD
     <div class="modal-dialog modal-lg" role="document">
+=======
+    <div class="modal-dialog" role="document">
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="viewProfileModalLabel">User Profile Details</h5>
@@ -261,7 +291,11 @@ mysqli_close($conn);
 
 <!-- Exams Modal -->
 <div class="modal fade" id="examsModal" tabindex="-1" role="dialog" aria-labelledby="examsModalLabel" aria-hidden="true">
+<<<<<<< HEAD
   <div class="modal-dialog modal-xl" role="document">
+=======
+  <div class="modal-dialog" role="document">
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="examsModalLabel">Exams</h5>

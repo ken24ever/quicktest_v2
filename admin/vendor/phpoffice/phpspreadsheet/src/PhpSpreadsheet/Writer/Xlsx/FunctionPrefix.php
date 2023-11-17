@@ -4,7 +4,15 @@ namespace PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class FunctionPrefix
 {
+<<<<<<< HEAD
     const XLFNREGEXP = '/(?:_xlfn\.)?((?:_xlws\.)?\b('
+=======
+<<<<<<< HEAD
+    const XLFNREGEXP = '/(?:_xlfn\.)?((?:_xlws\.)?\b('
+=======
+    const XLFNREGEXP = '/(?:_xlfn\.)?((?:_xlws\.)?('
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             // functions added with Excel 2010
         . 'beta[.]dist'
         . '|beta[.]inv'

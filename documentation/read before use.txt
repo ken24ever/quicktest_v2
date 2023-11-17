@@ -47,5 +47,13 @@ The admin dashboard serves as the central hub for administering the CBT app, off
 ## Conclusion
 The Computer Based Test (CBT) app simplifies the process of creating, managing, and administering exams. By providing a comprehensive set of features and functionalities,
  the app empowers administrators to efficiently handle user accounts, create exams, manage exam details, and generate exam summaries.
+<<<<<<< HEAD
  The inclusion of resources like users and questions templates further enhances the app's usability.
+=======
+<<<<<<< HEAD
+ The inclusion of resources like users and questions templates further enhances the app's usability.
+=======
+ The inclusion of resources like user and questions templates further enhances the app's usability.
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
  With its intuitive interface and robust capabilities, the CBT app is a valuable tool for conducting computer-based tests.

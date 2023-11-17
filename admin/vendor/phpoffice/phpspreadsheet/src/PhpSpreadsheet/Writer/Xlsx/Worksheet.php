@@ -18,6 +18,10 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet as PhpspreadsheetWorksheet;
 
 class Worksheet extends WriterPart
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /** @var string */
     private $numberStoredAsText = '';
 
@@ -30,6 +34,11 @@ class Worksheet extends WriterPart
     /** @var string */
     private $evalError = '';
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /**
      * Write worksheet to XML format.
      *
@@ -40,10 +49,19 @@ class Worksheet extends WriterPart
      */
     public function writeWorksheet(PhpspreadsheetWorksheet $worksheet, $stringTable = [], $includeCharts = false)
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $this->numberStoredAsText = '';
         $this->formula = '';
         $this->twoDigitTextYear = '';
         $this->evalError = '';
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         // Create XML writer
         $objWriter = null;
         if ($this->getParentWriter()->getUseDiskCaching()) {
@@ -134,9 +152,18 @@ class Worksheet extends WriterPart
         // AlternateContent
         $this->writeAlternateContent($objWriter, $worksheet);
 
+<<<<<<< HEAD
         // IgnoredErrors
         $this->writeIgnoredErrors($objWriter);
 
+=======
+<<<<<<< HEAD
+        // IgnoredErrors
+        $this->writeIgnoredErrors($objWriter);
+
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         // Table
         $this->writeTable($objWriter, $worksheet);
 
@@ -150,6 +177,10 @@ class Worksheet extends WriterPart
         return $objWriter->getData();
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     private function writeIgnoredError(XMLWriter $objWriter, bool &$started, string $attr, string $cells): void
     {
         if ($cells !== '') {
@@ -176,6 +207,11 @@ class Worksheet extends WriterPart
         }
     }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /**
      * Write SheetPr.
      */
@@ -1179,6 +1215,10 @@ class Worksheet extends WriterPart
                         array_pop($columnsInRow);
                         foreach ($columnsInRow as $column) {
                             // Write cell
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             $coord = "$column$currentRow";
                             if ($worksheet->getCell($coord)->getIgnoredErrors()->getNumberStoredAsText()) {
                                 $this->numberStoredAsText .= " $coord";
@@ -1193,6 +1233,12 @@ class Worksheet extends WriterPart
                                 $this->evalError .= " $coord";
                             }
                             $this->writeCell($objWriter, $worksheet, $coord, $aFlippedStringTable);
+<<<<<<< HEAD
+=======
+=======
+                            $this->writeCell($objWriter, $worksheet, "{$column}{$currentRow}", $aFlippedStringTable);
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                         }
                     }
 

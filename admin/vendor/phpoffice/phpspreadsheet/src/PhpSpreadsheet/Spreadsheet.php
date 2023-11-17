@@ -203,6 +203,10 @@ class Spreadsheet implements JsonSerializable
      */
     private $tabRatio = 600;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /** @var Theme */
     private $theme;
 
@@ -211,6 +215,11 @@ class Spreadsheet implements JsonSerializable
         return $this->theme;
     }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /**
      * The workbook has macros ?
      *
@@ -484,7 +493,14 @@ class Spreadsheet implements JsonSerializable
     {
         $this->uniqueID = uniqid('', true);
         $this->calculationEngine = new Calculation($this);
+<<<<<<< HEAD
         $this->theme = new Theme();
+=======
+<<<<<<< HEAD
+        $this->theme = new Theme();
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         // Initialise worksheet collection and add one worksheet
         $this->workSheetCollection = [];
@@ -1663,6 +1679,10 @@ class Spreadsheet implements JsonSerializable
     {
         throw new Exception('Spreadsheet objects cannot be json encoded');
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     public function resetThemeFonts(): void
     {
@@ -1685,4 +1705,9 @@ class Spreadsheet implements JsonSerializable
             }
         }
     }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
+>>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }
