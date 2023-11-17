@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "name": "Callum",
+        "gender": "female"
+    },
+    {
+        "id": "2",
+        "name": "Ken",
+        "gender": "male"
+    },
+    {
+        "id": "3",
+        "name": "Joseph",
+        "gender": "male"
+    },
+    {
+        "id": "4",
+        "name": "Luke",
+        "gender": "male"
+    },
+    {
+        "id": "5",
+        "name": "Thomas",
+        "gender": "female"
+    },
+    {
+        "id": "6",
+        "name": "Jose",
+        "gender": "male"
+    },
+    {
+        "id": "7",
+        "name": "Japhet",
+        "gender": "male"
+    },
+    {
+        "id": "8",
+        "name": "Samson",
+        "gender": "male"
+    },
+    {
+        "id": "9",
+        "name": "Irene",
+        "gender": "female"
+    },
+    {
+        "id": "10",
+        "name": "AKaahs",
+        "gender": "male"
+    }
+]
