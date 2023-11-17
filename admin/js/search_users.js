@@ -1,16 +1,12 @@
 $(document).ready(function(){
-<<<<<<< HEAD
+
   
-// Constants for pagination
-const ITEMS_PER_PAGE = 1000; 
-let currentPage = 1; 
-=======
-<<<<<<< HEAD
+
   
 // Constants for pagination
 const ITEMS_PER_PAGE = 150;
 let currentPage = 1;
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+
 
 
 // Function to render the table rows for a specific page
@@ -23,17 +19,16 @@ function renderTableRows(data, start, end, usersTableBody) {
       var user = users[i];
       var userRow = $('<tr>'); // Create the user row element
 
-<<<<<<< HEAD
+
       // Add data-user-id and data-user-name attributes to the checkbox
       var checkbox = $('<input type="checkbox" class="user-checkbox" value="' + user.id + '">');
       checkbox.attr('data-user-id', user.id);
       checkbox.attr('data-user-name', user.name); // Use data-user-name consistently
 
-=======
+
       // Add data-user-id attribute to the checkbox
       var checkbox = $('<input type="checkbox" class="user-checkbox" value="' + user.id + '">');
       checkbox.attr('data-user-id', user.id);
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
       userRow.append($('<td>').html(checkbox)); // Append checkbox to user row
 
       var examStatusElement = $('<div class="exam-status-container">\
@@ -244,11 +239,7 @@ fetchUsersDetails(currentPage);
 
 
  // Function to reset selected users' exams
-<<<<<<< HEAD
 function resetSelectedUsersExams(userIds) {
-=======
- function resetSelectedUsersExams(userIds) {
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   $.ajax({
     url: 'reset_selected_users_exam.php', // Replace with the actual PHP script path 
     method: 'POST', // Use POST method to send the user IDs
