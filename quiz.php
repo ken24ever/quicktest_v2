@@ -30,8 +30,7 @@ session_start();
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CBT Confirmation Page</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
   <link rel="stylesheet" href="bootstrap_v4/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" href="style.css"> -->
 
@@ -136,14 +135,11 @@ session_start();
 
 
 
-  
 
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
 $(document).ready(function() {
   // Confirm Exam button click event
-  $('#confirm-exam-button').click(function() {
+  $('#confirm-exam-button').click(function() { 
     // AJAX call to update the table
     $.ajax({
       url: 'update_table.php', // Replace with the actual PHP script URL
@@ -166,7 +162,7 @@ $(document).ready(function() {
       }
     });
   });
-});
+}); 
 
 
   </script>

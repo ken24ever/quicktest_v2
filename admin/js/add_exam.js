@@ -7,7 +7,7 @@ $(document).ready(function(){
     if (match.indexOf(fileType.toLowerCase()) === -1) {
       return false; // File type doesn't match
     }
-    return true; // All file types match
+    return true; // All file types match 
   }
 
   $("#addExamForm").on('change', 'input[type="file"]', function() {
@@ -44,15 +44,6 @@ $(document).ready(function(){
       }
     }
   });
-  
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-  
-  
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
   $("#addExamForm").submit(function(event){
     // Prevent default form submission behavior
@@ -93,10 +84,7 @@ $(document).ready(function(){
           formData.append(name, files[i]);
         }
       } else {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+
         formData.append(name, value); 
       }
     });
@@ -125,15 +113,10 @@ $(document).ready(function(){
 
 
 // console.log(correctAnswersJSON )
-<<<<<<< HEAD
-=======
-=======
-        formData.append(name, value);
-      }
-    });
 
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+  // Show loader while waiting for AJAX response
+  showLoader();
+
     // Send the form data using an AJAX request
     $.ajax({
       url:"add_exam.php",
@@ -141,18 +124,14 @@ $(document).ready(function(){
       data: formData,
       contentType: false,
       processData: false,
-<<<<<<< HEAD
+
       success: function(response){ 
-=======
-<<<<<<< HEAD
-      success: function(response){ 
-=======
-      success: function(response){
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         // output 
        // alert(response);
-        console.log(response)
+        console.log(response) 
+
+            // Hide loader after AJAX response is received
+            hideLoader();
 
         Toastify({
           text: response,
@@ -165,6 +144,10 @@ $(document).ready(function(){
         }).showToast();
       },
       error: function(xhr, textStatus, errorThrown){
+
+             // Hide loader in case of an error 
+             hideLoader();
+
         // Display an error message
         Toastify({
           text: "Error: " + errorThrown,
@@ -175,6 +158,8 @@ $(document).ready(function(){
             background: 'linear-gradient(to right, #FFA0A0, #B88AFF, #A0A0FF)',
           }
         }).showToast();
+
+        
       }
     });
   });

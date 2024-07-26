@@ -1,16 +1,7 @@
 <?php
 include('../connection.php');
-<<<<<<< HEAD
 
-require_once 'vendor/autoload.php'; // Require the library for Excel generation
-=======
-<<<<<<< HEAD
-
-require_once 'vendor/autoload.php'; // Require the library for Excel generation
-=======
 require 'vendor/autoload.php';
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -52,32 +43,14 @@ while ($row = $result->fetch_assoc()) {
   $rowIndex++;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 // Set the appropriate headers for the Excel file
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="audit_tray.xlsx"');
+header('Content-Disposition: attachment;filename="users_export.xlsx"');
 header('Cache-Control: max-age=0');
 
 // Save the spreadsheet to a file
 $writer = new Xlsx($spreadsheet);
 $writer->save('php://output');
-<<<<<<< HEAD
-=======
-=======
-// Create a new Xlsx writer and save the spreadsheet to a file
-$writer = new Xlsx($spreadsheet);
-$filename = 'users_export.xlsx';
-$writer->save($filename);
-
-// Send the file to download
-header('Content-Type: application/octet-stream');
-header('Content-Disposition: attachment; filename="' . $filename . '"');
-readfile($filename);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 $conn->close();
 ?>

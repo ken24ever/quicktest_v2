@@ -6,17 +6,17 @@ $examId = $_POST['examId'];
 
 // Pagination parameters
 $page = isset($_POST['page']) ? $_POST['page'] : 1;
-$limit = 100; // Number of records per page
-$offset = ($page - 1) * $limit; // Offset for the SQL query
+$limit = 1000; // Number of records per page
+$offset = ($page - 1) * $limit; // Offset for the SQL query WHERE u.active = 1
 
 // Prepare the SQL statement to fetch the users' details with pagination
-$query = "SELECT u.id, u.name, u.username, u.email, GROUP_CONCAT(e.title) AS exam_names, ue.scores, ue.updated_at
+$query = "SELECT u.id, u.name, u.username, u.email, u.application, GROUP_CONCAT(e.title) AS exam_names, ue.scores, ue.updated_at
           FROM users u
           LEFT JOIN users_exam ue ON u.id = ue.user_id
           LEFT JOIN exams e ON ue.exam_id = e.id
-          WHERE ue.exam_id = '$examId' AND ue.status = 'completed' 
+          WHERE ue.exam_id = '$examId' AND ue.status = 'completed' AND u.active = 1
           GROUP BY u.id
-          LIMIT $limit OFFSET $offset";
+          LIMIT $limit OFFSET $offset"; 
 
 $result = $conn->query($query);
 
@@ -28,6 +28,7 @@ while ($row = $result->fetch_assoc()) {
     'name' => $row['name'],
     'username' => $row['username'],
     'email' => $row['email'],
+    'job' => $row['application'],
     'exam_names' => $row['exam_names'],
     'scores' => $row['scores'],
     'dates' => $row['updated_at'] 

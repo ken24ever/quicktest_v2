@@ -197,27 +197,6 @@ class PageMargins
         return $this;
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
-    }
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     public static function fromCentimeters(float $value): float
     {
         return $value / 2.54;

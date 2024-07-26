@@ -2,16 +2,8 @@
 
 namespace PhpOffice\PhpSpreadsheet\Chart;
 
-<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Style\Font;
 
-=======
-<<<<<<< HEAD
-use PhpOffice\PhpSpreadsheet\Style\Font;
-
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 class Layout
 {
     /**
@@ -137,22 +129,11 @@ class Layout
     /** @var ?ChartColor */
     private $labelBorderColor;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /** @var ?Font */
     private $labelFont;
 
     /** @var Properties */
     private $labelEffects;
-<<<<<<< HEAD
-=======
-=======
-    /** @var ?ChartColor */
-    private $labelFontColor;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Create a new Layout.
@@ -196,10 +177,6 @@ class Layout
         $this->initBoolean($layout, 'numFmtLinked');
         $this->initColor($layout, 'labelFillColor');
         $this->initColor($layout, 'labelBorderColor');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $labelFont = $layout['labelFont'] ?? null;
         if ($labelFont instanceof Font) {
             $this->labelFont = $labelFont;
@@ -212,12 +189,6 @@ class Layout
         if ($labelEffects instanceof Properties) {
             $this->labelEffects = $labelEffects;
         }
-<<<<<<< HEAD
-=======
-=======
-        $this->initColor($layout, 'labelFontColor');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     private function initBoolean(array $layout, string $name): void
@@ -538,10 +509,6 @@ class Layout
         return $this;
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     public function getLabelFont(): ?Font
     {
         return $this->labelFont;
@@ -559,33 +526,15 @@ class Layout
         }
 
         return $this->labelFont->getChartColor();
-<<<<<<< HEAD
-=======
-=======
-    public function getLabelFontColor(): ?ChartColor
-    {
-        return $this->labelFontColor;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     public function setLabelFontColor(?ChartColor $chartColor): self
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         if ($this->labelFont === null) {
             $this->labelFont = new Font();
             $this->labelFont->setSize(null, true);
         }
         $this->labelFont->setChartColorFromObject($chartColor);
-<<<<<<< HEAD
-=======
-=======
-        $this->labelFontColor = $chartColor;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         return $this;
     }

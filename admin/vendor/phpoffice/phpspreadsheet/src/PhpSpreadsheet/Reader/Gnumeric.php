@@ -80,10 +80,6 @@ class Gnumeric extends BaseReader
      */
     public function canRead(string $filename): bool
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $data = null;
         if (File::testFileNoThrow($filename)) {
             $data = $this->gzfileGetContents($filename);
@@ -93,22 +89,6 @@ class Gnumeric extends BaseReader
         }
 
         return !empty($data);
-<<<<<<< HEAD
-=======
-=======
-        // Check if gzlib functions are available
-        if (File::testFileNoThrow($filename) && function_exists('gzread')) {
-            // Read signature data (first 3 bytes)
-            $fh = fopen($filename, 'rb');
-            if ($fh !== false) {
-                $data = fread($fh, 2);
-                fclose($fh);
-            }
-        }
-
-        return isset($data) && $data === chr(0x1F) . chr(0x8B);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     private static function matchXml(XMLReader $xml, string $expectedLocalName): bool
@@ -128,10 +108,6 @@ class Gnumeric extends BaseReader
     public function listWorksheetNames($filename)
     {
         File::assertFile($filename);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         if (!$this->canRead($filename)) {
             throw new Exception($filename . ' is an invalid Gnumeric file.');
         }
@@ -139,14 +115,6 @@ class Gnumeric extends BaseReader
         $xml = new XMLReader();
         $contents = $this->gzfileGetContents($filename);
         $xml->xml($contents, null, Settings::getLibXmlLoaderOptions());
-<<<<<<< HEAD
-=======
-=======
-
-        $xml = new XMLReader();
-        $xml->xml($this->getSecurityScannerOrThrow()->scanFile('compress.zlib://' . realpath($filename)), null, Settings::getLibXmlLoaderOptions());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $xml->setParserProperty(2, true);
 
         $worksheetNames = [];
@@ -173,10 +141,6 @@ class Gnumeric extends BaseReader
     public function listWorksheetInfo($filename)
     {
         File::assertFile($filename);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         if (!$this->canRead($filename)) {
             throw new Exception($filename . ' is an invalid Gnumeric file.');
         }
@@ -184,14 +148,6 @@ class Gnumeric extends BaseReader
         $xml = new XMLReader();
         $contents = $this->gzfileGetContents($filename);
         $xml->xml($contents, null, Settings::getLibXmlLoaderOptions());
-<<<<<<< HEAD
-=======
-=======
-
-        $xml = new XMLReader();
-        $xml->xml($this->getSecurityScannerOrThrow()->scanFile('compress.zlib://' . realpath($filename)), null, Settings::getLibXmlLoaderOptions());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $xml->setParserProperty(2, true);
 
         $worksheetInfo = [];
@@ -235,10 +191,6 @@ class Gnumeric extends BaseReader
      */
     private function gzfileGetContents($filename)
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $data = '';
         $contents = @file_get_contents($filename);
         if ($contents !== false) {
@@ -256,18 +208,6 @@ class Gnumeric extends BaseReader
         }
         if ($data !== '') {
             $data = $this->getSecurityScannerOrThrow()->scan($data);
-<<<<<<< HEAD
-=======
-=======
-        $file = @gzopen($filename, 'rb');
-        $data = '';
-        if ($file !== false) {
-            while (!gzeof($file)) {
-                $data .= gzread($file, 1024);
-            }
-            gzclose($file);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
 
         return $data;
@@ -321,10 +261,6 @@ class Gnumeric extends BaseReader
     {
         $this->spreadsheet = $spreadsheet;
         File::assertFile($filename);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         if (!$this->canRead($filename)) {
             throw new Exception($filename . ' is an invalid Gnumeric file.');
         }
@@ -332,15 +268,6 @@ class Gnumeric extends BaseReader
         $gFileData = $this->gzfileGetContents($filename);
 
         $xml2 = simplexml_load_string($gFileData, 'SimpleXMLElement', Settings::getLibXmlLoaderOptions());
-<<<<<<< HEAD
-=======
-=======
-
-        $gFileData = $this->gzfileGetContents($filename);
-
-        $xml2 = simplexml_load_string($this->getSecurityScannerOrThrow()->scan($gFileData), 'SimpleXMLElement', Settings::getLibXmlLoaderOptions());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $xml = self::testSimpleXml($xml2);
 
         $gnmXML = $xml->children(self::NAMESPACE_GNM);

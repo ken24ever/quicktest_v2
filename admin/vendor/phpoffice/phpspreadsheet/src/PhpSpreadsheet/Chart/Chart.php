@@ -150,21 +150,12 @@ class Chart
     /** @var bool */
     private $roundedCorners = false;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /** @var GridLines */
     private $borderLines;
 
     /** @var ChartColor */
     private $fillColor;
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /**
      * Create a new Chart.
      * majorGridlines and minorGridlines are deprecated, moved to Axis.
@@ -191,16 +182,8 @@ class Chart
         if ($minorGridlines !== null) {
             $this->yAxis->setMinorGridlines($minorGridlines);
         }
-<<<<<<< HEAD
         $this->fillColor = new ChartColor();
         $this->borderLines = new GridLines();
-=======
-<<<<<<< HEAD
-        $this->fillColor = new ChartColor();
-        $this->borderLines = new GridLines();
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     /**
@@ -811,10 +794,6 @@ class Chart
 
         return $this;
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     public function getBorderLines(): GridLines
     {
@@ -832,9 +811,4 @@ class Chart
     {
         return $this->fillColor;
     }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }

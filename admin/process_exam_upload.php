@@ -1,18 +1,9 @@
 <?php
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 session_start();
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id']; 
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
  // Set database connection 
  include("../connection.php");
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -22,21 +13,17 @@ if ($conn->connect_error) {
 
 // Get the form data
 $examTitle = $_POST['exam_title1'];
-$examDescription = $_POST['exam_description1'];
+$examDescription = $_POST['exam_description1']; 
 $examDuration = $_POST['exam_duration1'];
 
-<<<<<<< HEAD
 $action = 'Batch Questions Upload'; 
 $description = 'Logged in admin user: (' . $fullNames . ') uploaded batch questions for exam title : "' . $examTitle . '"';
 
-=======
-<<<<<<< HEAD
+
 $action = 'Batch Questions Upload'; 
 $description = 'Logged in admin user: (' . $fullNames . ') uploaded batch questions for exam title : "' . $examTitle . '"';
 
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+
 // Check if the exam title already exists in the EXAMS table
 $existingExamQuery = "SELECT id FROM exams WHERE title = '$examTitle'";
 $existingExamResult = $conn->query($existingExamQuery);
@@ -47,7 +34,7 @@ if ($existingExamResult->num_rows > 0) {
   $examId = $existingExamRow['id'];
 } else {
   // Exam title does not exist, insert a new record into the EXAMS table
-  $insertExamQuery = "INSERT INTO EXAMS (title, description, duration) VALUES ('$examTitle', '$examDescription', '$examDuration')";
+  $insertExamQuery = "INSERT INTO exams (title, description, duration) VALUES ('$examTitle', '$examDescription', '$examDuration')";
   if ($conn->query($insertExamQuery) === true) {
     $examId = $conn->insert_id;
   } else {
@@ -67,10 +54,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 $spreadsheet = IOFactory::load($excelFile);
 $worksheet = $spreadsheet->getActiveSheet();
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+
    // Prepare the SQL statement to insert the record into the audit_tray table
    $sql = "INSERT INTO audit_tray (user_name, user_id, description, action) VALUES (?,?,?,?)";
    $stmt = $conn->prepare($sql);
@@ -87,13 +71,8 @@ $worksheet = $spreadsheet->getActiveSheet();
       // error_log("Failed to add record to audit_tray: " . $stmt->error);
    }
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 // Prepare the SQL statement for inserting questions and options
-$insertQuestionQuery = "INSERT INTO QUESTIONS (exam_id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path, answer ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$insertQuestionQuery = "INSERT INTO questions (exam_id, question, option_a, option_b, option_c, option_d, option_e, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path, answer ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $insertQuestionStmt = $conn->prepare($insertQuestionQuery);
 $insertQuestionStmt->bind_param("isssssssssssss", $examId, $question, $optiona, $optionb, $optionc, $optiond, $optione, $image_ques, $option_a_image_path, $option_b_image_path,$option_c_image_path, $option_d_image_path,$option_e_image_path, $answer);
 

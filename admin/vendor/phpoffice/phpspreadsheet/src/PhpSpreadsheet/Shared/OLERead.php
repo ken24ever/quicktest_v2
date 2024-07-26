@@ -134,15 +134,7 @@ class OLERead
 
         $bbdBlocks = $this->numBigBlockDepotBlocks;
 
-<<<<<<< HEAD
         if ($this->numExtensionBlocks !== 0) {
-=======
-<<<<<<< HEAD
-        if ($this->numExtensionBlocks !== 0) {
-=======
-        if ($this->numExtensionBlocks != 0) {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             $bbdBlocks = (self::BIG_BLOCK_SIZE - self::BIG_BLOCK_DEPOT_BLOCKS_POS) / 4;
         }
 

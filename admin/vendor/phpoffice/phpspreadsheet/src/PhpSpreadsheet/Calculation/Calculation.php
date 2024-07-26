@@ -19,14 +19,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use ReflectionClassConstant;
 use ReflectionMethod;
 use ReflectionParameter;
-<<<<<<< HEAD
 use Throwable;
-=======
-<<<<<<< HEAD
-use Throwable;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 class Calculation
 {
@@ -3564,15 +3557,7 @@ class Calculation
                 }
             }
 
-<<<<<<< HEAD
             throw new Exception($e->getMessage(), $e->getCode(), $e);
-=======
-<<<<<<< HEAD
-            throw new Exception($e->getMessage(), $e->getCode(), $e);
-=======
-            throw new Exception($e->getMessage());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
 
         if ((is_array($result)) && (self::$returnArrayAsType != self::RETURN_ARRAY_AS_ARRAY)) {
@@ -4226,15 +4211,7 @@ class Calculation
                     try {
                         $this->branchPruner->closingBrace($d['value']);
                     } catch (Exception $e) {
-<<<<<<< HEAD
                         return $this->raiseFormulaError($e->getMessage(), $e->getCode(), $e);
-=======
-<<<<<<< HEAD
-                        return $this->raiseFormulaError($e->getMessage(), $e->getCode(), $e);
-=======
-                        return $this->raiseFormulaError($e->getMessage());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     }
 
                     $functionName = $matches[1]; //    Get the function name
@@ -4273,15 +4250,7 @@ class Calculation
                     } elseif ($expectedArgumentCount != '*') {
                         $isOperandOrFunction = preg_match('/(\d*)([-+,])(\d*)/', $expectedArgumentCount, $argMatch);
                         self::doNothing($isOperandOrFunction);
-<<<<<<< HEAD
                         switch ($argMatch[2] ?? '') {
-=======
-<<<<<<< HEAD
-                        switch ($argMatch[2] ?? '') {
-=======
-                        switch ($argMatch[2]) {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             case '+':
                                 if ($argumentCount < $argMatch[1]) {
                                     $argumentCountError = true;
@@ -4314,15 +4283,7 @@ class Calculation
                 try {
                     $this->branchPruner->argumentSeparator();
                 } catch (Exception $e) {
-<<<<<<< HEAD
                     return $this->raiseFormulaError($e->getMessage(), $e->getCode(), $e);
-=======
-<<<<<<< HEAD
-                    return $this->raiseFormulaError($e->getMessage(), $e->getCode(), $e);
-=======
-                    return $this->raiseFormulaError($e->getMessage());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 }
 
                 while (($o2 = $stack->pop()) && $o2['value'] !== '(') {        //    Pop off the stack back to the last (
@@ -4404,23 +4365,12 @@ class Calculation
                                 $rangeStartCellRef = $output[count($output) - 2]['value'] ?? '';
                             }
                             preg_match('/^' . self::CALCULATION_REGEXP_CELLREF . '$/miu', $rangeStartCellRef, $rangeStartMatches);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             if (array_key_exists(2, $rangeStartMatches)) {
                                 if ($rangeStartMatches[2] > '') {
                                     $val = $rangeStartMatches[2] . '!' . $val;
                                 }
                             } else {
                                 $val = Information\ExcelError::REF();
-<<<<<<< HEAD
-=======
-=======
-                            if ($rangeStartMatches[2] > '') {
-                                $val = $rangeStartMatches[2] . '!' . $val;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             }
                         } else {
                             $rangeStartCellRef = $output[count($output) - 1]['value'] ?? '';
@@ -4446,15 +4396,7 @@ class Calculation
                     try {
                         $structuredReference = Operands\StructuredReference::fromParser($formula, $index, $matches);
                     } catch (Exception $e) {
-<<<<<<< HEAD
                         return $this->raiseFormulaError($e->getMessage(), $e->getCode(), $e);
-=======
-<<<<<<< HEAD
-                        return $this->raiseFormulaError($e->getMessage(), $e->getCode(), $e);
-=======
-                        return $this->raiseFormulaError($e->getMessage());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     }
 
                     $val = $structuredReference->value();
@@ -4497,16 +4439,8 @@ class Calculation
                                 }
                                 $val = $address;
                             }
-<<<<<<< HEAD
                         } elseif ($val === Information\ExcelError::REF()) {
                             $stackItemReference = $val;
-=======
-<<<<<<< HEAD
-                        } elseif ($val === Information\ExcelError::REF()) {
-                            $stackItemReference = $val;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                         } else {
                             $startRowColRef = $output[count($output) - 1]['value'] ?? '';
                             [$rangeWS1, $startRowColRef] = Worksheet::extractSheetTitle($startRowColRef, true);
@@ -4804,15 +4738,7 @@ class Calculation
                     $cellRange = $token->parse($cell);
                     if (strpos($cellRange, ':') !== false) {
                         $this->debugLog->writeDebugLog('Evaluating Structured Reference %s as Cell Range %s', $token->value(), $cellRange);
-<<<<<<< HEAD
                         $rangeValue = self::getInstance($cell->getWorksheet()->getParent())->_calculateFormulaValue("={$cellRange}", $cellRange, $cell);
-=======
-<<<<<<< HEAD
-                        $rangeValue = self::getInstance($cell->getWorksheet()->getParent())->_calculateFormulaValue("={$cellRange}", $cellRange, $cell);
-=======
-                        $rangeValue = self::getInstance($cell->getWorksheet()->getParent())->_calculateFormulaValue("={$cellRange}", $token->value(), $cell);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                         $stack->push('Value', $rangeValue);
                         $this->debugLog->writeDebugLog('Evaluated Structured Reference %s as value %s', $token->value(), $this->showValue($rangeValue));
                     } else {
@@ -4826,15 +4752,7 @@ class Calculation
                         $stack->push('Error', Information\ExcelError::REF(), null);
                         $this->debugLog->writeDebugLog('Evaluated Structured Reference %s as error value %s', $token->value(), Information\ExcelError::REF());
                     } else {
-<<<<<<< HEAD
                         return $this->raiseFormulaError($e->getMessage(), $e->getCode(), $e);
-=======
-<<<<<<< HEAD
-                        return $this->raiseFormulaError($e->getMessage(), $e->getCode(), $e);
-=======
-                        return $this->raiseFormulaError($e->getMessage());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     }
                 }
             } elseif (!is_numeric($token) && !is_object($token) && isset(self::BINARY_OPERATORS[$token])) {
@@ -4882,15 +4800,7 @@ class Calculation
                                 }
                             }
                         }
-<<<<<<< HEAD
                         if (strpos($operand1Data['reference'] ?? '', '!') !== false) {
-=======
-<<<<<<< HEAD
-                        if (strpos($operand1Data['reference'] ?? '', '!') !== false) {
-=======
-                        if (strpos($operand1Data['reference'], '!') !== false) {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             [$sheet1, $operand1Data['reference']] = Worksheet::extractSheetTitle($operand1Data['reference'], true);
                         } else {
                             $sheet1 = ($pCellWorksheet !== null) ? $pCellWorksheet->getTitle() : '';
@@ -4927,10 +4837,6 @@ class Calculation
 
                             $oData = array_merge(explode(':', $operand1Data['reference']), explode(':', $operand2Data['reference']));
                             $oCol = $oRow = [];
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             $breakNeeded = false;
                             foreach ($oData as $oDatum) {
                                 try {
@@ -4946,15 +4852,6 @@ class Calculation
                             }
                             if ($breakNeeded) {
                                 break;
-<<<<<<< HEAD
-=======
-=======
-                            foreach ($oData as $oDatum) {
-                                $oCR = Coordinate::coordinateFromString($oDatum);
-                                $oCol[] = Coordinate::columnIndexFromString($oCR[0]) - 1;
-                                $oRow[] = $oCR[1];
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             }
                             $cellRef = Coordinate::stringFromColumnIndex(min($oCol) + 1) . min($oRow) . ':' . Coordinate::stringFromColumnIndex(max($oCol) + 1) . max($oRow);
                             if ($pCellParent !== null && $this->spreadsheet !== null) {
@@ -4963,21 +4860,10 @@ class Calculation
                                 return $this->raiseFormulaError('Unable to access Cell Reference');
                             }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             $this->debugLog->writeDebugLog('Evaluation Result is %s', $this->showTypeDetails($cellValue));
                             $stack->push('Cell Reference', $cellValue, $cellRef);
                         } else {
                             $this->debugLog->writeDebugLog('Evaluation Result is a #REF! Error');
-<<<<<<< HEAD
-=======
-=======
-                            $stack->push('Cell Reference', $cellValue, $cellRef);
-                        } else {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             $stack->push('Error', Information\ExcelError::REF(), null);
                         }
 
@@ -5568,29 +5454,13 @@ class Calculation
      *
      * @return false
      */
-<<<<<<< HEAD
     protected function raiseFormulaError(string $errorMessage, int $code = 0, ?Throwable $exception = null)
-=======
-<<<<<<< HEAD
-    protected function raiseFormulaError(string $errorMessage, int $code = 0, ?Throwable $exception = null)
-=======
-    protected function raiseFormulaError(string $errorMessage)
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->formulaError = $errorMessage;
         $this->cyclicReferenceStack->clear();
         $suppress = /** @scrutinizer ignore-deprecated */ $this->suppressFormulaErrors ?? $this->suppressFormulaErrorsNew;
         if (!$suppress) {
-<<<<<<< HEAD
             throw new Exception($errorMessage, $code, $exception);
-=======
-<<<<<<< HEAD
-            throw new Exception($errorMessage, $code, $exception);
-=======
-            throw new Exception($errorMessage);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
 
         return false;

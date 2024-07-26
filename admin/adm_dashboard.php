@@ -14,7 +14,7 @@ $userID = $_SESSION['user_id'];
 }
 
 ?>
-
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +22,7 @@ $userID = $_SESSION['user_id'];
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../bootstrap_v4/css/bootstrap.min.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
   
    <!-- toast styling effect -->
    <link rel="stylesheet" href="node_modules/toastify-js/src/toastify.css" />
@@ -63,7 +64,7 @@ $userID = $_SESSION['user_id'];
 	<script src="js/addImageExams.js"></script>
 	<script src="js/add_admin.js"></script>
   <script src="js/analysisExam.js"></script>
-
+  <script src="js/dataRecovery.js"></script>
  <!--  <script src="js/sse.js"></script> -->
 
 <!-- highchart lib -->
@@ -105,6 +106,9 @@ $userID = $_SESSION['user_id'];
       description: description // Include the description in the request data
     };
 
+        // Show loader while waiting for AJAX response
+        showLoader();
+
     $.ajax({
       url: 'addUserThruForm.php',
       method: 'POST',
@@ -112,6 +116,8 @@ $userID = $_SESSION['user_id'];
       data: requestData,
       success: function(response) {
         // ...
+                    // Hide loader after AJAX response is received
+                    hideLoader();
         if (response.success) {
           Toastify({
             text: response.message,
@@ -137,6 +143,8 @@ $userID = $_SESSION['user_id'];
       },
       error: function(xhr, status, error) {
         console.error('Error: ' + error);
+           // Hide loader in case of an error
+           hideLoader();
       }
     });
   });
@@ -466,7 +474,7 @@ $('#userPassport').on('change', function() {
   transition: background-color 0.5s; /* Add transition for background-color */
 }
 
-#tooltip {
+#tooltip, #peakLevel {
   display: none;
   position: absolute;
   background-color: red;
@@ -520,6 +528,70 @@ $('#userPassport').on('change', function() {
   overflow:auto;
   transition: max-height 0.2s ease-out;
 }
+
+/* data recovery style stays here */
+
+
+.search_container {
+   font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, button {
+    padding: 10px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+#searchResults {
+    margin-top: 20px;
+}
+
+/* loader style sheet */
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
 </style>
 
 	<script src="FileSaver.js/dist/FileSaver.js"></script>
@@ -542,6 +614,9 @@ $('#userPassport').on('change', function() {
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
   <ul class="navbar-nav ml-auto"> <!-- Added 'ml-auto' class -->
+ <!--  <li class="nav-item">
+        <a class="nav-link text-dark" href="#"> <b> Permission Duration: <?php echo $_SESSION['exp_data']; ?> </b> </a>
+      </li>  -->
   <li class="nav-item">
         <a class="nav-link text-dark" href="#"> <b> Welcome, <?php echo $_SESSION['user_name']; ?> </b> </a>
       </li>  
@@ -554,6 +629,10 @@ $('#userPassport').on('change', function() {
 </nav>
 
 <div class="container mt-5">
+<!-- Message alert section for threshold -->
+<div id="tooltip">Active users exceeded 60% threshold!</div>
+         <div id="peakLevel"></div>
+
 	<ul class="nav nav-tabs">
 		<li class="nav-item">
 			<a href="#addUser" data-toggle="tab" class="nav-link active">Add User</a>
@@ -596,7 +675,7 @@ $('#userPassport').on('change', function() {
 				<div id="addUsers"><img src="img/add_Users.png" alt="" class="img-fluid img-thumbnail">	</div>				
 				<hr>
    							 <form id="addUserForm" enctype="multipart/form-data">
-                  <h3>Fill The Form </h3>
+                  <h3>Fill The Form </h3> 
 								<div class="form-group">
            							 			<label for="Fullname:">Fullname:<b style="color:red; font-size:12px">*</b></label>
            							 				<input type="text" class="form-control" id="names" name="names" placeholder="Enter Name"  >
@@ -660,6 +739,48 @@ $('#userPassport').on('change', function() {
           
     </form>
 
+    <!-- modal for matched records -->
+
+        <!-- Modal for displaying matched records -->
+        <div id="matchedRecordsModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <center> <h5 class="modal-title"></h5> </center>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <center>
+        <br>
+        <div id="MatchedRecordsPagination"></div>
+        <br>
+      </center>
+      <div class="modal-body">
+        <table id="matchedRecordsTable" class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Username</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Records will be inserted here -->
+          </tbody>
+        </table>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- end of modal for matched records -->
+
 <!--  -->
 <div id="formToggle">
 												<div class="btn-group">
@@ -714,22 +835,20 @@ $('#userPassport').on('change', function() {
   </div>
                           </form>
                         <br>
-                        <hr>
+                        <hr> 
                             <div id="searchUsers" class="responsive"></div>
                         <hr>
                         <br>
                         <br>
 </div>
 <!--  -->
-<button class="accordion"> <i><b> RESET / DELETE / EXAM ANALYSIS BREAKDOWN</b></i> </button>
+<button class="accordion"> <i><b> RESET / ARCHIVE / EXAM ANALYSIS BREAKDOWN</b></i> </button>
 <div class="panel_base">
   <!-- accordion content starts here -->
   <br>
   <hr>
-         <center><i><b id="totalUsers"></b></i>&nbsp;&nbsp;|&nbsp;&nbsp;<i><b id="inProgressCount"></b></i>
-         <i><span id="percentageTips"></span></i>
-         <div id="tooltip">Active users exceeded 60% threshold!</div>
-
+         <center><i><b id="totalUsers"></b></i>&nbsp;&nbsp;|&nbsp;&nbsp;<i><b id="inProgressCount"></b></i>&nbsp;<i><span id="percentageTips"></span></i> &nbsp;| &nbsp;&nbsp;<i><b id="transactionCount"></b></i>
+        
          <div id="myProgress">
             <div id="myBar"></div>
           </div>
@@ -757,12 +876,12 @@ $('#userPassport').on('change', function() {
               <th>Username</th>
               <th>Email</th>
               <th>Password</th>
-              <th>Exam Name</th>
               <th>Job Position</th>
+              <th>Exam Name</th>
               <th>Exam Status</th>
             </tr>
           </thead>
-          <tbody id="users-table-body">
+          <tbody id="users-table-body"> 
             <!-- User details will be appended here using jQuery -->
           </tbody>
         </table>
@@ -773,7 +892,8 @@ $('#userPassport').on('change', function() {
         <div class="btn-group">
     
                   <button id="reset-exams" class="btn btn-primary">Reset Selected Users Exam</button>
-                <button id="deleteSelectedUsers" class="btn btn-danger">Delete Selected</button>
+                <button id="deleteSelectedUsers" class="btn btn-danger">Archive Selected</button>
+                <button id="logoutUsers" class="btn btn-secondary" >Batch Users Logout</button>
             
 				</div>
         </center>
@@ -784,10 +904,52 @@ $('#userPassport').on('change', function() {
   <!-- accordion content ends here -->
 </div>
 <!--  -->
-<!-- <button class="accordion">Section 3</button>
+ <button class="accordion"><i><b> DATA RECOVERY</b></i></button>
 <div class="panel_base">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div> -->
+<!-- data recovery section begins here! -->
+
+     <div class="search_container">
+        <h2>Archived Data Recovery</h2>
+        <form >
+        <div class="search-form">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate">
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate">
+
+    <!-- Update the onclick attribute to call the export function with selected date range -->
+    <button id="exportHistory" >Export History</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#exportHistory').on('click', function (e) {
+          e.preventDefault()
+            // Get selected start and end dates
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+
+            // Construct the export link with date parameters
+            var exportLink = 'exportHistory.php?startDate=' + startDate + '&endDate=' + endDate;
+
+            // Redirect to the export link
+            window.location.href = exportLink;
+        });
+    });
+</script>
+               
+                <hr>
+                <div id="searchResults"></div>
+                <hr>
+                
+       
+    </div> 
+
+
+<!-- data recovery section ends here! -->
+</div>
 <!--  -->
 
 <!-- modern Accordion ends here -->
@@ -1235,7 +1397,7 @@ for (i = 0; i < acc.length; i++) {
 									<!-- <h3>Report Generation</h3> -->
 							
 									<div>
-  <!-- HTML markup -->
+  <!-- HTML markup --> 
 
 
 <div class="input-group mb-3">
@@ -1313,7 +1475,7 @@ function fetchUsers(examId, page) {
           tableBody.append(row);
         });
 
-        // Update pagination information
+        // Update pagination information 
         var currentPage = response.page;
         var totalPages = response.total_pages;
         $('#paginationInfo').text('Page ' + currentPage + ' of ' + totalPages);
@@ -1705,6 +1867,7 @@ $(document).on('click', '#exportSelectedButton', function() {
                     <option value="1">Super Admin User</option>
                 </select>
             </div>
+            <input type="hidden" id="clientIP" name="clientIP">
             <button type="submit" class="btn btn-primary">Add Admin User</button>
         </form>
     </div>

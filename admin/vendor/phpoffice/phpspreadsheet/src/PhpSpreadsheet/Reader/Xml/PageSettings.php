@@ -2,14 +2,7 @@
 
 namespace PhpOffice\PhpSpreadsheet\Reader\Xml;
 
-<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\Namespaces;
-=======
-<<<<<<< HEAD
-use PhpOffice\PhpSpreadsheet\Reader\Xlsx\Namespaces;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 use SimpleXMLElement;
@@ -22,21 +15,9 @@ class PageSettings
      */
     private $printSettings;
 
-<<<<<<< HEAD
     public function __construct(SimpleXMLElement $xmlX)
     {
         $printSettings = $this->pageSetup($xmlX, $this->getPrintDefaults());
-=======
-<<<<<<< HEAD
-    public function __construct(SimpleXMLElement $xmlX)
-    {
-        $printSettings = $this->pageSetup($xmlX, $this->getPrintDefaults());
-=======
-    public function __construct(SimpleXMLElement $xmlX, array $namespaces)
-    {
-        $printSettings = $this->pageSetup($xmlX, $namespaces, $this->getPrintDefaults());
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $this->printSettings = $this->printSetup($xmlX, $printSettings);
     }
 
@@ -76,29 +57,13 @@ class PageSettings
         ];
     }
 
-<<<<<<< HEAD
     private function pageSetup(SimpleXMLElement $xmlX, stdClass $printDefaults): stdClass
-=======
-<<<<<<< HEAD
-    private function pageSetup(SimpleXMLElement $xmlX, stdClass $printDefaults): stdClass
-=======
-    private function pageSetup(SimpleXMLElement $xmlX, array $namespaces, stdClass $printDefaults): stdClass
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         if (isset($xmlX->WorksheetOptions->PageSetup)) {
             foreach ($xmlX->WorksheetOptions->PageSetup as $pageSetupData) {
                 foreach ($pageSetupData as $pageSetupKey => $pageSetupValue) {
                     /** @scrutinizer ignore-call */
-<<<<<<< HEAD
                     $pageSetupAttributes = $pageSetupValue->attributes(Namespaces::URN_EXCEL);
-=======
-<<<<<<< HEAD
-                    $pageSetupAttributes = $pageSetupValue->attributes(Namespaces::URN_EXCEL);
-=======
-                    $pageSetupAttributes = $pageSetupValue->attributes($namespaces['x']);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     if ($pageSetupAttributes !== null) {
                         switch ($pageSetupKey) {
                             case 'Layout':

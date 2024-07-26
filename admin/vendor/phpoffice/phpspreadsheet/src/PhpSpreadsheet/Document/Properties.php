@@ -107,16 +107,8 @@ class Properties
      */
     private $customProperties = [];
 
-<<<<<<< HEAD
     private string $hyperlinkBase = '';
 
-=======
-<<<<<<< HEAD
-    private string $hyperlinkBase = '';
-
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /**
      * Create a new Document Properties instance.
      */
@@ -444,15 +436,7 @@ class Properties
      *
      * @param mixed $propertyValue
      * @param string $propertyType
-<<<<<<< HEAD
      *   'i' : Integer
-=======
-<<<<<<< HEAD
-     *   'i' : Integer
-=======
-     *      'i'    : Integer
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
      *   'f' : Floating Point
      *   's' : String
      *   'd' : Date/Time
@@ -552,10 +536,6 @@ class Properties
     {
         return self::PROPERTY_TYPE_ARRAY[$propertyType] ?? self::PROPERTY_TYPE_UNKNOWN;
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     public function getHyperlinkBase(): string
     {
@@ -568,9 +548,4 @@ class Properties
 
         return $this;
     }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }

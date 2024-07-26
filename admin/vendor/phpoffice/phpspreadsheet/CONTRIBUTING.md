@@ -2,10 +2,6 @@
 
 If you would like to contribute, here are some notes and guidelines:
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
  - All new development should be on feature/fix branches, which are then merged to the `master` branch once stable and approved; so the `master` branch is always the most up-to-date, working code
  - If you are going to submit a pull request, please fork from `master`, and submit your pull request back as a fix/feature branch referencing the GitHub issue number
  - The code must work with all PHP versions that we support (currently PHP 7.4 to PHP 8.2).
@@ -35,39 +31,15 @@ When writing Unit Tests, please
 
 This makes it easier to see exactly what is being tested when reviewing the PR. I want to be able to see it in the PR, not have to hunt in other unchanged classes to see what the test is doing.
 
-<<<<<<< HEAD
-=======
-=======
- - All new development happens on feature/fix branches, and are then merged to the `master` branch once stable; so the `master` branch is always the most up-to-date, working code
- - Tagged releases are made from the `master` branch
- - If you are going to be submitting a pull request, please fork from `master`, and submit your pull request back as a fix/feature branch referencing the GitHub issue number
- - Code style might be automatically fixed by `composer fix`
- - All code changes must be validated by `composer check`
- - [Helpful article about forking](https://help.github.com/articles/fork-a-repo/ "Forking a GitHub repository")
- - [Helpful article about pull requests](https://help.github.com/articles/using-pull-requests/ "Pull Requests")
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 ## How to release
 
 1. Complete CHANGELOG.md and commit
 2. Create an annotated tag
     1. `git tag -a 1.2.3`
     2. Tag subject must be the version number, eg: `1.2.3`
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     3. Tag body must be a copy-paste of the changelog entries.
 3. Push the tag with `git push --tags`, GitHub Actions will create a GitHub release automatically, and the release details will automatically be sent to packagist.
 4. Github seems to remove markdown headings in the Release Notes, so you should edit to restore these.
 
 > **Note:** Tagged releases are made from the `master` branch. Only in an emergency should a tagged release be made from the `release` branch. (i.e. cherry-picked hot-fixes.)
 
-<<<<<<< HEAD
-=======
-=======
-    3. Tag body must be a copy-paste of the changelog entries
-3. Push tag with `git push --tags`, GitHub Actions will create a GitHub release automatically
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742

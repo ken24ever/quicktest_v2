@@ -48,38 +48,17 @@ class TextGrid
 
     public function render(): string
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $this->gridDisplay = $this->isCli ? '' : '<pre>';
 
         $maxRow = max($this->rows);
         $maxRowLength = mb_strlen((string) $maxRow) + 1;
-<<<<<<< HEAD
-=======
-=======
-        $this->gridDisplay = $this->isCli ? '' : '<code>';
-
-        $maxRow = max($this->rows);
-        $maxRowLength = strlen((string) $maxRow) + 1;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $columnWidths = $this->getColumnWidths();
 
         $this->renderColumnHeader($maxRowLength, $columnWidths);
         $this->renderRows($maxRowLength, $columnWidths);
         $this->renderFooter($maxRowLength, $columnWidths);
 
-<<<<<<< HEAD
         $this->gridDisplay .= $this->isCli ? '' : '</pre>';
-=======
-<<<<<<< HEAD
-        $this->gridDisplay .= $this->isCli ? '' : '</pre>';
-=======
-        $this->gridDisplay .= $this->isCli ? '' : '</code>';
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         return $this->gridDisplay;
     }
@@ -96,21 +75,9 @@ class TextGrid
     private function renderCells(array $rowData, array $columnWidths): void
     {
         foreach ($rowData as $column => $cell) {
-<<<<<<< HEAD
             $displayCell = ($this->isCli) ? (string) $cell : htmlentities((string) $cell);
             $this->gridDisplay .= '| ';
             $this->gridDisplay .= $displayCell . str_repeat(' ', $columnWidths[$column] - mb_strlen($cell ?? '') + 1);
-=======
-<<<<<<< HEAD
-            $displayCell = ($this->isCli) ? (string) $cell : htmlentities((string) $cell);
-            $this->gridDisplay .= '| ';
-            $this->gridDisplay .= $displayCell . str_repeat(' ', $columnWidths[$column] - mb_strlen($cell ?? '') + 1);
-=======
-            $cell = ($this->isCli) ? (string) $cell : htmlentities((string) $cell);
-            $this->gridDisplay .= '| ';
-            $this->gridDisplay .= str_pad($cell, $columnWidths[$column] + 1, ' ');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
     }
 
@@ -159,27 +126,12 @@ class TextGrid
 
         foreach ($columnData as $columnValue) {
             if (is_string($columnValue)) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 $columnWidth = max($columnWidth, mb_strlen($columnValue));
             } elseif (is_bool($columnValue)) {
                 $columnWidth = max($columnWidth, mb_strlen($columnValue ? 'TRUE' : 'FALSE'));
             }
 
             $columnWidth = max($columnWidth, mb_strlen((string) $columnWidth));
-<<<<<<< HEAD
-=======
-=======
-                $columnWidth = max($columnWidth, strlen($columnValue));
-            } elseif (is_bool($columnValue)) {
-                $columnWidth = max($columnWidth, strlen($columnValue ? 'TRUE' : 'FALSE'));
-            }
-
-            $columnWidth = max($columnWidth, strlen((string) $columnWidth));
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
 
         return $columnWidth;

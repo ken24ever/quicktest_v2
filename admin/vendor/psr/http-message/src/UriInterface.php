@@ -1,13 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-declare(strict_types=1);
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 namespace Psr\Http\Message;
 
 /**
@@ -46,15 +38,7 @@ interface UriInterface
      * @see https://tools.ietf.org/html/rfc3986#section-3.1
      * @return string The URI scheme.
      */
-<<<<<<< HEAD
     public function getScheme(): string;
-=======
-<<<<<<< HEAD
-    public function getScheme(): string;
-=======
-    public function getScheme();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve the authority component of the URI.
@@ -74,15 +58,7 @@ interface UriInterface
      * @see https://tools.ietf.org/html/rfc3986#section-3.2
      * @return string The URI authority, in "[user-info@]host[:port]" format.
      */
-<<<<<<< HEAD
     public function getAuthority(): string;
-=======
-<<<<<<< HEAD
-    public function getAuthority(): string;
-=======
-    public function getAuthority();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve the user information component of the URI.
@@ -99,15 +75,7 @@ interface UriInterface
      *
      * @return string The URI user information, in "username[:password]" format.
      */
-<<<<<<< HEAD
     public function getUserInfo(): string;
-=======
-<<<<<<< HEAD
-    public function getUserInfo(): string;
-=======
-    public function getUserInfo();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve the host component of the URI.
@@ -120,15 +88,7 @@ interface UriInterface
      * @see http://tools.ietf.org/html/rfc3986#section-3.2.2
      * @return string The URI host.
      */
-<<<<<<< HEAD
     public function getHost(): string;
-=======
-<<<<<<< HEAD
-    public function getHost(): string;
-=======
-    public function getHost();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve the port component of the URI.
@@ -145,15 +105,7 @@ interface UriInterface
      *
      * @return null|int The URI port.
      */
-<<<<<<< HEAD
     public function getPort(): ?int;
-=======
-<<<<<<< HEAD
-    public function getPort(): ?int;
-=======
-    public function getPort();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve the path component of the URI.
@@ -180,15 +132,7 @@ interface UriInterface
      * @see https://tools.ietf.org/html/rfc3986#section-3.3
      * @return string The URI path.
      */
-<<<<<<< HEAD
     public function getPath(): string;
-=======
-<<<<<<< HEAD
-    public function getPath(): string;
-=======
-    public function getPath();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve the query string of the URI.
@@ -210,15 +154,7 @@ interface UriInterface
      * @see https://tools.ietf.org/html/rfc3986#section-3.4
      * @return string The URI query string.
      */
-<<<<<<< HEAD
     public function getQuery(): string;
-=======
-<<<<<<< HEAD
-    public function getQuery(): string;
-=======
-    public function getQuery();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve the fragment component of the URI.
@@ -236,15 +172,7 @@ interface UriInterface
      * @see https://tools.ietf.org/html/rfc3986#section-3.5
      * @return string The URI fragment.
      */
-<<<<<<< HEAD
     public function getFragment(): string;
-=======
-<<<<<<< HEAD
-    public function getFragment(): string;
-=======
-    public function getFragment();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified scheme.
@@ -261,15 +189,7 @@ interface UriInterface
      * @return static A new instance with the specified scheme.
      * @throws \InvalidArgumentException for invalid or unsupported schemes.
      */
-<<<<<<< HEAD
     public function withScheme(string $scheme): UriInterface;
-=======
-<<<<<<< HEAD
-    public function withScheme(string $scheme): UriInterface;
-=======
-    public function withScheme(string $scheme);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified user information.
@@ -285,15 +205,7 @@ interface UriInterface
      * @param null|string $password The password associated with $user.
      * @return static A new instance with the specified user information.
      */
-<<<<<<< HEAD
     public function withUserInfo(string $user, ?string $password = null): UriInterface;
-=======
-<<<<<<< HEAD
-    public function withUserInfo(string $user, ?string $password = null): UriInterface;
-=======
-    public function withUserInfo(string $user, ?string $password = null);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified host.
@@ -307,15 +219,7 @@ interface UriInterface
      * @return static A new instance with the specified host.
      * @throws \InvalidArgumentException for invalid hostnames.
      */
-<<<<<<< HEAD
     public function withHost(string $host): UriInterface;
-=======
-<<<<<<< HEAD
-    public function withHost(string $host): UriInterface;
-=======
-    public function withHost(string $host);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified port.
@@ -334,15 +238,7 @@ interface UriInterface
      * @return static A new instance with the specified port.
      * @throws \InvalidArgumentException for invalid ports.
      */
-<<<<<<< HEAD
     public function withPort(?int $port): UriInterface;
-=======
-<<<<<<< HEAD
-    public function withPort(?int $port): UriInterface;
-=======
-    public function withPort(?int $port);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified path.
@@ -366,15 +262,7 @@ interface UriInterface
      * @return static A new instance with the specified path.
      * @throws \InvalidArgumentException for invalid paths.
      */
-<<<<<<< HEAD
     public function withPath(string $path): UriInterface;
-=======
-<<<<<<< HEAD
-    public function withPath(string $path): UriInterface;
-=======
-    public function withPath(string $path);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified query string.
@@ -391,15 +279,7 @@ interface UriInterface
      * @return static A new instance with the specified query string.
      * @throws \InvalidArgumentException for invalid query strings.
      */
-<<<<<<< HEAD
     public function withQuery(string $query): UriInterface;
-=======
-<<<<<<< HEAD
-    public function withQuery(string $query): UriInterface;
-=======
-    public function withQuery(string $query);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified URI fragment.
@@ -415,15 +295,7 @@ interface UriInterface
      * @param string $fragment The fragment to use with the new instance.
      * @return static A new instance with the specified fragment.
      */
-<<<<<<< HEAD
     public function withFragment(string $fragment): UriInterface;
-=======
-<<<<<<< HEAD
-    public function withFragment(string $fragment): UriInterface;
-=======
-    public function withFragment(string $fragment);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return the string representation as a URI reference.
@@ -448,13 +320,5 @@ interface UriInterface
      * @see http://tools.ietf.org/html/rfc3986#section-4.1
      * @return string
      */
-<<<<<<< HEAD
     public function __toString(): string;
-=======
-<<<<<<< HEAD
-    public function __toString(): string;
-=======
-    public function __toString();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }

@@ -751,26 +751,12 @@ class Xls extends BaseWriter
                 $dataSection_Content .= $dataProp['data']['data'];
 
                 $dataSection_Content_Offset += 4 + 4 + strlen($dataProp['data']['data']);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 /* Condition below can never be true
                 } elseif ($dataProp['type']['data'] == 0x40) { // Filetime (64-bit value representing the number of 100-nanosecond intervals since January 1, 1601)
                     $dataSection_Content .= $dataProp['data']['data'];
 
                     $dataSection_Content_Offset += 4 + 8;
                 */
-<<<<<<< HEAD
-=======
-=======
-            // Condition below can never be true
-            //} elseif ($dataProp['type']['data'] == 0x40) { // Filetime (64-bit value representing the number of 100-nanosecond intervals since January 1, 1601)
-            //    $dataSection_Content .= $dataProp['data']['data'];
-
-            //    $dataSection_Content_Offset += 4 + 8;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             } else {
                 $dataSection_Content .= $dataProp['data']['data'];
 

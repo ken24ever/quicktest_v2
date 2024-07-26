@@ -434,10 +434,6 @@ abstract class JpGraphRendererBase implements IRenderer
 
         //    Loop through each data series in turn
         for ($i = 0; $i < $seriesCount; ++$i) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             $plotCategoryByIndex = $this->chart->getPlotArea()->getPlotGroupByIndex($groupID)->getPlotCategoryByIndex($i);
             if ($plotCategoryByIndex === false) {
                 $plotCategoryByIndex = $this->chart->getPlotArea()->getPlotGroupByIndex($groupID)->getPlotCategoryByIndex(0);
@@ -465,17 +461,6 @@ abstract class JpGraphRendererBase implements IRenderer
                 }
             }
             //var_dump($dataValuesY, $dataValuesX, $bubbleSize);
-<<<<<<< HEAD
-=======
-=======
-            $dataValuesY = $this->chart->getPlotArea()->getPlotGroupByIndex($groupID)->getPlotCategoryByIndex($i)->getDataValues();
-            $dataValuesX = $this->chart->getPlotArea()->getPlotGroupByIndex($groupID)->getPlotValuesByIndex($i)->getDataValues();
-
-            foreach ($dataValuesY as $k => $dataValueY) {
-                $dataValuesY[$k] = $k;
-            }
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
             $seriesPlot = new ScatterPlot($dataValuesX, $dataValuesY);
             if ($scatterStyle == 'lineMarker') {
@@ -519,15 +504,7 @@ abstract class JpGraphRendererBase implements IRenderer
 
             $dataValues = [];
             foreach ($dataValuesY as $k => $dataValueY) {
-<<<<<<< HEAD
                 $dataValues[$k] = is_array($dataValueY) ? implode(' ', array_reverse($dataValueY)) : $dataValueY;
-=======
-<<<<<<< HEAD
-                $dataValues[$k] = is_array($dataValueY) ? implode(' ', array_reverse($dataValueY)) : $dataValueY;
-=======
-                $dataValues[$k] = implode(' ', array_reverse($dataValueY));
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             }
             $tmp = array_shift($dataValues);
             $dataValues[] = $tmp;

@@ -1,53 +1,59 @@
-// exams analysis script section
 $(document).ready(function () {
   // Define global variables to store counts
   var inProgressCount = 0;
   var completedCount = 0;
+  var transactionCount = 0;
   var dataSize = 0;
 
   // Set an interval to update the chart every 1000 milliseconds
   setInterval(function () {
     fetchExamData();
+    $('#transactionCount').html('Transaction Count: ' + transactionCount);
     $('#inProgressCount').html('Active Exams: ' + inProgressCount);
-  }, 1000);
+    $('#totalUsers').html('Total Users: ' + dataSize);
+   
+  }, 10000);
 
   // Function to fetch exam data and update the chart
   function fetchExamData() {
-
     $.ajax({
       url: 'fetchExamData.php',
       method: 'GET',
       dataType: 'json',
       success: function (data) {
-        // Log the values used in the calculation
-      
-
         // Check if data is undefined or null
         if (!data) {
           console.error('Error: No data received from the server.');
           return;
         }
 
-        // Update the in-progress count
+        // Update the in-progress count, completed count, and transaction count
         inProgressCount = data.inProgressCount;
-
-        // Uncomment if needed: Update the completed exams count
         completedCount = data.completedCount;
-
-        // Save the data size in a variable
-        dataSize = data.totalUsers; // Move this line here
-
-        // Update the progress bars based on the percentageForIn_progress of active exams and completed exams
+        transactionCount = data.transactionCount;
+        dataSize = data.totalUsers;
+       
+        // Update the progress bars based on the percentage of active exams and completed exams
         var percentageForIn_progress = (inProgressCount / dataSize) * 100;
         var percentageForCompleted = (completedCount / dataSize) * 100;
-   
-        updateProgressBar(percentageForIn_progress);
+               // check if the percentageForIn_progress is NaN
+        if (isNaN(percentageForIn_progress)){
+          percentageForIn_progress = 0;
+        }
+        
+   /*      if (isNaN(percentageForCompleted)){
+          percentageForCompleted = 0;
+        } */
+        updateProgressBar(percentageForIn_progress,inProgressCount );
 
         // Show the percentage tips
         showPercentageTips(percentageForIn_progress);
 
-        // Update the doughnut chart
-        updateDoughnutChart(percentageForIn_progress, percentageForCompleted);
+        // Update the doughnut chart and check for peak level engagement
+        updateDoughnutChart(percentageForIn_progress, percentageForCompleted, transactionCount);
+
+            // Threshold and Peak Level Check
+    checkForPeakLevelEngagement(data.thresholdStatus);
       },
       error: function (xhr, status, error) {
         console.error('Error: ' + error);
@@ -56,12 +62,13 @@ $(document).ready(function () {
   }
 
   // Function to update the doughnut chart based on the in-progress count
-  function updateDoughnutChart(percentageForIn_progress, percentageForCompleted) {
-
-
+  function updateDoughnutChart(percentageForIn_progress, percentageForCompleted, transactionCount) {
+   
     // Round up the values to the nearest whole number
     var roundedIn_progress = Math.ceil(percentageForIn_progress);
     var roundedCompleted = Math.ceil(percentageForCompleted);
+     
+
     // Check if Highcharts is defined
     if (typeof Highcharts !== 'undefined') {
       // Get the doughnut chart container
@@ -74,7 +81,10 @@ $(document).ready(function () {
             type: 'pie',
           },
           title: {
-            text: 'Exam Analysis Breakdown',
+            text: 'Exam Analysis Breakdown <br> <span style="font-size: 12px !important; font-weight: bold; color: #808080;">Info: ' + transactionCount + 'Engagement</span>',
+            style: {
+              color: '#808080', // Grey color for the title
+            },
           },
           plotOptions: {
             pie: {
@@ -91,8 +101,7 @@ $(document).ready(function () {
               name: 'Exams',
               data: [
                 { name: 'In Progress', y: roundedIn_progress, color: '#3498db' },
-                // Uncomment if needed
-                 { name: 'Completed', y: roundedCompleted, color: '#2ecc71' },
+                { name: 'Completed', y: roundedCompleted, color: '#2ecc71' },
               ],
             },
           ],
@@ -102,44 +111,50 @@ $(document).ready(function () {
         var chart = chartContainer.highcharts();
         chart.series[0].setData([
           { name: 'In Progress', y: roundedIn_progress, color: '#3498db' },
-          // Uncomment if needed
-           { name: 'Completed', y: roundedCompleted, color: '#2ecc71' },
+          { name: 'Completed', y: roundedCompleted, color: '#2ecc71' },
         ]);
+        // Update the chart title with adjusted font-size
+chart.setTitle({
+  text: '<h2>Exam Analysis Breakdown</h2> <br> INFO: ' + transactionCount + ' Engagement(s) Within 5 Minutes ',
+  style: {
+    fontSize: '13px', // Adjust the font size as needed
+  },
+});
       }
     } else {
       console.error('Highcharts library is not loaded.');
     }
+
+
   }
 
-// Function to update the progress bar based on the percentage
-function updateProgressBar(percentageForIn_progress) {
-  var elem = $('#myBar');
-  var barColor = getProgressBarColor(percentageForIn_progress);
+  // Function to update the progress bar based on the percentage
+  function updateProgressBar(percentageForIn_progress, inProgressCount) {
+    var elem = $('#myBar');
+   
 
-  elem.stop().animate({ width: percentageForIn_progress + '%' }, 500);
+    var barColor = getProgressBarColor(percentageForIn_progress);
 
-    // Show tooltip if the threshold is exceeded
-    if (percentageForIn_progress > 60) {
+    elem.stop().animate({ width: percentageForIn_progress + '%' }, 500);
+
+    // Show tooltip if the threshold is exceeded and inProgressCount is greater than 250
+    if (percentageForIn_progress > 60 && inProgressCount > 250) {
       $('#tooltip').show();
     } else {
       $('#tooltip').hide();
     }
 
-  // Use .css() to set the background color directly
-  elem.css('background-color', barColor);
+    // Use .css() to set the background color directly
+    elem.css('background-color', barColor);
+  }
 
-}
-
-// Function to get the progress bar color based on the percentage
-function getProgressBarColor(percentageForIn_progress) {
-  // Set the color to red when the percentage exceeds 60%, otherwise use the default color
-  var barColor = percentageForIn_progress > 60 ? 'red' : '#04AA6D'; // Change '#04AA6D' to your desired default color
-  console.log('Bar Color:', barColor);
-  return barColor;
-}
-
-
-
+  // Function to get the progress bar color based on the percentage and the inProgressCount is greater than 250
+  function getProgressBarColor(percentageForIn_progress, inProgressCount) {
+    // Set the color to red when the percentage exceeds 60%, otherwise use the default color
+    var barColor = percentageForIn_progress > 60  && inProgressCount > 250 ? 'red' : '#04AA6D'; // Change '#04AA6D' to your desired default color
+    //console.log('Bar Color:', barColor);
+    return barColor;
+  }
 
   // Function to show percentage tips
   function showPercentageTips(percentageForIn_progress) {
@@ -147,7 +162,32 @@ function getProgressBarColor(percentageForIn_progress) {
     percentageTips.html('(Progress: ' + Math.ceil(percentageForIn_progress) + '%)');
   }
 
+// Function to check for peak level engagement and display a message alert
+function checkForPeakLevelEngagement(thresholdStatus) {
+    // Display a message alert based on the threshold status
+    switch (thresholdStatus) {
+        case 'Normal':
+            // No action needed for normal engagement
+            $('#peakLevel').hide();
+            break;
+        case 'Cautionary':
+            // Cautionary range, may require attention
+            // Implement actions or notifications as needed
+            $('#peakLevel').text('Cautionary Engagement: The engagement is in a cautionary range.').show();
+            break;
+        case 'Critical':
+            // Critical range, potential concerns
+            // Implement actions or alerts, e.g., notify administrators
+            $('#peakLevel').text('Critical Engagement: The engagement is at its peak level.').show();
+            break;
+        default:
+            // Handle unexpected threshold status
+            console.error('Unexpected threshold status: ' + thresholdStatus);
+            break;
+    }
+}
+
+
   // Call the fetchExamData function initially
   fetchExamData();
 });
-// end of exams analysis script

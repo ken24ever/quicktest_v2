@@ -6,16 +6,8 @@ session_start();
   // Retrieve the exam details from the query string
   $examID = $_GET["examID"];
   $userID = $_SESSION['id'] ;
-<<<<<<< HEAD
   $passport = $_SESSION['passport'];
   $src = "admin/".$passport;
-=======
-<<<<<<< HEAD
-  $passport = $_SESSION['passport'];
-  $src = "admin/".$passport;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
   // Retrieve and display the exam details from the database
   $sql = "SELECT title, duration FROM exams WHERE id = '$examID'";
@@ -75,6 +67,43 @@ $startTimeString = $startTime->format('Y/m/d H:i:s');
 
 // Close the statement and database connection
 $stmt->close();
+$conn->close();
+?>
+<?php
+
+// Include your database connection logic here
+// For example, if you are using mysqli, you might have something like this:
+// include 'db_connection.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['id'])) {
+    echo json_encode(['error' => 'User not logged in']);
+    exit();
+}
+
+// Get the user ID from the session
+$user_id = $_SESSION['id'];
+
+// Set up your database connection and perform the query
+// Example using mysqli (replace with your database connection logic)
+include("connection.php");
+
+// Fetch the remaining_time from the users table
+$query = "SELECT remaining_time FROM users WHERE id = $user_id";
+$result = $conn->query($query);
+
+if ($result) {
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $remaining_time = $row['remaining_time']; // The value is already an integer
+       // echo json_encode(['remainingTime' => $remaining_time]);
+    } else {
+        echo ('User found, but remaining_time is NULL');
+    }
+} else {
+    echo ('Query failed: ' . $conn->error);
+}
+
 $conn->close();
 ?>
 
@@ -159,15 +188,7 @@ $conn->close();
     /* radio button styling */
 
     /* CSS */
-<<<<<<< HEAD
 input[type="radio"], input[type="checkbox"] {
-=======
-<<<<<<< HEAD
-input[type="radio"], input[type="checkbox"] {
-=======
-input[type="radio"] {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   /* Increase the size of the radio button */
   width: 20px;
   height: 20px;
@@ -187,15 +208,7 @@ input[type="radio"] {
 }
 
 /* Optional: Style the radio button when checked */
-<<<<<<< HEAD
 input[type="radio"]:checked, input[type="checkbox"]:checked {
-=======
-<<<<<<< HEAD
-input[type="radio"]:checked, input[type="checkbox"]:checked {
-=======
-input[type="radio"]:checked {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   /* Add custom styles for the checked radio button */
   background-color: DodgerBlue;
   border-color: #000000;
@@ -236,7 +249,7 @@ input[type="radio"]:checked {
      <!--  <li class="nav-item active">
           <a class="nav-link" href="#"><strong><span id="timer">00:00:00</span></strong><span class="sr-only">(current)</span></a>
         </li>  -->
-
+ 
         <li class="nav-item active">
           <a class="nav-link" href="#"><strong>Candidate Name:</strong> <?php echo $_SESSION['name']; ?> <span class="sr-only">(current)</span></a>
         </li>
@@ -256,16 +269,12 @@ input[type="radio"]:checked {
           <a class="nav-link" href="#"><button id="submit-exam-button" class="btn btn-primary">Submit Exam</button> <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="dashboard.php"><button  class="btn btn-info">Go Back To Dashboard</button> <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="logout.php"><button id="logout" class="btn btn-danger">Logout </button><span class="sr-only">(current)</span></a>
         </li>
      
       </ul>
     </div>
   </nav>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     
   <!--  -->
   <hr>
@@ -285,15 +294,6 @@ input[type="radio"]:checked {
                           </div>
                           <hr>
 <!--  -->
-<<<<<<< HEAD
-=======
-=======
-
-          <center><h3><p>TIME:<div class="simpleDisplay" style="font-size:38px!important"></div></p></h3></center>
-        
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
   <div class="container-fluid mt-10">
   <div class="row">
     <div class="col-lg-8">
@@ -336,7 +336,7 @@ input[type="radio"]:checked {
 
 <!-- Modal for Question Image -->
 <div class="modal" id="questionImageModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Question Image</h5>
@@ -353,7 +353,7 @@ input[type="radio"]:checked {
 
 <!-- Modal for Option Image -->
 <div class="modal" id="optionImageModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Option Image</h5>
@@ -390,6 +390,11 @@ var selectedOptions = {};
 
 function finalSubmission() {
   // Function to display the modal with exam score and information
+  var display = $('#timer');
+  var chartContainer = $('#chart-container');
+
+      display.text("00:00:00")
+      chartContainer.text("Time out!")
   function showModal(response) {
     // Retrieve the exam score and other information from the response
     var totalScore = response.totalScore;
@@ -401,19 +406,19 @@ function finalSubmission() {
     // You can use a library like Bootstrap Modal or create your own custom modal
 
     // Example using Bootstrap Modal
-    var modalContent = '<div class="modal-dialog">' +
+    var modalContent = '<div class="modal-dialog modal-lg">' +
       '<div class="modal-content">' +
       '<div class="modal-header">' +
-      '<h5 class="modal-title">Exam Score</h5>' +
+      '<h5 class="modal-title">Exam Score</h5>' + 
       '</div>' +
       '<div class="modal-body">' +
-      '<p>Total Score: ' + totalScore + '%</p>' +
-      '<p>Skipped Questions: ' + skippedQuestions + '</p>' +
-      '<p>Incorrect Questions: ' + incorrectQuestions + '</p>' +
-      '<p>Correct Questions: ' + correctQuestions + '</p>' +
+      '<b><p style="font-size:20px !important">Total Score: ' + totalScore + '%</p></b>' +
+      '<b><p style="font-size:20px !important">Skipped Questions: ' + skippedQuestions + '</p></b>' +
+      '<b><p style="font-size:20px !important">Incorrect Questions: ' + incorrectQuestions + '</p></b>' +
+      '<b><p style="font-size:20px !important">Correct Questions: ' + correctQuestions + '</p></b>' +
       '</div>' +
       '<div class="modal-footer">' +
-      '<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>' +
+      '<a class="nav-link" href="logout.php"><button type="button" class="btn btn-danger">Logout</button></a>' +
       '</div>' +
       '</div>' +
       '</div>';
@@ -422,7 +427,7 @@ function finalSubmission() {
     $('body').append('<div id="examScoreModal" class="modal">' + modalContent + '</div>');
 
     // Show the modal
-    $('#examScoreModal').modal('show');
+    $('#examScoreModal').modal('show'); 
   }
 
   // Make an AJAX request to submit the exam
@@ -452,7 +457,36 @@ function finalSubmission() {
       alert('An error occurred. Please try again.');
     }
   });
-}
+//calls fnction to execute users who are submitting exam
+  logScriptExecution() 
+}//end of final submission
+
+
+// Function to log script execution in script_execution_log table
+function logScriptExecution() {
+    // Make an AJAX request to store execution information in script_execution_log
+    $.ajax({
+        url: 'storeScriptExecution.php', // Replace with the actual PHP script to handle the storage
+        method: 'POST',
+        dataType: 'json',
+        data: {
+            // Include relevant information for logging (exam_id, user_id, etc.)
+            exam_id:<?php echo $examID; ?>, // Assuming you have an input with id 'examId' for the exam ID
+            user_id: <?php echo $userID; ?> , // Assuming you have an input with id 'userId' for the user ID
+        },
+        success: function (response) {
+            // Handle success response if needed
+            
+            if (response.status){
+              console.log(response.message);
+            }
+        },
+        error: function (xhr, status, error) {
+            // Handle error response if needed
+            console.error('Error storing script execution information:', error);
+        },
+    });
+}// end of logScriptExecution
 
 function displayPieChart(data) {
   // Extract the data for the pie chart
@@ -531,6 +565,8 @@ function submitExam() {
       } else {
         console.error('An error occurred while storing selected options');
       }
+
+
     },
     error: function(xhr, status, error) {
       console.error('An error occurred. Please try again.');
@@ -538,216 +574,220 @@ function submitExam() {
   });
 }
 
-<<<<<<< HEAD
-function displayQuestions(questions, currentPage, totalPages) {
-=======
-<<<<<<< HEAD
-function displayQuestions(questions, currentPage, totalPages) {
-=======
-/* display questions function */
-function displayQuestions(questions, currentPage) {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-  var questionsContainer = $('#questions-container');
-  questionsContainer.empty(); // Clear the questions container
+var userID = <?php echo $userID; ?>;
+var userUniqueKey = "selectedOptions_" + userID;
 
-  // Display the current page
-  var currentPageElement = $('<p>').addClass('current-page');
-<<<<<<< HEAD
-  currentPageElement.text('QUESTION: ' + currentPage + ' of ' + totalPages);
-=======
-<<<<<<< HEAD
-  currentPageElement.text('QUESTION: ' + currentPage + ' of ' + totalPages);
-=======
-  currentPageElement.text('QUESTION: ' + currentPage);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-  questionsContainer.append(currentPageElement);
+// Add this block of code at the beginning of your script
+var selectedOptions = JSON.parse(localStorage.getItem(userUniqueKey)) || {};
+var currentPage = 0; // Current page index
+var questions = []; // Array to store questions
 
-  // Retrieve the selected options from the server
-  $.ajax({
-<<<<<<< HEAD
-    url: 'retrieve_selected_options.php', 
-    method: 'POST',
-    dataType: 'json',
-    success: function(data) {
-=======
-    url: 'retrieve_selected_options.php',
-    method: 'POST',
-    dataType: 'json',
-    success: function(data) {
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-      // Function to get option label by index (0 = A, 1 = B, 2 = C, etc.)
-      function getOptionLabel(index) {
-        return String.fromCharCode(65 + index); // ASCII code for 'A' is 65
-      }
+// Placeholder for getOptionLabel function
+function getOptionLabel(index) {
+  return String.fromCharCode(65 + index); // ASCII code for 'A' is 65
+}
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-      // Iterate over the questions and create the HTML elements
-      for (var i = 0; i < questions.length; i++) {
-        var question = questions[i];
-        var questionNumber = i + 1;
-<<<<<<< HEAD
-        var correctAnswerSize = question.answer.length;
-=======
-<<<<<<< HEAD
-        var correctAnswerSize = question.answer.length;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+// Add a new function for retrieving selected options
+function retrieveSelectedOptions(questions, callback) {
+  // Get the current active user ID 
+  var userId = <?php echo $userID; ?>
 
-        // Create the question container
-        var questionContainer = $('<div>').addClass('question-container mb-4 font-weight-bold text-lg');
-
-        // Create the question text
-        var questionText = $('<p>').addClass('question-text');
-        questionText.text(question.question);
-
-        // Create the options container
-        var optionsContainer = $('<div>').addClass('options-container');
-
-        // Check if there's an image question
-        if (question.image_ques) {
-          // Create the image element for the question
-          var questionImage = $('<img>').addClass('question-image view-question-image-btn');
-          questionImage.attr('src', 'admin/' + question.image_ques);
-          questionImage.attr('width', 100 + 'px');
-          questionImage.attr('height', 100 + 'px');
-          questionContainer.append(questionImage);
-        }
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-        // Iterate over the options and create the appropriate input elements
-        for (var j = 0; j < question.options.length; j++) {
-          var option = question.options[j];
-          var inputType = 'radio'; // Default to radio buttons
-
-          // Change to checkboxes if the correctAnswerSize is greater than one
-          if (correctAnswerSize > 1) {
-            inputType = 'checkbox';
-          }
-
-          // Create the input element (radio or checkbox)
-          var inputElement = $('<br><input><span style="padding:2px !important"></span>').addClass('option-input').attr({
-            type: inputType,
-<<<<<<< HEAD
-=======
-=======
-        // Iterate over the options and create the radio buttons
-        for (var j = 0; j < question.options.length; j++) {
-          var option = question.options[j];
-
-          // Create the radio button
-          var radioButton = $('<br><input><span style="padding:2px !important"></span>').attr({
-            type: 'radio',
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-            name: 'question' + questionNumber,
-            value: option.option_id
+  // Check if the user ID is available
+  if (userId) {
+    $.ajax({
+      url: 'retrieve_selected_options.php',
+      method: 'POST',
+      data: { userId: userId },
+      dataType: 'json',
+      success: function (data) {
+        if (Array.isArray(data)) {
+          // Process the data and map it to the structure expected by displayQuestion
+          var selectedOptions = {};
+          data.forEach(function (item) {
+            selectedOptions[item.question_id] = [item.selected_option];
+            selectedOptions[item.user_exam_id] = [item.selected_option];
           });
+          callback(selectedOptions);
+        } else if (typeof data === 'object') {
+          // If data is an object, handle it accordingly
+          callback(data);
+        } else {
+          // Handle other cases or log an error
+          console.error('Invalid data format in retrieveSelectedOptions');
+          callback({});
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error('Error retrieving selected options: ' + error);
+        callback({});
+      }
+    });
+  } else {
+    console.error('User ID not available.'); 
+    callback({});
+  }
+}
 
-          // Set the data-question-id attribute to capture the question ID
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-          inputElement.attr('data-question-id', question.id);
 
-          // Create the label for the input element with the option label (A, B, C, D, ...)
-          var label = $('<label>').text('('+ getOptionLabel(j) + ')' + '. ' + option.option_text);
-<<<<<<< HEAD
-=======
-=======
-          radioButton.attr('data-question-id', question.id);
 
-          // Create the label for the radio button
-          var label = $('<label>').text(option.option_text);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+// Modify loadQuestions Function
+function loadQuestions(page) {
+  // First, retrieve questions
+  $.ajax({
+    url: 'get_questions.php',
+    type: 'GET',
+    data: {
+      examID: <?php echo $examID; ?>,
+      page: page
+    },
+    dataType: 'json',
+    success: function (response) {
+      if (response.status === 'success') {
+        questions = response.questions;
 
-          // Check if there's an image option
-          if (option.option_image_path) {
-            // Create the image element for the option
-            var optionImage = $('<br><img>').addClass('option-image view-option-image-btn');
-            optionImage.attr('src', 'admin/' + option.option_image_path);
-            optionImage.attr('width', 100 + 'px');
-            optionImage.attr('height', 100 + 'px');
-            optionsContainer.append(optionImage);
-          }
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-          // Append the input element and label to the options container
-          optionsContainer.append(inputElement);
-          optionsContainer.append(label);
-
-          // Check if the option is selected in the retrieved data
-          if (data[question.id] && data[question.id].includes(option.option_id)) {
-            inputElement.prop('checked', true);
-<<<<<<< HEAD
-=======
-=======
-          // Append the radio button and label to the options container
-          optionsContainer.append(radioButton);
-          optionsContainer.append(label);
-
-          // Set the selected option if it exists in the retrieved data
-          var selectedOption = data[question.id];
-          if (selectedOption && selectedOption === option.option_id) {
-            radioButton.prop('checked', true);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-          }
+                 // Display the completion message if available
+    if (questions.message) {
+          displayCompletionMessage(questions.message);
+          return;
         }
 
-        // Append the question text and options container to the question container
-        questionContainer.append(questionText);
-        questionContainer.append(optionsContainer);
+        // Display the current question with selected options
+        displayQuestion(questions[currentPage], selectedOptions);
 
-        // Append the question container to the questions container
-        questionsContainer.append(questionContainer);
+        // Update the pagination buttons
+        updatePagination(page);
+
+        // Then, retrieve selected options for the current set of questions
+        retrieveSelectedOptions(questions, function(selectedOptions) {
+          // Do any additional processing if needed
+        });
+      } else {
+        // Display an error message
+        alert('Failed to retrieve questions.');
       }
     },
-    error: function(xhr, status, error) {
-      // Handle the error case
-      console.error('Error: ' + error);
+    error: function () {
+      alert('An error occurred while retrieving questions.');
     }
-  });
-
-  // Handle the click event for the "View Question Image" button using event delegation
-  $('#questions-container').on('click', '.view-question-image-btn', function() {
-    var imagePath = $(this).attr('src');
-    $('#questionImage').attr('src', imagePath);
-    $('#questionImageModal').modal('show');
-  });
-
-  // Handle the click event for the "View Option Image" button using event delegation
-  $('#questions-container').on('click', '.view-option-image-btn', function() {
-    var imagePath = $(this).attr('src');
-    $('#optionImage').attr('src', imagePath);
-    $('#optionImageModal').modal('show');
   });
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+// Function to display the completion message
+function displayCompletionMessage(message) {
+  var questionsContainer = $('#questions-container');
+  var completionMessage = $('<p>').addClass('completion-message');
+  completionMessage.html('<strong style="color:red; font-size:18px">' + message + '</strong>');
+  questionsContainer.empty().append(completionMessage);
+  // Optionally, you can disable the next/previous buttons here
+  $('#pagination-container button').prop('disabled', true);
+}
+
+
+function displayQuestion(question, selectedOptions) {
+
+// Decrypt or deobfuscate the answer
+var decryptedAnswer = atob(question.answer);
+
+// console.log('Question:', question);
+//console.log('Options Length:', decryptedAnswer.length);
+
+var questionsContainer = $('#questions-container');
+questionsContainer.empty(); // Clear the questions container
+
+// Display the current page
+var currentPageElement = $('<p>').addClass('current-page');
+currentPageElement.text('QUESTION: ' + (currentPage + 1) + ' of ' + questions.length);
+questionsContainer.append(currentPageElement);
+
+// Create the question container
+var questionContainer = $('<div>').addClass('question-container mb-4 font-weight-bold text-lg');
+var questionText = $('<h3>').addClass('question-text');
+questionText.text(question.question);
+
+// Check if there's an image question
+if (question.image_ques) {
+  // Create the image element for the question
+  var questionImage = $('<img>').addClass('question-image view-question-image-btn');
+  questionImage.attr('src', 'admin/' + question.image_ques);
+  questionImage.attr('width', 100 + 'px');
+  questionImage.attr('height', 100 + 'px');
+  questionContainer.append(questionImage);
+}
+
+
+
+// Create the options container
+var optionsContainer = $('<div>').addClass('options-container');
+
+// Iterate over the options and create the appropriate input elements
+for (var j = 0; j < question.options.length; j++) {
+  var option = question.options[j];
+
+    // Determine the input type based on the number of options
+var inputType = decryptedAnswer.length > 1 ? 'checkbox' : 'radio';
+//console.log('Input Type:', inputType);
+
+  // Create the input element (radio or checkbox) based on the determined input type
+  var inputElement = $('<br><input>').addClass('option-input').attr({
+    type: inputType,
+    name: 'question',
+    value: option.option_id
+  });
+
+  // Set the data-question-id attribute to capture the question ID
+  inputElement.attr('data-question-id', question.id);
+
+  // Create the label for the input element with the option label (A, B, C, D, ...)
+  var label = $('<label>').text('(' + getOptionLabel(j) + ') ' + option.option_text);
+
+  // Check if there's an image option
+  if (option.option_image_path) {
+    // Create the image element for the option
+    var optionImage = $('<img>').addClass('option-image view-option-image-btn');
+    optionImage.attr('src', 'admin/' + option.option_image_path);
+    optionImage.attr('width', 100 + 'px');
+    optionImage.attr('height', 100 + 'px');
+    optionsContainer.append(optionImage);
+  }
+
+  // Append the input element and label to the options container
+  optionsContainer.append(inputElement);
+  optionsContainer.append(label);
+
+  // Check if the option is selected in the retrieved data
+  if (selectedOptions[question.id] && selectedOptions[question.id].includes(option.option_id)) {
+    inputElement.prop('checked', true);
+  }
+}
+
+// Append the question text and options container to the question container
+questionContainer.append(questionText);
+questionContainer.append(optionsContainer);
+
+// Append the question container to the questions container
+questionsContainer.append(questionContainer); 
+
+// Handle the click event for the "View Question Image" button using event delegation
+$('#questions-container').on('click', '.view-question-image-btn', function () {
+  var imagePath = $(this).attr('src');
+  $('#questionImage').attr('src', imagePath);
+  $('#questionImageModal').modal('show');
+});
+
+// Handle the click event for the "View Option Image" button using event delegation
+$('#questions-container').on('click', '.view-option-image-btn', function () {
+  var imagePath = $(this).attr('src');
+  $('#optionImage').attr('src', imagePath);
+  $('#optionImageModal').modal('show');
+});
 
 // Add event listener to input elements to handle option selection
 $(document).on('change', 'input.option-input', handleOptionSelection);
+}
 
 
+
+// Modify handleOptionSelection Function
 function handleOptionSelection() {
   var questionId = $(this).attr('data-question-id');
   var selectedOption = $(this).val();
@@ -765,294 +805,244 @@ function handleOptionSelection() {
     // For checkboxes, we need to gather all selected options and store them in an array
     var selectedOptionsArray = [];
 
-    $('input.option-input[data-question-id="' + questionId + '"]:checked').each(function() {
+    $('input.option-input[data-question-id="' + questionId + '"]:checked').each(function() { 
       selectedOptionsArray.push($(this).val());
     });
 
     selectedOptions[questionId] = selectedOptionsArray;
   }
 
+  localStorage.setItem(userUniqueKey, JSON.stringify(selectedOptions));
+
   // Call the submitExam function here to save the updated selectedOptions
   submitExam();
 }
 
-
-
-<<<<<<< HEAD
-
-
-// Function to load and display the exam questions
-function loadQuestions(page) {
-  $.ajax({
-    url: 'get_questions.php',  
-=======
-=======
-    // Function to handle radio button selection
-    $(document).on('change', 'input[type="radio"]', function() {
-  var questionId = $(this).attr('data-question-id');
-  var selectedOption = $(this).val();
-
-  // Update the selectedOptions object
-  selectedOptions[questionId] = selectedOption;
-
- submitExam(); // Call the submitExam function here
-});
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
-
-
- // Function to load and display the exam questions
-function loadQuestions(page) {
-  $.ajax({
-<<<<<<< HEAD
-    url: 'get_questions.php',  
-=======
-    url: 'get_questions.php', 
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-    type: 'GET',
-    data: {
-      examID: <?php echo $examID; ?>,
-      page: page
-    },
-    dataType: 'json',
-    success: function(response) {
-<<<<<<< HEAD
-=======
-       // console.log(response)
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-      if (response.status === 'success') {
-        var questions = response.questions;
-        var currentPage = page; // Use the provided page parameter
-        var totalPages = response.totalPages;
-
-        // Update the pagination buttons
-        updatePagination(currentPage, totalPages);
-
-<<<<<<< HEAD
-        // Display the questions and total pages
-        displayQuestions(questions, currentPage, totalPages);
-
-        // Update the pagination buttons again (to handle the case when there are no questions on the last page)
-        // updatePagination(currentPage, totalPages);
-
-        // Display the completion message if available
-        if (questions.message) {
-          displayCompletionMessage(questions.message);
-        }
-=======
-<<<<<<< HEAD
-          // Display the questions and total pages
-          displayQuestions(questions, currentPage, totalPages);
-=======
-        // Display the questions
-        displayQuestions(questions, currentPage);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
-
-        // Update the pagination buttons again (to handle the case when there are no questions on the last page)
-       // updatePagination(currentPage, totalPages);
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-      } else {
-        alert('Failed to retrieve questions.');
-      }
-    },
-    error: function() {
-      alert('An error occurred while retrieving questions.');
-    }
-  });
+// Function to clear stored selected options in local storage
+function clearSelectedOptions() {
+  // Remove the key's details
+  localStorage.removeItem(userUniqueKey);
 }
 
-<<<<<<< HEAD
-// Function to display the completion message
-function displayCompletionMessage(message) {
-  var questionsContainer = $('#questions-container');
-  var completionMessage = $('<p>').addClass('completion-message');
-  completionMessage.html('<strong style="color:red; font-size:18px">' + message + '</strong>');
-  questionsContainer.empty().append(completionMessage);
-}
+// On clicking the logout buttons, remove and clear key's record in local storage
+//$(document).on('click', '#logout', clearSelectedOptions);
 
-
-
-
-=======
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-// Function to update the pagination buttons
-function updatePagination(currentPage, totalPages) {
+// Modify updatePagination Function
+function updatePagination(page) {
   var paginationContainer = $('#pagination-container');
   paginationContainer.empty(); // Clear the pagination container
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-  // Create the pagination text (e.g., "1 of 50")
-  var paginationText = $('<p>').addClass('pagination-text');
-  paginationText.text('QUESTION: ' + currentPage + ' of ' + totalPages);
-  paginationContainer.append(paginationText);
+  // Check if questions array is defined
+  if (questions && questions.length > 0) {
+    // Create the pagination text (e.g., "1 of 10")
+    var paginationText = $('<p>').addClass('pagination-text');
+    paginationText.text('QUESTION: ' + (page + 1) + ' of ' + questions.length);
+    paginationContainer.append(paginationText);
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-  // Create the previous button
-  var previousButton = $('<button>').addClass('btn btn-primary mr-2');
-  previousButton.text('Previous');
-  if (currentPage === 1) {
-    previousButton.prop('disabled', true);
-  } else {
-    previousButton.click(function() {
-      loadQuestions(currentPage - 1);
-    });
+    // Create the previous button
+    var previousButton = $('<button>').addClass('btn btn-primary mr-2');
+    previousButton.text('Previous');
+    if (page === 0) {
+      previousButton.prop('disabled', true);
+    } else {
+      previousButton.click(function () {
+        currentPage--;
+        displayQuestion(questions[currentPage], selectedOptions);
+        updatePagination(currentPage);
+      });
+    }
+
+    // Create the next button
+    var nextButton = $('<button>').addClass('btn btn-primary');
+    nextButton.text('Next');
+    if (page === questions.length - 1) {
+      nextButton.prop('disabled', true);
+    } else {
+      nextButton.click(function () {
+        currentPage++;
+        displayQuestion(questions[currentPage], selectedOptions);
+        updatePagination(currentPage);
+      });
+    }
+
+    // Append the buttons to the pagination container
+    paginationContainer.append(previousButton);
+    paginationContainer.append(nextButton);
   }
-
-  // Create the next button
-  var nextButton = $('<button>').addClass('btn btn-primary');
-  nextButton.text('Next');
-  if (currentPage === totalPages) {
-    nextButton.prop('disabled', true);
-  } else {
-    nextButton.click(function() {
-      loadQuestions(currentPage + 1);
-    });
-  }
-
-  // Append the buttons to the pagination container
-  paginationContainer.append(previousButton);
-  paginationContainer.append(nextButton);
 }
 
+// Load and display the exam questions
+loadQuestions(currentPage);
 
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-  // Load and display the exam questions
-  loadQuestions(1);
- 
-// Function to start the timer
-function startTimer(startTime, duration, display) {
-  var startTimestamp = Math.floor(Date.parse(startTime) / 1000); // Convert start time to timestamp
-  var endTimestamp = startTimestamp + duration; // Calculate end timestamp
 
-  var chartOptions = {
-    chart: {
-      type: 'pie',
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false
-    },
-    title: {
-      text: 'Time Remaining'
-    },
-    tooltip: {
-    pointFormat: '{series.name}: <b>{point.y}</b>',
-    style: {
-          fontSize: '34px' // Adjust the font size as desired
+
+// Function to initialize exam timer
+function initializeExamTimer() {
+    // Check if the exam has started
+    $.ajax({
+        url: 'getRemainingTime.php',
+        method: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            if (response.remainingTime === null) {
+                // Exam not started, initialize timer to 10 minutes
+                var durationInSeconds = <?php echo $duration * 60; ?>;
+                startExamTimer(durationInSeconds);
+            } else {
+                // Exam already started, load remaining time
+                startExamTimer(response.remainingTime);
+            }
+        },
+        error: function (error) {
+            console.error('Error checking exam status:', error);
         }
-  },
-  plotOptions: {
-  pie: {
-    allowPointSelect: true,
-    cursor: 'pointer',
-    dataLabels: {
-      enabled: true,
-      format: '<b>{point.name}</b>: {point.y}'
-    },
-    innerSize: '70%',
-   
-    
-  }
-},
-    series: [{
-      name: 'Time',
-      colorByPoint: true,
-      data: [{
-        name: 'Hours',
-        y: 0
-      }, {
-        name: 'Minutes',
-        y: 0
-      }, {
-        name: 'Seconds',
-        y: 0
-      }]
-    }]
-  };
-
-  var chart = Highcharts.chart('chart-container', chartOptions); // Create the doughnut chart
-
-  var interval = setInterval(function() {
-    var currentTimestamp = Math.floor(Date.now() / 1000); // Get current timestamp
-    var remainingTime = endTimestamp - currentTimestamp; // Calculate remaining time in seconds
-
-    if (remainingTime < 0) {
-      clearInterval(interval);
-      // Automatically submit the exam when the timer reaches 0
-      finalSubmission();
-      display.text("00:00:00"); // Set the timer display to 00:00:00
-      $(".simpleDisplay").text("00:00:00");
-      return;
-    }
-
-    var hours = Math.floor(remainingTime / 3600);
-    var minutes = Math.floor((remainingTime % 3600) / 60);
-    var seconds = remainingTime % 60;
-
-    // Update the doughnut chart data
-    chart.series[0].setData([{
-      name: 'Hours',
-      y: hours
-    }, {
-      name: 'Minutes',
-      y: minutes
-    }, {
-      name: 'Seconds',
-      y: seconds
-    }]);
-
-    // Add leading zeros if necessary
-    hours = hours < 10 ? "0" + hours : hours;
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    // Update the timer display
-    display.text(hours + ":" + minutes + ":" + seconds);
-    $(".simpleDisplay").text(hours + ":" + minutes + ":" + seconds);
-
-  // Check if remaining time is less than 3 minutes (180 seconds)
-  if (remainingTime <= 180) {
-      // Toggle the blinking effect by adding/removing the 'blink-red' class
-      $(".simpleDisplay").toggleClass("blink-red");
-
-      //alert("Time is less than 3 minutes!")
-    }
-
-
-
-  }, 1000);
+    });
 }
 
-// Start the timer
-var startTimeString = '<?php echo $startTimeString ; ?>';
-var durationInSeconds = <?php echo $duration * 60; ?>;
-var display = $('#timer');
-startTimer(startTimeString, durationInSeconds, display);
+// Function to start and update the timer with the specified chart options
+function startExamTimer(initialTime) {
+    var remainingTime = initialTime ; // Convert to seconds
+    var chartContainer = $('#chart-container');
+    var display = $('#timer');
+    var  alertShown = false;
+    // Use the provided chart options
+    var chartOptions = {
+        chart: {
+            type: 'pie',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Time Remaining'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b>',
+            style: {
+                fontSize: '34px' // Adjust the font size as desired
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y}'
+                },
+                innerSize: '70%',
+            }
+        },
+        series: [{
+            name: 'Time',
+            colorByPoint: true,
+            data: [{
+                name: 'Hours',
+                y: 0
+            }, {
+                name: 'Minutes',
+                y: 0
+            }, {
+                name: 'Seconds',
+                y: 0
+            }]
+        }]
+    };
 
-  // Handle the submit exam button click event
+    // Create the doughnut chart
+    var chart = Highcharts.chart('chart-container', chartOptions); // Create the doughnut chart
+
+    // Update remaining time every second
+    var timerInterval = setInterval(function () {
+        // Update Highcharts data
+        var chartData = [{
+            name: 'Hours',
+            y: Math.floor(remainingTime / 3600)
+        }, {
+            name: 'Minutes',
+            y: Math.floor((remainingTime % 3600) / 60)
+        }, {
+            name: 'Seconds',
+            y: remainingTime % 60
+        }];
+
+        chart.series[0].setData(chartData);
+
+        // Update remaining time on the server
+        $.ajax({
+            url: 'updateRemainingTime.php',
+            method: 'POST',
+            data: { remaining_time: remainingTime },
+            dataType: 'json',
+            success: function (response) {
+                //console.log(response);
+            },
+            error: function (error) {
+                console.error('Error updating remaining time:', error);
+            }
+        });
+
+     
+
+        var hours = Math.floor(remainingTime / 3600);
+        var minutes = Math.floor((remainingTime % 3600) / 60);
+        var seconds = remainingTime % 60;
+
+        chart.series[0].setData([
+            { name: 'Hours', y: hours },
+            { name: 'Minutes', y: minutes },
+            { name: 'Seconds', y: seconds }
+        ]);
+
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        display.text(hours + ':' + minutes + ':' + seconds);
+
+        $(".simpleDisplay").text(hours + ':' + minutes + ':' + seconds);
+
+  // Check if remaining time is less than 300 seconds and the alert hasn't been shown
+  if (remainingTime <= 300 && !alertShown) {
+        $(".simpleDisplay").toggleClass("blink-red");
+        alertShown = true; // Set the flag to true so that the alert won't show again
+        // Uncomment the lines below if you want to use SweetAlert instead of the browser's alert
+        Swal.fire({
+          title: "Time Alert",
+          text: "Less than 5 minutes remaining!",
+          icon: "warning",
+          button: "OK",
+        });
+        
+      }
+
+           // Check if time has run out
+           if (remainingTime <= 0) {
+          clearInterval(timerInterval);
+            finalSubmission();
+            display.text('00:00:00');
+            $(".simpleDisplay").text('00:00:00');
+        } else {
+            remainingTime--;
+        }
+
+    }, 1000);
+}
+
+
+// Call the function to initialize exam timer
+initializeExamTimer();
+
+
+  // Handle the final submit exam button click event
   $('#submit-exam-button').click(function(e) {
     e.preventDefault(); // Prevent the default form submission
 
     // Confirm before submitting the exam
     Swal.fire({
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                    title: 'Are You Sure You Want To Submit Exam?',
                    html: '<img src="img/quickTest.png"  height="50" width="50">',
                    icon: 'question',
@@ -1065,26 +1055,9 @@ startTimer(startTimeString, durationInSeconds, display);
                        if (result.isConfirmed)
                           {
                                  finalSubmission();
+                                 //clearSelectedOptions()
                            }
                        });//end of thenables
-<<<<<<< HEAD
-=======
-=======
-        title: 'Are You Sure You Want To Submit Exam?',
-        html: '<img src="img/quickTest.png"  height="50" width="50">',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: 'darkGreen',
-        cancelButtonColor: 'darkRed',
-        confirmButtonText: 'Yes, Submit!',
-        showLoaderOnConfirm: true,
-    }).then((result) => {
-        if (result.isConfirmed) {
-            finalSubmission();
-        }
-    });//end of thenables
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 });//end of click event
 
 

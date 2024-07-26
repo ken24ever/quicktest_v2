@@ -2,14 +2,7 @@
 
 namespace PhpOffice\PhpSpreadsheet\Reader\Xml;
 
-<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Style\Protection;
-=======
-<<<<<<< HEAD
-use PhpOffice\PhpSpreadsheet\Style\Protection;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 use SimpleXMLElement;
 
 class Style
@@ -38,15 +31,7 @@ class Style
             $styleID = (string) $style_ss['ID'];
             $this->styles[$styleID] = $this->styles['Default'] ?? [];
 
-<<<<<<< HEAD
             $alignment = $border = $font = $fill = $numberFormat = $protection = [];
-=======
-<<<<<<< HEAD
-            $alignment = $border = $font = $fill = $numberFormat = $protection = [];
-=======
-            $alignment = $border = $font = $fill = $numberFormat = [];
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
             foreach ($style as $styleType => $styleDatax) {
                 $styleData = self::getSxml($styleDatax);
@@ -81,10 +66,6 @@ class Style
                         }
 
                         break;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     case 'Protection':
                         $locked = $hidden = null;
                         $styleAttributesP = $styleData->attributes($namespaces['x']);
@@ -109,15 +90,6 @@ class Style
             }
 
             $this->styles[$styleID] = array_merge($alignment, $border, $font, $fill, $numberFormat, $protection);
-<<<<<<< HEAD
-=======
-=======
-                }
-            }
-
-            $this->styles[$styleID] = array_merge($alignment, $border, $font, $fill, $numberFormat);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
 
         return $this->styles;

@@ -1,17 +1,8 @@
 <?php
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 session_start();
 $fullNames = $_SESSION['user_name'];
-$userID = $_SESSION['user_id']; 
+$userID = $_SESSION['user_id'];
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 header('Content-Type: application/json');
 
 // Check if the exam ID is set
@@ -19,43 +10,28 @@ if (isset($_POST['examId'])) {
     // Get the exam ID from the POST data
     $examId = $_POST['examId'];
     
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-    //get exam title
-    $exam_Title = $_POST['exam_Title'];
-
     // Get database connection
     include("../connection.php");
 
     $action = 'Exam Details Deleted'; 
-    $description = 'Logged in admin user: (' . $fullNames . ') deleted details of exam with title: "' . $exam_Title . '"';
+    $description = 'Logged in admin user: (' . $fullNames . ') deleted details of exam with ID: "' . $examId . '"';
 
-        // Prepare the SQL statement to insert the record into the audit_tray table
-  $sqlDel = "INSERT INTO audit_tray (user_name, user_id, description, action) VALUES (?,?,?,?)";
-  $stmtsqlDel = $conn->prepare($sqlDel);
-  $stmtsqlDel->bind_param("siss", $fullNames, $userID, $description, $action);
+    // Prepare the SQL statement to insert the record into the audit_tray table
+    $sqlDel = "INSERT INTO audit_tray (user_name, user_id, description, action) VALUES (?,?,?,?)";
+    $stmtsqlDel = $conn->prepare($sqlDel);
+    $stmtsqlDel->bind_param("siss", $fullNames, $userID, $description, $action);
 
-  // Execute the query and check if it was successful
-  if ($stmtsqlDel->execute()) {
-      // Send success response (You can choose to send a response if needed)
-       //echo json_encode(['success' => true, 'message' => 'Record added to audit_tray']);
-  } else {
-      // Send error response if the query failed
-      //echo json_encode(['success' => false, 'message' => 'Failed to add record to audit_tray']);
-      // You may log the error for debugging purposes
-     // error_log("Failed to add record to audit_tray: " . $stmt->error);
-  }
+    // Execute the query and check if it was successful
+    if ($stmtsqlDel->execute()) {
+        // Send success response (You can choose to send a response if needed)
+        //echo json_encode(['success' => true, 'message' => 'Record added to audit_tray']);
+    } else {
+        // Send error response if the query failed
+        //echo json_encode(['success' => false, 'message' => 'Failed to add record to audit_tray']);
+        // You may log the error for debugging purposes
+        // error_log("Failed to add record to audit_tray: " . $stmt->error);
+    }
 
-<<<<<<< HEAD
-=======
-=======
-    // Get database connection
-    include("../connection.php");
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     // Prepare the SQL statement to retrieve all the questions associated with the exam
     $stmt = $conn->prepare("SELECT exam_id, image_ques, option_a_image_path, option_b_image_path, option_c_image_path, option_d_image_path, option_e_image_path FROM questions WHERE exam_id = ?");
     
@@ -63,15 +39,7 @@ if (isset($_POST['examId'])) {
     $stmt->bind_param("i", $examId);
     
     // Execute the statement
-<<<<<<< HEAD
     $stmt->execute(); 
-=======
-<<<<<<< HEAD
-    $stmt->execute(); 
-=======
-    $stmt->execute();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     
     // Bind the results to variables
     $stmt->bind_result($id, $image, $option1, $option2, $option3, $option4, $option5);
@@ -80,8 +48,7 @@ if (isset($_POST['examId'])) {
     $imagePaths = array();
 
     // Loop through the results and add the image paths to the array
-    while ($stmt->fetch())
-     {
+    while ($stmt->fetch()) {
         if (!empty($image)) {
             $imagePaths[] = $image;
         }
@@ -145,7 +112,7 @@ if (isset($_POST['examId'])) {
     // Check if the deletion was successful
     if ($numRowsDeleted > 0) {
         // If the deletion was successful, return a success JSON response
-        $response = array('status' => 'success', 'message' => 'Exam ID with '.$examId.' deleted  successfully.');
+        $response = array('status' => 'success', 'message' => 'Exam ID with ' . $examId . ' deleted successfully.');
         echo json_encode($response);
     } else {
         // If the deletion failed, return an error JSON response
@@ -153,4 +120,7 @@ if (isset($_POST['examId'])) {
         echo json_encode($response);
     }
 
+    // Close the database connection
+    $conn->close();
 }
+?>

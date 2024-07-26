@@ -14,37 +14,17 @@ version.
 
 ## Overview
 
-<<<<<<< HEAD
 A fast and simple streaming zip file downloader for PHP. Using this library will
 save you from having to write the Zip to disk. You can directly send it to the
 user, which is much faster. It can work with S3 buckets or any PSR7 Stream.
-=======
-<<<<<<< HEAD
-A fast and simple streaming zip file downloader for PHP. Using this library will
-save you from having to write the Zip to disk. You can directly send it to the
-user, which is much faster. It can work with S3 buckets or any PSR7 Stream.
-=======
-A fast and simple streaming zip file downloader for PHP. Using this library will save you from having to write the Zip to disk. You can directly send it to the user, which is much faster. It can work with S3 buckets or any PSR7 Stream.
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 Please see the [LICENSE](LICENSE) file for licensing and warranty information.
 
 ## Installation
 
-<<<<<<< HEAD
 Simply add a dependency on maennchen/zipstream-php to your project's
 `composer.json` file if you use Composer to manage the dependencies of your
 project. Use following command to add the package to your project's dependencies:
-=======
-<<<<<<< HEAD
-Simply add a dependency on maennchen/zipstream-php to your project's
-`composer.json` file if you use Composer to manage the dependencies of your
-project. Use following command to add the package to your project's dependencies:
-=======
-Simply add a dependency on maennchen/zipstream-php to your project's composer.json file if you use Composer to manage the dependencies of your project. Use following command to add the package to your project's dependencies:
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 ```bash
 composer require maennchen/zipstream-php
@@ -53,26 +33,12 @@ composer require maennchen/zipstream-php
 ## Usage
 
 For detailed instructions, please check the
-<<<<<<< HEAD
 [Documentation](https://maennchen.github.io/ZipStream-PHP/).
-=======
-<<<<<<< HEAD
-[Documentation](https://maennchen.github.io/ZipStream-PHP/).
-=======
-[Documentation](https://maennchen.dev/ZipStream-PHP/).
-
-Here's a simple example:
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 ```php
 // Autoload the dependencies
 require 'vendor/autoload.php';
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 // create a new zipstream object
 $zip = new ZipStream\ZipStream(
     outputName: 'example.zip',
@@ -92,32 +58,11 @@ $zip->addFileFromPath(
     fileName: 'some_image.jpg',
     path: 'path/to/image.jpg',
 );
-<<<<<<< HEAD
-=======
-=======
-// enable output of HTTP headers
-$options = new ZipStream\Option\Archive();
-$options->setSendHttpHeaders(true);
-
-// create a new zipstream object
-$zip = new ZipStream\ZipStream('example.zip', $options);
-
-// create a file named 'hello.txt'
-$zip->addFile('hello.txt', 'This is the contents of hello.txt');
-
-// add a file named 'some_image.jpg' from a local file 'path/to/image.jpg'
-$zip->addFileFromPath('some_image.jpg', 'path/to/image.jpg');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 // finish the zip stream
 $zip->finish();
 ```
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 ## Upgrade to version 3.0.0
 
 ### General
@@ -171,35 +116,12 @@ https://github.com/maennchen/ZipStream-PHP/tree/2.0.0#upgrade-to-version-200
 ## Upgrade to version 1.0.0
 
 https://github.com/maennchen/ZipStream-PHP/tree/2.0.0#upgrade-to-version-100
-<<<<<<< HEAD
-=======
-=======
-## Upgrade to version 2.0.0
-
-- Only the self opened streams will be closed (#139)
-  If you were relying on ZipStream to close streams that the library didn't open,
-  you'll need to close them yourself now.
-
-## Upgrade to version 1.0.0
-
-- All options parameters to all function have been moved from an `array` to structured option objects. See [the wiki](https://github.com/maennchen/ZipStream-PHP/wiki/Available-options) for examples.
-- The whole library has been refactored. The minimal PHP requirement has been raised to PHP 7.1.
-
-## Usage with Symfony and S3
-
-You can find example code on [the wiki](https://github.com/maennchen/ZipStream-PHP/wiki/Symfony-example).
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 ## Contributing
 
 ZipStream-PHP is a collaborative project. Please take a look at the
 [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) file.
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 ## Version Support
 
 Versions are supported according to the table below.
@@ -221,11 +143,6 @@ will only target PHP versions according to their current status.
 
 See: https://www.php.net/supported-versions.php
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 ## About the Authors
 
 - Paul Duncan <pabs@pablotron.org> - https://pablotron.org/

@@ -2,7 +2,7 @@
 session_start();
 include("connection.php");
 
-$userExamId = $_SESSION['id'] ?? ''; // Assuming 'id' is the session variable storing the user's exam ID
+$userExamId = $_POST['userId'] ?? ''; // Assuming 'id' is the session variable storing the user's exam ID
 
 // Retrieve the selected options from the database based on the user's exam ID
 $sql = "SELECT question_id, selected_option FROM selected_options WHERE user_exam_id = ? ORDER BY question_id asc";

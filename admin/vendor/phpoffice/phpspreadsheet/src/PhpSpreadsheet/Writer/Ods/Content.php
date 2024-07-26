@@ -126,10 +126,6 @@ class Content extends WriterPart
             $objWriter->writeAttribute('table:name', $spreadsheet->getSheet($sheetIndex)->getTitle());
             $objWriter->writeAttribute('table:style-name', Style::TABLE_STYLE_PREFIX . (string) ($sheetIndex + 1));
             $objWriter->writeElement('office:forms');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             $lastColumn = 0;
             foreach ($spreadsheet->getSheet($sheetIndex)->getColumnDimensions() as $columnDimension) {
                 $thisColumn = $columnDimension->getColumnNumeric();
@@ -140,12 +136,6 @@ class Content extends WriterPart
                     $objWriter->endElement();
                 }
                 $lastColumn = $thisColumn;
-<<<<<<< HEAD
-=======
-=======
-            foreach ($spreadsheet->getSheet($sheetIndex)->getColumnDimensions() as $columnDimension) {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 $objWriter->startElement('table:table-column');
                 $objWriter->writeAttribute(
                     'table:style-name',

@@ -56,25 +56,11 @@ class Font extends StyleBase
 
                     break;
                 case 'Bold':
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     $style['font']['bold'] = $styleAttributeValue === '1';
 
                     break;
                 case 'Italic':
                     $style['font']['italic'] = $styleAttributeValue === '1';
-<<<<<<< HEAD
-=======
-=======
-                    $style['font']['bold'] = true;
-
-                    break;
-                case 'Italic':
-                    $style['font']['italic'] = true;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
                     break;
                 case 'Underline':

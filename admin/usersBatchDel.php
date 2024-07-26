@@ -1,10 +1,7 @@
 <?php
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 session_start();
+
 $fullNames = $_SESSION['user_name'];
 $userID = $_SESSION['user_id'];
 
@@ -15,54 +12,30 @@ $userIds = isset($_POST['userIds']) && is_array($_POST['userIds']) ? $_POST['use
 
 $userIDsCount = count($_POST['userIds']);
 
-//track reseted user IDs 
-$action = 'Batch Users Delete'; 
-$description = 'Logged in admin user: (' . $fullNames . ') did a batch user delete for these number of users: "' . $userIDsCount . '"';
-
-    // Prepare the SQL statement to insert the record into the audit_tray table
-$sqlDel = "INSERT INTO audit_tray (user_name, user_id, description, action) VALUES ('$fullNames','$userID','$description','$action')";
-$stmtsqlDel = mysqli_query($conn, $sqlDel);
-
-
-
-
 // Initialize an array to store the paths of user passports to be deleted
 $passportPaths = [];
 
-// Prepare the SQL statement to select user passports of the selected users
-$selectPassportsQuery = "SELECT userPassport FROM users WHERE id IN (" . implode(',', $userIds) . ")";
-$result = $conn->query($selectPassportsQuery);
+// Initialize an array to store the selected user details for archiving
+$selectedUserDetails = [];
 
-// Fetch the user passports and store their paths in the $passportPaths array
+// Fetch the selected user details, including the 'scores' column from USERS_EXAM
+$selectUserDetailsQuery = "
+  SELECT u.*, ue.scores, ue.start_time, ue.end_time, ue.status, ue.updated_at
+  FROM users u
+  LEFT JOIN users_exam ue ON u.id = ue.user_id
+  WHERE u.id IN (" . implode(',', $userIds) . ")
+";
+$result = $conn->query($selectUserDetailsQuery);
+
 if ($result) {
   while ($row = $result->fetch_assoc()) {
+    $selectedUserDetails[] = $row;
     $passportPath = $row['userPassport'];
     if ($passportPath) {
       $passportPaths[] = $passportPath;
     }
   }
 }
-<<<<<<< HEAD
-=======
-=======
-include('../connection.php');
-
-// Retrieve the selected user IDs to delete
-$userIds = $_POST['userIds'];
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-
-// Prepare the SQL statement to delete the selected users
-$deleteQuery = "DELETE FROM users WHERE id IN (" . implode(',', $userIds) . ")";
-$result = $conn->query($deleteQuery);
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
-// Prepare the SQL statement to delete the user exams of the selected users
-$deleteQueryUserExams = "DELETE FROM users_exam WHERE user_id IN (" . implode(',', $userIds) . ")";
-$res = $conn->query($deleteQueryUserExams);
 
 // Initialize a flag to track whether all operations were successful
 $success = true;
@@ -78,29 +51,50 @@ foreach ($passportPaths as $passportPath) {
   }
 }
 
-// Prepare the response based on the success flag
-if ($result && $res && $success) {
-  $response = ['success' => true, 'message' => 'Selected user(s) and their passport(s) deleted successfully.'];
-} else {
-  $response = ['success' => false, 'message' => 'Failed to delete selected users and/or their passports.'];
-<<<<<<< HEAD
-=======
-=======
-// Prepare the SQL statement to delete the selected users
-$deleteQueryUserExams = "DELETE FROM users_exam WHERE user_id IN (" . implode(',', $userIds) . ")";
-$res = $conn->query($deleteQueryUserExams);
+// Prepare the SQL statement to insert selected user details into the users_history table
+$insertHistoryRecords = [];
+foreach ($selectedUserDetails as $user) {
+  $insertHistoryRecords[] = "(
+    '$user[id]', '$user[name]', '$user[email]', '$user[username]', '$user[password]',
+    '$user[gender]', '$user[application]', '$user[examName]', '$user[userPassport]',
+       '$user[created_at]', '$user[updated_at]','$user[scores]'
+  )";
 
-if ($result && $res) {
-  $response = ['success' => true, 'message' => 'Selected users deleted successfully.'];
-} else {
-  $response = ['success' => false, 'message' => 'Failed to delete selected users.'];
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+  $updateUserStatus = "UPDATE users SET active = 0 WHERE id = '$user[id]'";
+  $resultUpdateUserStatus = $conn->query($updateUserStatus);
+  if (!$resultUpdateUserStatus) {
+    $response = ['success' => false, 'message' => 'Failed to delete selected users and/or their passports and archive the details.'];
+  }
+} 
+/* $insertHistoryQuery = "
+  INSERT INTO users_history (
+    id, name, email, username, password, gender, application, examName, userPassport, created_at, updated_at, scores
+  ) VALUES " . implode(',', $insertHistoryRecords);
+ */
+// Execute the insert query
+/* $resultInsertHistory = $conn->query($insertHistoryQuery);
+ */
+// Prepare the SQL statement to delete the selected users
+// $deleteQuery = "DELETE u, ue FROM users u LEFT JOIN users_exam ue ON u.id = ue.user_id WHERE u.id IN (" . implode(',', $userIds) . ")";
+// $result = $conn->query($deleteQuery);
+
+//track reseted user IDs
+$action = 'Batch Users Delete';
+$description = 'Logged in admin user: (' . $fullNames . ') did a batch user delete for these number of users: "' . $userIDsCount . '"';
+
+// Prepare the SQL statement to insert the record into the audit_tray table
+$sqlDel = "INSERT INTO audit_tray (user_name, user_id, description, action) VALUES ('$fullNames','$userID','$description','$action')";
+$stmtsqlDel = mysqli_query($conn, $sqlDel);
+
+// Prepare the response based on the success flag
+// if ($result && $success && $resultInsertHistory) {
+  if ($resultUpdateUserStatus) {
+  $response = ['success' => true, 'message' => 'Selected user(s) and their passport(s) are archived successfully.'];
 }
 
 // Send the response as JSON
 header('Content-Type: application/json');
 echo json_encode($response);
 
-$conn->close(); 
+$conn->close();
 ?>

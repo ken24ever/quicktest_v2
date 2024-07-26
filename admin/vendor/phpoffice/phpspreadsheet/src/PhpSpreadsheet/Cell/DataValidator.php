@@ -20,15 +20,7 @@ class DataValidator
      */
     public function isValid(Cell $cell)
     {
-<<<<<<< HEAD
         if (!$cell->hasDataValidation() || $cell->getDataValidation()->getType() === DataValidation::TYPE_NONE) {
-=======
-<<<<<<< HEAD
-        if (!$cell->hasDataValidation() || $cell->getDataValidation()->getType() === DataValidation::TYPE_NONE) {
-=======
-        if (!$cell->hasDataValidation()) {
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             return true;
         }
 
@@ -39,10 +31,6 @@ class DataValidator
             return false;
         }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $returnValue = false;
         $type = $dataValidation->getType();
         if ($type === DataValidation::TYPE_LIST) {
@@ -92,18 +80,6 @@ class DataValidator
         }
 
         return $returnValue;
-<<<<<<< HEAD
-=======
-=======
-        // TODO: write check on all cases
-        switch ($dataValidation->getType()) {
-            case DataValidation::TYPE_LIST:
-                return $this->isValueInList($cell);
-        }
-
-        return false;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     /**

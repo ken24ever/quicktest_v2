@@ -2,42 +2,48 @@
 // Set database connection variables
 include("../connection.php");
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Retrieve username and password from the POST request
+    // Retrieve username and password from the POST request 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Prepare the SQL statement to fetch the Super Admin User by username
-    $sql = "SELECT id, name, password, access_level FROM admin WHERE username = ?";
+    // Prepare the SQL statement to fetch the Admin User by username
+    $sql = "SELECT admin.id, admin.name, admin.password, admin.access_level, licenses.ip_address 
+            FROM admin 
+            LEFT JOIN licenses ON admin.id = licenses.admin_id
+            WHERE admin.username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $stmt->get_result(); 
 
     if ($result->num_rows === 1) {
         // User found, verify the password
         $row = $result->fetch_assoc();
         $hashedPassword = $row['password'];
+        $accessLevel = $row['access_level'];
+        $userIP = $row['ip_address'];
 
         // Verify the password using password_verify()
         if (password_verify($password, $hashedPassword)) {
-            // Authentication successful
-            $user_id = $row['id'];
-            $user_name = $row['name'];
-            $access_level = $row['access_level'];
+            // Check if the IP address is available for the admin
+            if (!empty($userIP)) {
+                // Authentication successful
+                $user_id = $row['id'];
+                $user_name = $row['name'];
 
-            // Start the session and store user details
-            session_start();
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['user_name'] = $user_name;
-            $_SESSION['access_level'] = $access_level;
+                // Start the session and store user details
+                session_start();
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['user_name'] = $user_name;
+                $_SESSION['access_level'] = $accessLevel;
 
-            // Send success response
-            echo json_encode(['success' => true]);
+                // Send success response
+                echo json_encode(['success' => true]);
+            } else {
+                // IP address is not available
+                echo json_encode(['success' => false, 'message' => 'IP address is not available.']);
+            }
         } else {
             // Authentication failed due to incorrect password
             echo json_encode(['success' => false, 'message' => 'Incorrect password.']);
@@ -52,32 +58,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 $conn->close();
-<<<<<<< HEAD
-=======
-=======
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Query the database for the user
-    $query = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
-    $result = mysqli_query($conn, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        // User found, start session
-        session_start();
-        $_SESSION['username'] = $username;
-
-        // Return empty response for successful login
-        echo "";
-    } else {
-        // User not found, show error message
-        echo "Invalid username or password";
-    }
-}
-
-mysqli_close($conn);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 ?>

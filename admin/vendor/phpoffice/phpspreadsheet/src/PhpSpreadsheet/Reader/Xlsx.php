@@ -16,14 +16,7 @@ use PhpOffice\PhpSpreadsheet\Reader\Xlsx\Hyperlinks;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\Namespaces;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\PageSetup;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\Properties as PropertyReader;
-<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\SharedFormula;
-=======
-<<<<<<< HEAD
-use PhpOffice\PhpSpreadsheet\Reader\Xlsx\SharedFormula;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\SheetViewOptions;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\SheetViews;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\Styles;
@@ -70,20 +63,11 @@ class Xlsx extends BaseReader
     private $styleReader;
 
     /**
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
      * @var array
      */
     private $sharedFormulae = [];
 
     /**
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
      * Create a new Xlsx Reader instance.
      */
     public function __construct()
@@ -150,15 +134,7 @@ class Xlsx extends BaseReader
         if ($replaceUnclosedBr) {
             $contents = str_replace('<br>', '<br/>', $contents);
         }
-<<<<<<< HEAD
         $rels = @simplexml_load_string(
-=======
-<<<<<<< HEAD
-        $rels = @simplexml_load_string(
-=======
-        $rels = simplexml_load_string(
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             $this->getSecurityScannerOrThrow()->scan($contents),
             'SimpleXMLElement',
             Settings::getLibXmlLoaderOptions(),
@@ -276,14 +252,7 @@ class Xlsx extends BaseReader
                 $xmlWorkbook = $this->loadZip($relTarget, $mainNS);
                 if ($xmlWorkbook->sheets) {
                     $dir = dirname($relTarget);
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     /** @var SimpleXMLElement $eleSheet */
                     foreach ($xmlWorkbook->sheets->sheet as $eleSheet) {
                         $tmpInfo = [
@@ -299,18 +268,8 @@ class Xlsx extends BaseReader
 
                         $xml = new XMLReader();
                         $xml->xml(
-<<<<<<< HEAD
                             $this->getSecurityScannerOrThrow()->scan(
                                 $this->getFromZipArchive($this->zip, $fileWorksheetPath)
-=======
-<<<<<<< HEAD
-                            $this->getSecurityScannerOrThrow()->scan(
-                                $this->getFromZipArchive($this->zip, $fileWorksheetPath)
-=======
-                            $this->getSecurityScannerOrThrow()->scanFile(
-                                'zip://' . File::realpath($filename) . '#' . $fileWorksheetPath
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             ),
                             null,
                             Settings::getLibXmlLoaderOptions()
@@ -372,29 +331,13 @@ class Xlsx extends BaseReader
      * @param mixed $value
      * @param mixed $calculatedValue
      */
-<<<<<<< HEAD
     private function castToFormula(?SimpleXMLElement $c, string $r, string &$cellDataType, &$value, &$calculatedValue, string $castBaseType, bool $updateSharedCells = true): void
-=======
-<<<<<<< HEAD
-    private function castToFormula(?SimpleXMLElement $c, string $r, string &$cellDataType, &$value, &$calculatedValue, string $castBaseType, bool $updateSharedCells = true): void
-=======
-    private function castToFormula(?SimpleXMLElement $c, string $r, string &$cellDataType, &$value, &$calculatedValue, array &$sharedFormulas, string $castBaseType): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         if ($c === null) {
             return;
         }
         $attr = $c->f->attributes();
-<<<<<<< HEAD
         $cellDataType = DataType::TYPE_FORMULA;
-=======
-<<<<<<< HEAD
-        $cellDataType = DataType::TYPE_FORMULA;
-=======
-        $cellDataType = 'f';
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $value = "={$c->f}";
         $calculatedValue = self::$castBaseType($c);
 
@@ -402,40 +345,19 @@ class Xlsx extends BaseReader
         if (isset($attr['t']) && strtolower((string) $attr['t']) == 'shared') {
             $instance = (string) $attr['si'];
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             if (!isset($this->sharedFormulae[(string) $attr['si']])) {
                 $this->sharedFormulae[$instance] = new SharedFormula($r, $value);
             } elseif ($updateSharedCells === true) {
                 // It's only worth the overhead of adjusting the shared formula for this cell if we're actually loading
                 //     the cell, which may not be the case if we're using a read filter.
                 $master = Coordinate::indexesFromString($this->sharedFormulae[$instance]->master());
-<<<<<<< HEAD
-=======
-=======
-            if (!isset($sharedFormulas[(string) $attr['si']])) {
-                $sharedFormulas[$instance] = ['master' => $r, 'formula' => $value];
-            } else {
-                $master = Coordinate::indexesFromString($sharedFormulas[$instance]['master']);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 $current = Coordinate::indexesFromString($r);
 
                 $difference = [0, 0];
                 $difference[0] = $current[0] - $master[0];
                 $difference[1] = $current[1] - $master[1];
 
-<<<<<<< HEAD
                 $value = $this->referenceHelper->updateFormulaReferences($this->sharedFormulae[$instance]->formula(), 'A1', $difference[0], $difference[1]);
-=======
-<<<<<<< HEAD
-                $value = $this->referenceHelper->updateFormulaReferences($this->sharedFormulae[$instance]->formula(), 'A1', $difference[0], $difference[1]);
-=======
-                $value = $this->referenceHelper->updateFormulaReferences($sharedFormulas[$instance]['formula'], 'A1', $difference[0], $difference[1]);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             }
         }
     }
@@ -482,38 +404,18 @@ class Xlsx extends BaseReader
         // Sadly, some 3rd party xlsx generators don't use consistent case for filenaming
         //    so we need to load case-insensitively from the zip file
 
-<<<<<<< HEAD
         $contents = $archive->getFromName($fileName, 0, ZipArchive::FL_NOCASE);
 
         // Apache POI fixes
-=======
-<<<<<<< HEAD
-        $contents = $archive->getFromName($fileName, 0, ZipArchive::FL_NOCASE);
-
-        // Apache POI fixes
-=======
-        // Apache POI fixes
-        $contents = $archive->getFromName($fileName, 0, ZipArchive::FL_NOCASE);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         if ($contents === false) {
             $contents = $archive->getFromName(substr($fileName, 1), 0, ZipArchive::FL_NOCASE);
         }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         // Has the file been saved with Windoze directory separators rather than unix?
         if ($contents === false) {
             $contents = $archive->getFromName(str_replace('/', '\\', $fileName), 0, ZipArchive::FL_NOCASE);
         }
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         return ($contents === false) ? '' : $contents;
     }
 
@@ -560,14 +462,7 @@ class Xlsx extends BaseReader
 
                     $colourScheme = self::getAttributes($xmlTheme->themeElements->clrScheme);
                     $colourSchemeName = (string) $colourScheme['name'];
-<<<<<<< HEAD
                     $excel->getTheme()->setThemeColorName($colourSchemeName);
-=======
-<<<<<<< HEAD
-                    $excel->getTheme()->setThemeColorName($colourSchemeName);
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     $colourScheme = $xmlTheme->themeElements->clrScheme->children($drawingNS);
 
                     $themeColours = [];
@@ -579,32 +474,16 @@ class Xlsx extends BaseReader
                         if (isset($xmlColour->sysClr)) {
                             $xmlColourData = self::getAttributes($xmlColour->sysClr);
                             $themeColours[$themePos] = (string) $xmlColourData['lastClr'];
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             $excel->getTheme()->setThemeColor($k, (string) $xmlColourData['lastClr']);
                         } elseif (isset($xmlColour->srgbClr)) {
                             $xmlColourData = self::getAttributes($xmlColour->srgbClr);
                             $themeColours[$themePos] = (string) $xmlColourData['val'];
                             $excel->getTheme()->setThemeColor($k, (string) $xmlColourData['val']);
-<<<<<<< HEAD
-=======
-=======
-                        } elseif (isset($xmlColour->srgbClr)) {
-                            $xmlColourData = self::getAttributes($xmlColour->srgbClr);
-                            $themeColours[$themePos] = (string) $xmlColourData['val'];
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                         }
                     }
                     $theme = new Theme($themeName, $colourSchemeName, $themeColours);
                     $this->styleReader->setTheme($theme);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     $fontScheme = self::getAttributes($xmlTheme->themeElements->fontScheme);
                     $fontSchemeName = (string) $fontScheme['name'];
                     $excel->getTheme()->setThemeFontName($fontSchemeName);
@@ -635,11 +514,6 @@ class Xlsx extends BaseReader
                     $excel->getTheme()->setMajorFontValues($majorLatin, $majorEastAsian, $majorComplexScript, $majorFonts);
                     $excel->getTheme()->setMinorFontValues($minorLatin, $minorEastAsian, $minorComplexScript, $minorFonts);
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     break;
             }
         }
@@ -651,19 +525,10 @@ class Xlsx extends BaseReader
         foreach ($rels->Relationship as $relx) {
             $rel = self::getAttributes($relx);
             $relTarget = (string) $rel['Target'];
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             // issue 3553
             if ($relTarget[0] === '/') {
                 $relTarget = substr($relTarget, 1);
             }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             $relType = (string) $rel['Type'];
             $mainNS = self::REL_TO_MAIN[$relType] ?? Namespaces::MAIN;
             switch ($relType) {
@@ -694,32 +559,6 @@ class Xlsx extends BaseReader
                     $relsWorkbook = $this->loadZip("$dir/_rels/" . basename($relTarget) . '.rels', '');
                     $relsWorkbook->registerXPathNamespace('rel', Namespaces::RELATIONSHIPS);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-                    $sharedStrings = [];
-                    $relType = "rel:Relationship[@Type='"
-                        //. Namespaces::SHARED_STRINGS
-                        . "$xmlNamespaceBase/sharedStrings"
-                        . "']";
-                    $xpath = self::getArrayItem($relsWorkbook->xpath($relType));
-
-                    if ($xpath) {
-                        $xmlStrings = $this->loadZip("$dir/$xpath[Target]", $mainNS);
-                        if (isset($xmlStrings->si)) {
-                            foreach ($xmlStrings->si as $val) {
-                                if (isset($val->t)) {
-                                    $sharedStrings[] = StringHelper::controlCharacterOOXML2PHP((string) $val->t);
-                                } elseif (isset($val->r)) {
-                                    $sharedStrings[] = $this->parseRichText($val);
-                                }
-                            }
-                        }
-                    }
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     $worksheets = [];
                     $macros = $customUI = null;
                     foreach ($relsWorkbook->Relationship as $elex) {
@@ -811,15 +650,7 @@ class Xlsx extends BaseReader
                                     $numFmt = NumberFormat::builtInFormatCode((int) $xf['numFmtId']);
                                 }
                             }
-<<<<<<< HEAD
                             $quotePrefix = (bool) (string) ($xf['quotePrefix'] ?? '');
-=======
-<<<<<<< HEAD
-                            $quotePrefix = (bool) (string) ($xf['quotePrefix'] ?? '');
-=======
-                            $quotePrefix = (bool) ($xf['quotePrefix'] ?? false);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
                             $style = (object) [
                                 'numFmt' => $numFmt ?? NumberFormat::FORMAT_GENERAL,
@@ -854,15 +685,7 @@ class Xlsx extends BaseReader
                                 }
                             }
 
-<<<<<<< HEAD
                             $quotePrefix = (bool) (string) ($xf['quotePrefix'] ?? '');
-=======
-<<<<<<< HEAD
-                            $quotePrefix = (bool) (string) ($xf['quotePrefix'] ?? '');
-=======
-                            $quotePrefix = (bool) ($xf['quotePrefix'] ?? false);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
                             $cellStyle = (object) [
                                 'numFmt' => $numFmt,
@@ -891,10 +714,6 @@ class Xlsx extends BaseReader
                     $dxfs = $this->styleReader->dxfs($this->readDataOnly);
                     $styles = $this->styleReader->styles();
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     // Read content after setting the styles
                     $sharedStrings = [];
                     $relType = "rel:Relationship[@Type='"
@@ -916,11 +735,6 @@ class Xlsx extends BaseReader
                         }
                     }
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                     $xmlWorkbook = $this->loadZipNoNamespace($relTarget, $mainNS);
                     $xmlWorkbookNS = $this->loadZip($relTarget, $mainNS);
 
@@ -982,17 +796,8 @@ class Xlsx extends BaseReader
                             $xmlSheet = $this->loadZipNoNamespace("$dir/$fileWorksheet", $mainNS);
                             $xmlSheetNS = $this->loadZip("$dir/$fileWorksheet", $mainNS);
 
-<<<<<<< HEAD
                             // Shared Formula table is unique to each Worksheet, so we need to reset it here
                             $this->sharedFormulae = [];
-=======
-<<<<<<< HEAD
-                            // Shared Formula table is unique to each Worksheet, so we need to reset it here
-                            $this->sharedFormulae = [];
-=======
-                            $sharedFormulas = [];
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
                             if (isset($eleSheetAttr['state']) && (string) $eleSheetAttr['state'] != '') {
                                 $docSheet->setSheetState((string) $eleSheetAttr['state']);
@@ -1038,23 +843,12 @@ class Xlsx extends BaseReader
                                             $coordinates = Coordinate::coordinateFromString($r);
 
                                             if (!$this->getReadFilter()->readCell($coordinates[0], (int) $coordinates[1], $docSheet->getTitle())) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                                                 // Normally, just testing for the f attribute should identify this cell as containing a formula
                                                 // that we need to read, even though it is outside of the filter range, in case it is a shared formula.
                                                 // But in some cases, this attribute isn't set; so we need to delve a level deeper and look at
                                                 // whether or not the cell has a child formula element that is shared.
                                                 if (isset($cAttr->f) || (isset($c->f, $c->f->attributes()['t']) && strtolower((string) $c->f->attributes()['t']) === 'shared')) {
                                                     $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToError', false);
-<<<<<<< HEAD
-=======
-=======
-                                                if (isset($cAttr->f)) {
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, $sharedFormulas, 'castToError');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                                                 }
                                                 ++$rowIndex;
 
@@ -1086,15 +880,7 @@ class Xlsx extends BaseReader
                                                     }
                                                 } else {
                                                     // Formula
-<<<<<<< HEAD
                                                     $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToBoolean');
-=======
-<<<<<<< HEAD
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToBoolean');
-=======
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, $sharedFormulas, 'castToBoolean');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                                                     if (isset($c->f['t'])) {
                                                         $att = $c->f;
                                                         $docSheet->getCell($r)->setFormulaAttributes($att);
@@ -1104,15 +890,7 @@ class Xlsx extends BaseReader
                                                 break;
                                             case 'inlineStr':
                                                 if (isset($c->f)) {
-<<<<<<< HEAD
                                                     $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToError');
-=======
-<<<<<<< HEAD
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToError');
-=======
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, $sharedFormulas, 'castToError');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                                                 } else {
                                                     $value = $this->parseRichText($c->is);
                                                 }
@@ -1123,15 +901,7 @@ class Xlsx extends BaseReader
                                                     $value = self::castToError($c);
                                                 } else {
                                                     // Formula
-<<<<<<< HEAD
                                                     $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToError');
-=======
-<<<<<<< HEAD
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToError');
-=======
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, $sharedFormulas, 'castToError');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                                                 }
 
                                                 break;
@@ -1140,15 +910,7 @@ class Xlsx extends BaseReader
                                                     $value = self::castToString($c);
                                                 } else {
                                                     // Formula
-<<<<<<< HEAD
                                                     $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToString');
-=======
-<<<<<<< HEAD
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, 'castToString');
-=======
-                                                    $this->castToFormula($c, $r, $cellDataType, $value, $calculatedValue, $sharedFormulas, 'castToString');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                                                     if (isset($c->f['t'])) {
                                                         $attributes = $c->f['t'];
                                                         $docSheet->getCell($r)->setFormulaAttributes(['t' => (string) $attributes]);
@@ -1187,19 +949,10 @@ class Xlsx extends BaseReader
                                                 // no style index means 0, it seems
                                                 $cell->setXfIndex(isset($styles[(int) ($cAttr['s'])]) ?
                                                     (int) ($cAttr['s']) : 0);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                                                 // issue 3495
                                                 if ($cell->getDataType() === DataType::TYPE_FORMULA) {
                                                     $cell->getStyle()->setQuotePrefix(false);
                                                 }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                                             }
                                         }
                                         ++$rowIndex;
@@ -1207,21 +960,12 @@ class Xlsx extends BaseReader
                                     ++$cIndex;
                                 }
                             }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                             if ($xmlSheetNS && $xmlSheetNS->ignoredErrors) {
                                 foreach ($xmlSheetNS->ignoredErrors->ignoredError as $ignoredErrorx) {
                                     $ignoredError = self::testSimpleXml($ignoredErrorx);
                                     $this->processIgnoredErrors($ignoredError, $docSheet);
                                 }
                             }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
                             if (!$this->readDataOnly && $xmlSheetNS && $xmlSheetNS->sheetProtection) {
                                 $protAttr = $xmlSheetNS->sheetProtection->attributes() ?? [];
@@ -2529,10 +2273,6 @@ class Xlsx extends BaseReader
 
         return $array;
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     private function processIgnoredErrors(SimpleXMLElement $xml, Worksheet $sheet): void
     {
@@ -2577,9 +2317,4 @@ class Xlsx extends BaseReader
             }
         }
     }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }

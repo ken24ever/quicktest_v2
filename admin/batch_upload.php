@@ -2,12 +2,11 @@
 // Set database connection variables
 include("../connection.php");
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Check if a file is uploaded
 if (isset($_FILES['user_batch_file'])) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     $file = $_FILES['user_batch_file'];
 
     // Check if the file is an Excel file
@@ -25,6 +24,7 @@ if (isset($_FILES['user_batch_file'])) {
 
         $successCount = 0;
         $errorCount = 0;
+        $matchedRecords = [];
 
         // Prepare the SQL INSERT statement with placeholders for users
         $sql_insert_user = "INSERT INTO users (name, email, username, password, gender, application, examName, userPassport) 
@@ -50,7 +50,7 @@ if (isset($_FILES['user_batch_file'])) {
         }
 
         // Loop through each row in the worksheet (skip the header row)
-        foreach ($worksheet->getRowIterator() as $key => $row) {
+        foreach ($worksheet->getRowIterator() as $key => $row) { 
             if ($key === 1) continue; // Skip the first row (header row)
 
             $cellIterator = $row->getCellIterator();
@@ -89,15 +89,22 @@ if (isset($_FILES['user_batch_file'])) {
                 $destinationPath = 'usersPassport/' . uniqid($username) . $userPassportFilename;
 
                 if (file_put_contents($destinationPath, base64_decode($userPassportBinary))) {
+
+                    // Set permissions for the uploaded file
+                    chmod($destinationPath, 0644); // Adjust the permission mode as needed
+
                     // Step 3: Check if the user already exists in the database (based on email or username)
-                    $sql_check_user = "SELECT id FROM users WHERE email = ? OR username = ?";
+                    $sql_check_user = "SELECT id, name, email, username FROM users WHERE email = ? OR username = ?";
                     $stmt_check_user = $conn->prepare($sql_check_user);
                     $stmt_check_user->bind_param("ss", $email, $username);
                     $stmt_check_user->execute();
                     $result_check_user = $stmt_check_user->get_result();
 
                     if ($result_check_user->num_rows > 0) {
-                        // Handle the case when the user already exists
+                        // Collect the matched record
+                        while ($row = $result_check_user->fetch_assoc()) {
+                            $matchedRecords[] = $row;
+                        }
                         $errorCount++;
                         $stmt_check_user->close();
                         continue; // Skip this row and proceed to the next
@@ -179,7 +186,9 @@ if (isset($_FILES['user_batch_file'])) {
         // Prepare the response
         $response = [
             'success' => true,
-            'message' => $successCount . ' users added successfully. ' . $errorCount . ' users could not be added.'
+            'message' => $successCount . ' users added successfully. ' . $errorCount . ' users could not be added.',
+            'matchedRecordsCount' => count($matchedRecords),
+            'matchedRecords' => $matchedRecords
         ];
     } else {
         $response = [
@@ -192,131 +201,6 @@ if (isset($_FILES['user_batch_file'])) {
         'success' => false,
         'error' => 'No file uploaded.'
     ];
-<<<<<<< HEAD
-=======
-=======
-  $file = $_FILES['user_batch_file'];
-
-  // Check if the file is an Excel file
-  if ($file['type'] == 'application/vnd.ms-excel' || $file['type'] == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
-    $tempFile = $file['tmp_name'];
-
-    // Load the PhpSpreadsheet library using Composer's autoloader
-    require_once 'vendor/autoload.php';
-
-    // Load the Excel file
-    $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($tempFile);
-
-    // Get the first worksheet
-    $worksheet = $spreadsheet->getActiveSheet();
-
-    $successCount = 0;
-    $errorCount = 0;
-
-    // Loop through each row in the worksheet
-    foreach ($worksheet->getRowIterator() as $row) {
-      $cellIterator = $row->getCellIterator();
-      $cellIterator->setIterateOnlyExistingCells(false);
-
-      $data = [];
-
-      // Loop through each cell in the row
-      foreach ($cellIterator as $cell) {
-        $data[] = $cell->getValue();
-      }
-
-      // Extract data from the row
-      $name = $data[0];
-      $email = $data[1];
-      $username = $data[2];
-      $password = $data[3];
-      $gender = $data[4];
-      $app = $data[5];
-      // Retrieve the exam names from index 6
-        $examNamesString = $data[6];
-        $examNamesArray = explode(',', $examNamesString);
-
-        // Capitalize the exam names
-        $examNames = array_map('strtoupper', $examNamesArray);
-
-      // Check if the username or email already exists
-      $sql_check = "SELECT * FROM users WHERE username = '$username' OR email = '$email'";
-      $result_check = $conn->query($sql_check);
-
-      if ($result_check->num_rows > 0) {
-        $errorCount++;
-      } else {
-        // Insert new user into the database
-        if (!empty($examNames)) {
-          $examNames = array_unique($examNames); // Remove duplicates from the array
-
-          $escapedExamNames = array_map(function ($name) use ($conn) {
-            return mysqli_real_escape_string($conn, $name);
-          }, $examNames);
-
-          $examNamesString = implode(",", $escapedExamNames);
-
-          // Insert the user into the 'users' table
-          $sql_insert_user = "INSERT INTO users (name, email, username, password, gender, application, examName) VALUES ('$name', '$email', '$username', '$password', '$gender', '$app', '$examNamesString')";
-
-          if ($conn->query($sql_insert_user) === TRUE) {
-            $user_id = $conn->insert_id; // Retrieve the user ID
-
-            // Insert the user-exam records into the 'users_exam' table
-            $sql_insert_user_exams = "INSERT INTO users_exam (user_id, exam_id, status) VALUES";
-            $values = array();
-
-            foreach ($examNames as $examName) {
-              // Retrieve the exam ID based on the exam name
-              $sql_select_exam = "SELECT id FROM exams WHERE title = '$examName'";
-              $result_select_exam = $conn->query($sql_select_exam);
-
-              if ($result_select_exam->num_rows > 0) {
-                $row = $result_select_exam->fetch_assoc();
-                $exam_id = $row['id'];
-
-                $values[] = "('$user_id', '$exam_id', 'pending')";
-              }
-            }
-
-            if (!empty($values)) {
-              $sql_insert_user_exams .= implode(", ", $values);
-
-              if ($conn->query($sql_insert_user_exams) === TRUE) {
-                $successCount++;
-              } else {
-                $errorCount++;
-              }
-            } else {
-              $errorCount++;
-            }
-          } else {
-            $errorCount++;
-          }
-        } else {
-          $errorCount++;
-        }
-      }
-    }
-
-    // Prepare the response
-    $response = [ 
-      'success' => true,
-      'message' => $successCount . ' users added successfully. ' . $errorCount . ' users could not be added.'
-    ];
-  } else {
-    $response = [
-      'success' => false,
-      'error' => 'Invalid file format. Please upload an Excel file.'
-    ];
-  }
-} else {
-  $response = [
-    'success' => false,
-    'error' => 'No file uploaded.'
-  ];
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }
 
 // Close the database connection

@@ -503,16 +503,8 @@ class Worksheet extends BIFFwriter
         $this->writeMergedCells();
 
         // Hyperlinks
-<<<<<<< HEAD
         $phpParent = $phpSheet->getParent();
         $hyperlinkbase = ($phpParent === null) ? '' : $phpParent->getProperties()->getHyperlinkBase();
-=======
-<<<<<<< HEAD
-        $phpParent = $phpSheet->getParent();
-        $hyperlinkbase = ($phpParent === null) ? '' : $phpParent->getProperties()->getHyperlinkBase();
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         foreach ($phpSheet->getHyperLinkCollection() as $coordinate => $hyperlink) {
             [$column, $row] = Coordinate::indexesFromString($coordinate);
 
@@ -523,20 +515,11 @@ class Worksheet extends BIFFwriter
                 $url = str_replace('sheet://', 'internal:', $url);
             } elseif (preg_match('/^(http:|https:|ftp:|mailto:)/', $url)) {
                 // URL
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             } elseif (!empty($hyperlinkbase) && preg_match('~^([A-Za-z]:)?[/\\\\]~', $url) !== 1) {
                 $url = "$hyperlinkbase$url";
                 if (preg_match('/^(http:|https:|ftp:|mailto:)/', $url) !== 1) {
                     $url = 'external:' . $url;
                 }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             } else {
                 // external (local file)
                 $url = 'external:' . $url;

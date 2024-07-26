@@ -136,19 +136,10 @@ class Styles extends BaseParserClass
                 }
             }
         }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         if (isset($fontStyleXml->scheme)) {
             $attr = $this->getStyleAttributes($fontStyleXml->scheme);
             $fontStyle->setScheme((string) $attr['val']);
         }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     private function readNumberFormat(NumberFormat $numfmtStyle, SimpleXMLElement $numfmtStyleXml): void
@@ -266,10 +257,6 @@ class Styles extends BaseParserClass
 
     public function readAlignmentStyle(Alignment $alignment, SimpleXMLElement $alignmentXml): void
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $horizontal = (string) $this->getAttribute($alignmentXml, 'horizontal');
         if ($horizontal !== '') {
             $alignment->setHorizontal($horizontal);
@@ -278,15 +265,6 @@ class Styles extends BaseParserClass
         if ($vertical !== '') {
             $alignment->setVertical($vertical);
         }
-<<<<<<< HEAD
-=======
-=======
-        $horizontal = $this->getAttribute($alignmentXml, 'horizontal');
-        $alignment->setHorizontal($horizontal);
-        $vertical = $this->getAttribute($alignmentXml, 'vertical');
-        $alignment->setVertical((string) $vertical);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         $textRotation = (int) $this->getAttribute($alignmentXml, 'textRotation');
         if ($textRotation > 90) {

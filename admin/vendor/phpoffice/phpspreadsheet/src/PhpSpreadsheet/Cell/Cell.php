@@ -71,18 +71,9 @@ class Cell
      */
     private $formulaAttributes;
 
-<<<<<<< HEAD
     /** @var IgnoredErrors */
     private $ignoredErrors;
 
-=======
-<<<<<<< HEAD
-    /** @var IgnoredErrors */
-    private $ignoredErrors;
-
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     /**
      * Update the cell into the cell collection.
      *
@@ -131,14 +122,7 @@ class Cell
         } elseif (self::getValueBinder()->bindValue($this, $value) === false) {
             throw new Exception('Value could not be bound to cell.');
         }
-<<<<<<< HEAD
         $this->ignoredErrors = new IgnoredErrors();
-=======
-<<<<<<< HEAD
-        $this->ignoredErrors = new IgnoredErrors();
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     /**
@@ -411,19 +395,9 @@ class Cell
                 }
 
                 throw new \PhpOffice\PhpSpreadsheet\Calculation\Exception(
-<<<<<<< HEAD
                     $this->getWorksheet()->getTitle() . '!' . $this->getCoordinate() . ' -> ' . $ex->getMessage(),
                     $ex->getCode(),
                     $ex
-=======
-<<<<<<< HEAD
-                    $this->getWorksheet()->getTitle() . '!' . $this->getCoordinate() . ' -> ' . $ex->getMessage(),
-                    $ex->getCode(),
-                    $ex
-=======
-                    $this->getWorksheet()->getTitle() . '!' . $this->getCoordinate() . ' -> ' . $ex->getMessage()
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 );
             }
 
@@ -826,18 +800,9 @@ class Cell
     {
         return (string) $this->getValue();
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     public function getIgnoredErrors(): IgnoredErrors
     {
         return $this->ignoredErrors;
     }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }

@@ -225,15 +225,7 @@ class Column
 
     private static function updateStructuredReferencesInCells(Worksheet $worksheet, string $oldTitle, string $newTitle): void
     {
-<<<<<<< HEAD
         $pattern = '/\[(@?)' . preg_quote($oldTitle, '/') . '\]/mui';
-=======
-<<<<<<< HEAD
-        $pattern = '/\[(@?)' . preg_quote($oldTitle, '/') . '\]/mui';
-=======
-        $pattern = '/\[(@?)' . preg_quote($oldTitle) . '\]/mui';
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         foreach ($worksheet->getCoordinates(false) as $coordinate) {
             $cell = $worksheet->getCell($coordinate);
@@ -249,15 +241,7 @@ class Column
 
     private static function updateStructuredReferencesInNamedFormulae(Spreadsheet $spreadsheet, string $oldTitle, string $newTitle): void
     {
-<<<<<<< HEAD
         $pattern = '/\[(@?)' . preg_quote($oldTitle, '/') . '\]/mui';
-=======
-<<<<<<< HEAD
-        $pattern = '/\[(@?)' . preg_quote($oldTitle, '/') . '\]/mui';
-=======
-        $pattern = '/\[(@?)' . preg_quote($oldTitle) . '\]/mui';
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         foreach ($spreadsheet->getNamedFormulae() as $namedFormula) {
             $formula = $namedFormula->getValue();

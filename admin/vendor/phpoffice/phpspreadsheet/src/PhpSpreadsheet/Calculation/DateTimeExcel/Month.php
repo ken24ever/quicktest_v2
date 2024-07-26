@@ -45,14 +45,7 @@ class Month
         } catch (Exception $e) {
             return $e->getMessage();
         }
-<<<<<<< HEAD
         $dateValue = floor($dateValue);
-=======
-<<<<<<< HEAD
-        $dateValue = floor($dateValue);
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $adjustmentMonths = floor($adjustmentMonths);
 
         // Execute function
@@ -96,14 +89,7 @@ class Month
         } catch (Exception $e) {
             return $e->getMessage();
         }
-<<<<<<< HEAD
         $dateValue = floor($dateValue);
-=======
-<<<<<<< HEAD
-        $dateValue = floor($dateValue);
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $adjustmentMonths = floor($adjustmentMonths);
 
         // Execute function

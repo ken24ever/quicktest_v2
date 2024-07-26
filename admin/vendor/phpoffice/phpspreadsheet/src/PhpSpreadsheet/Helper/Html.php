@@ -714,15 +714,7 @@ class Html
         return self::COLOUR_MAP[$colorName] ?? '';
     }
 
-<<<<<<< HEAD
     protected function startFontTag(DOMElement $tag): void
-=======
-<<<<<<< HEAD
-    protected function startFontTag(DOMElement $tag): void
-=======
-    private function startFontTag(DOMElement $tag): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $attrs = $tag->attributes;
         if ($attrs !== null) {
@@ -745,184 +737,72 @@ class Html
         }
     }
 
-<<<<<<< HEAD
     protected function endFontTag(): void
-=======
-<<<<<<< HEAD
-    protected function endFontTag(): void
-=======
-    private function endFontTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->face = $this->size = $this->color = null;
     }
 
-<<<<<<< HEAD
     protected function startBoldTag(): void
-=======
-<<<<<<< HEAD
-    protected function startBoldTag(): void
-=======
-    private function startBoldTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->bold = true;
     }
 
-<<<<<<< HEAD
     protected function endBoldTag(): void
-=======
-<<<<<<< HEAD
-    protected function endBoldTag(): void
-=======
-    private function endBoldTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->bold = false;
     }
 
-<<<<<<< HEAD
     protected function startItalicTag(): void
-=======
-<<<<<<< HEAD
-    protected function startItalicTag(): void
-=======
-    private function startItalicTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->italic = true;
     }
 
-<<<<<<< HEAD
     protected function endItalicTag(): void
-=======
-<<<<<<< HEAD
-    protected function endItalicTag(): void
-=======
-    private function endItalicTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->italic = false;
     }
 
-<<<<<<< HEAD
     protected function startUnderlineTag(): void
-=======
-<<<<<<< HEAD
-    protected function startUnderlineTag(): void
-=======
-    private function startUnderlineTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->underline = true;
     }
 
-<<<<<<< HEAD
     protected function endUnderlineTag(): void
-=======
-<<<<<<< HEAD
-    protected function endUnderlineTag(): void
-=======
-    private function endUnderlineTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->underline = false;
     }
 
-<<<<<<< HEAD
     protected function startSubscriptTag(): void
-=======
-<<<<<<< HEAD
-    protected function startSubscriptTag(): void
-=======
-    private function startSubscriptTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->subscript = true;
     }
 
-<<<<<<< HEAD
     protected function endSubscriptTag(): void
-=======
-<<<<<<< HEAD
-    protected function endSubscriptTag(): void
-=======
-    private function endSubscriptTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->subscript = false;
     }
 
-<<<<<<< HEAD
     protected function startSuperscriptTag(): void
-=======
-<<<<<<< HEAD
-    protected function startSuperscriptTag(): void
-=======
-    private function startSuperscriptTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->superscript = true;
     }
 
-<<<<<<< HEAD
     protected function endSuperscriptTag(): void
-=======
-<<<<<<< HEAD
-    protected function endSuperscriptTag(): void
-=======
-    private function endSuperscriptTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->superscript = false;
     }
 
-<<<<<<< HEAD
     protected function startStrikethruTag(): void
-=======
-<<<<<<< HEAD
-    protected function startStrikethruTag(): void
-=======
-    private function startStrikethruTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->strikethrough = true;
     }
 
-<<<<<<< HEAD
     protected function endStrikethruTag(): void
-=======
-<<<<<<< HEAD
-    protected function endStrikethruTag(): void
-=======
-    private function endStrikethruTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->strikethrough = false;
     }
 
-<<<<<<< HEAD
     protected function breakTag(): void
-=======
-<<<<<<< HEAD
-    protected function breakTag(): void
-=======
-    private function breakTag(): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         $this->stringData .= "\n";
     }
@@ -946,20 +826,9 @@ class Html
         if (isset($callbacks[$callbackTag])) {
             $elementHandler = $callbacks[$callbackTag];
             if (method_exists($this, $elementHandler)) {
-<<<<<<< HEAD
                 /** @var callable */
                 $callable = [$this, $elementHandler];
                 call_user_func($callable, $element);
-=======
-<<<<<<< HEAD
-                /** @var callable */
-                $callable = [$this, $elementHandler];
-                call_user_func($callable, $element);
-=======
-                /** @phpstan-ignore-next-line */
-                call_user_func([$this, $elementHandler], $element);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             }
         }
     }

@@ -248,15 +248,7 @@ class Conditional implements IComparable
     /**
      * Set Conditions.
      *
-<<<<<<< HEAD
      * @param (bool|float|int|string)[]|bool|float|int|string $conditions Condition
-=======
-<<<<<<< HEAD
-     * @param (bool|float|int|string)[]|bool|float|int|string $conditions Condition
-=======
-     * @param bool|float|int|string|(bool|float|int|string)[] $conditions Condition
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
      *
      * @return $this
      */

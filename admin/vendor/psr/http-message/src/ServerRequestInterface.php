@@ -1,13 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-declare(strict_types=1);
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 namespace Psr\Http\Message;
 
 /**
@@ -59,15 +51,7 @@ interface ServerRequestInterface extends RequestInterface
      *
      * @return array
      */
-<<<<<<< HEAD
     public function getServerParams(): array;
-=======
-<<<<<<< HEAD
-    public function getServerParams(): array;
-=======
-    public function getServerParams();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve cookies.
@@ -79,15 +63,7 @@ interface ServerRequestInterface extends RequestInterface
      *
      * @return array
      */
-<<<<<<< HEAD
     public function getCookieParams(): array;
-=======
-<<<<<<< HEAD
-    public function getCookieParams(): array;
-=======
-    public function getCookieParams();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified cookies.
@@ -106,15 +82,7 @@ interface ServerRequestInterface extends RequestInterface
      * @param array $cookies Array of key/value pairs representing cookies.
      * @return static
      */
-<<<<<<< HEAD
     public function withCookieParams(array $cookies): ServerRequestInterface;
-=======
-<<<<<<< HEAD
-    public function withCookieParams(array $cookies): ServerRequestInterface;
-=======
-    public function withCookieParams(array $cookies);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve query string arguments.
@@ -128,15 +96,7 @@ interface ServerRequestInterface extends RequestInterface
      *
      * @return array
      */
-<<<<<<< HEAD
     public function getQueryParams(): array;
-=======
-<<<<<<< HEAD
-    public function getQueryParams(): array;
-=======
-    public function getQueryParams();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance with the specified query string arguments.
@@ -160,15 +120,7 @@ interface ServerRequestInterface extends RequestInterface
      *     $_GET.
      * @return static
      */
-<<<<<<< HEAD
     public function withQueryParams(array $query): ServerRequestInterface;
-=======
-<<<<<<< HEAD
-    public function withQueryParams(array $query): ServerRequestInterface;
-=======
-    public function withQueryParams(array $query);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve normalized file upload data.
@@ -182,15 +134,7 @@ interface ServerRequestInterface extends RequestInterface
      * @return array An array tree of UploadedFileInterface instances; an empty
      *     array MUST be returned if no data is present.
      */
-<<<<<<< HEAD
     public function getUploadedFiles(): array;
-=======
-<<<<<<< HEAD
-    public function getUploadedFiles(): array;
-=======
-    public function getUploadedFiles();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Create a new instance with the specified uploaded files.
@@ -203,15 +147,7 @@ interface ServerRequestInterface extends RequestInterface
      * @return static
      * @throws \InvalidArgumentException if an invalid structure is provided.
      */
-<<<<<<< HEAD
     public function withUploadedFiles(array $uploadedFiles): ServerRequestInterface;
-=======
-<<<<<<< HEAD
-    public function withUploadedFiles(array $uploadedFiles): ServerRequestInterface;
-=======
-    public function withUploadedFiles(array $uploadedFiles);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve any parameters provided in the request body.
@@ -258,15 +194,7 @@ interface ServerRequestInterface extends RequestInterface
      * @throws \InvalidArgumentException if an unsupported argument type is
      *     provided.
      */
-<<<<<<< HEAD
     public function withParsedBody($data): ServerRequestInterface;
-=======
-<<<<<<< HEAD
-    public function withParsedBody($data): ServerRequestInterface;
-=======
-    public function withParsedBody($data);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve attributes derived from the request.
@@ -279,15 +207,7 @@ interface ServerRequestInterface extends RequestInterface
      *
      * @return array Attributes derived from the request.
      */
-<<<<<<< HEAD
     public function getAttributes(): array;
-=======
-<<<<<<< HEAD
-    public function getAttributes(): array;
-=======
-    public function getAttributes();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Retrieve a single derived request attribute.
@@ -321,15 +241,7 @@ interface ServerRequestInterface extends RequestInterface
      * @param mixed $value The value of the attribute.
      * @return static
      */
-<<<<<<< HEAD
     public function withAttribute(string $name, $value): ServerRequestInterface;
-=======
-<<<<<<< HEAD
-    public function withAttribute(string $name, $value): ServerRequestInterface;
-=======
-    public function withAttribute(string $name, $value);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Return an instance that removes the specified derived request attribute.
@@ -345,13 +257,5 @@ interface ServerRequestInterface extends RequestInterface
      * @param string $name The attribute name.
      * @return static
      */
-<<<<<<< HEAD
     public function withoutAttribute(string $name): ServerRequestInterface;
-=======
-<<<<<<< HEAD
-    public function withoutAttribute(string $name): ServerRequestInterface;
-=======
-    public function withoutAttribute(string $name);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }

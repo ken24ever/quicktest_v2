@@ -10,55 +10,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Query the database for the user
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $query = "SELECT * FROM users WHERE username='$username' AND password='$password' AND active = 1";
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
 
         //loop
         while($row = mysqli_fetch_assoc($result)){
+            if($row['logged_in'] == 0){
 
-          $usrID = $row['id'];
-          $username = $row['username'];
-          $Password_ = $row['password'];
-          $names = $row['name'];
-          $gender = $row['gender'];
-          $examName = $row['examName'];
-          $emailAddrs= $row['email'];
-          $app= $row['application'];
-<<<<<<< HEAD
-          $passport= $row['userPassport'];
-=======
-<<<<<<< HEAD
-          $passport= $row['userPassport'];
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+                $usrID = $row['id'];
+                $username = $row['username'];
+                $Password_ = $row['password'];
+                $names = $row['name'];
+                $gender = $row['gender'];
+                $examName = $row['examName'];
+                $emailAddrs= $row['email'];
+                $app= $row['application'];
 
-        // User found, start session and redirect to dashboard
-        session_start();
-        $_SESSION['id'] = $usrID ;
-        $_SESSION['username'] = $username;
-        $_SESSION['name'] = $names;
-        $_SESSION['password'] = $Password_;
-        $_SESSION['id'] = $usrID;
-        $_SESSION['gender'] = $gender;
-        $_SESSION['emailAddrs'] = $emailAddrs;
-        $_SESSION['examName'] = $examName;
-        $_SESSION['app'] = $app;
-<<<<<<< HEAD
-        $_SESSION['passport'] = $passport;
-=======
-<<<<<<< HEAD
-        $_SESSION['passport'] = $passport;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+                $passport= $row['userPassport'];
 
-        // Return empty response for successful login
-        echo "";
-        }//end of while loop
 
+                // User found, start session and redirect to dashboard
+                session_start();
+                $_SESSION['id'] = $usrID ;
+                $_SESSION['username'] = $username;
+                $_SESSION['name'] = $names;
+                $_SESSION['password'] = $Password_;
+                $_SESSION['id'] = $usrID;
+                $_SESSION['gender'] = $gender;
+                $_SESSION['emailAddrs'] = $emailAddrs;
+                $_SESSION['examName'] = $examName;
+                $_SESSION['app'] = $app;
+
+                $_SESSION['passport'] = $passport;
+
+                // Return empty response for successful login 
+                echo "";
+
+                $updateLoginStatus = "UPDATE users SET logged_in = 1 WHERE id = $usrID";
+                $resultLoginStatus = mysqli_query($conn, $updateLoginStatus);
+                
+            } else {
+                // User not found, show error message
+                $error_msg = "User already logged in!";
+            }
+        }
     } else {
         // User not found, show error message
         $error_msg = "Invalid email or password";

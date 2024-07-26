@@ -93,19 +93,10 @@ class Properties
                 $docProps->setManager($stringValue);
 
                 break;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             case 'HyperlinkBase':
                 $docProps->setHyperlinkBase($stringValue);
 
                 break;
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             case 'Keywords':
                 $docProps->setKeywords($stringValue);
 
@@ -123,30 +114,10 @@ class Properties
         ?SimpleXMLElement $propertyValue,
         SimpleXMLElement $propertyAttributes
     ): void {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         switch ((string) $propertyAttributes) {
             case 'boolean':
                 $propertyType = DocumentProperties::PROPERTY_TYPE_BOOLEAN;
                 $propertyValue = (bool) (string) $propertyValue;
-<<<<<<< HEAD
-=======
-=======
-        $propertyType = DocumentProperties::PROPERTY_TYPE_UNKNOWN;
-
-        switch ((string) $propertyAttributes) {
-            case 'string':
-                $propertyType = DocumentProperties::PROPERTY_TYPE_STRING;
-                $propertyValue = trim((string) $propertyValue);
-
-                break;
-            case 'boolean':
-                $propertyType = DocumentProperties::PROPERTY_TYPE_BOOLEAN;
-                $propertyValue = (bool) $propertyValue;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
                 break;
             case 'integer':
@@ -160,32 +131,16 @@ class Properties
 
                 break;
             case 'dateTime.tz':
-<<<<<<< HEAD
             case 'dateTime.iso8601tz':
-=======
-<<<<<<< HEAD
-            case 'dateTime.iso8601tz':
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
                 $propertyType = DocumentProperties::PROPERTY_TYPE_DATE;
                 $propertyValue = trim((string) $propertyValue);
 
                 break;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
             default:
                 $propertyType = DocumentProperties::PROPERTY_TYPE_STRING;
                 $propertyValue = trim((string) $propertyValue);
 
                 break;
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
 
         $docProps->setCustomProperty($propertyName, $propertyValue, $propertyType);

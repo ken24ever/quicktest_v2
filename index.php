@@ -12,14 +12,10 @@
   <script src="jquery/jquery-3.6.0.min.js"></script>
 
   <style>
-   /* Font import */
+   /* Font import */ 
    @import url('./bubblegumFont/BubblegumSans-Regular.ttf');
 
-<<<<<<< HEAD
     /* Custom CSS for the layout */ 
-=======
-    /* Custom CSS for the layout */
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     body {
       background-image: url('img/image.png');
       background-size: cover;
@@ -103,15 +99,8 @@
 </head> 
 <body>
 
-<<<<<<< HEAD
 <!-- Navbar -->
-=======
-<<<<<<< HEAD
-<!-- Navbar -->
-=======
-<!-- Navbar  -->
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+
 <nav class="navbar navbar-expand-md bg-white navbar-dark">
   <a class="navbar-brand text-dark" href="#"><img src="img/quickTest.png" alt="" width="80" height="80" class="heartbeat-image"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

@@ -1,13 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-declare(strict_types=1);
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 namespace Psr\Http\Message;
 
 /**
@@ -36,15 +28,7 @@ interface UploadedFileInterface
      * @throws \RuntimeException in cases when no stream is available or can be
      *     created.
      */
-<<<<<<< HEAD
     public function getStream(): StreamInterface;
-=======
-<<<<<<< HEAD
-    public function getStream(): StreamInterface;
-=======
-    public function getStream();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
     /**
      * Move the uploaded file to a new location.
@@ -78,15 +62,7 @@ interface UploadedFileInterface
      * @throws \RuntimeException on any error during the move operation, or on
      *     the second or subsequent call to the method.
      */
-<<<<<<< HEAD
     public function moveTo(string $targetPath): void;
-=======
-<<<<<<< HEAD
-    public function moveTo(string $targetPath): void;
-=======
-    public function moveTo(string $targetPath);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     
     /**
      * Retrieve the file size.
@@ -97,15 +73,7 @@ interface UploadedFileInterface
      *
      * @return int|null The file size in bytes or null if unknown.
      */
-<<<<<<< HEAD
     public function getSize(): ?int;
-=======
-<<<<<<< HEAD
-    public function getSize(): ?int;
-=======
-    public function getSize();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     
     /**
      * Retrieve the error associated with the uploaded file.
@@ -121,15 +89,7 @@ interface UploadedFileInterface
      * @see http://php.net/manual/en/features.file-upload.errors.php
      * @return int One of PHP's UPLOAD_ERR_XXX constants.
      */
-<<<<<<< HEAD
     public function getError(): int;
-=======
-<<<<<<< HEAD
-    public function getError(): int;
-=======
-    public function getError();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     
     /**
      * Retrieve the filename sent by the client.
@@ -144,15 +104,7 @@ interface UploadedFileInterface
      * @return string|null The filename sent by the client or null if none
      *     was provided.
      */
-<<<<<<< HEAD
     public function getClientFilename(): ?string;
-=======
-<<<<<<< HEAD
-    public function getClientFilename(): ?string;
-=======
-    public function getClientFilename();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     
     /**
      * Retrieve the media type sent by the client.
@@ -167,13 +119,5 @@ interface UploadedFileInterface
      * @return string|null The media type sent by the client or null if none
      *     was provided.
      */
-<<<<<<< HEAD
     public function getClientMediaType(): ?string;
-=======
-<<<<<<< HEAD
-    public function getClientMediaType(): ?string;
-=======
-    public function getClientMediaType();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 }

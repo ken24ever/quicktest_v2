@@ -362,33 +362,8 @@ class Color extends Supervisor
         $green = self::getGreen($hexColourValue, false);
         /** @var int $blue */
         $blue = self::getBlue($hexColourValue, false);
-<<<<<<< HEAD
 
         return (($rgba) ? 'FF' : '') . RgbTint::rgbAndTintToRgb($red, $green, $blue, $adjustPercentage);
-=======
-<<<<<<< HEAD
-
-        return (($rgba) ? 'FF' : '') . RgbTint::rgbAndTintToRgb($red, $green, $blue, $adjustPercentage);
-=======
-        if ($adjustPercentage > 0) {
-            $red += (255 - $red) * $adjustPercentage;
-            $green += (255 - $green) * $adjustPercentage;
-            $blue += (255 - $blue) * $adjustPercentage;
-        } else {
-            $red += $red * $adjustPercentage;
-            $green += $green * $adjustPercentage;
-            $blue += $blue * $adjustPercentage;
-        }
-
-        $rgb = strtoupper(
-            str_pad(dechex((int) $red), 2, '0', 0) .
-            str_pad(dechex((int) $green), 2, '0', 0) .
-            str_pad(dechex((int) $blue), 2, '0', 0)
-        );
-
-        return (($rgba) ? 'FF' : '') . $rgb;
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     }
 
     /**

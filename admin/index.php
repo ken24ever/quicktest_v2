@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 <?php
 session_start();
 
@@ -12,13 +8,6 @@ if (isset($_SESSION['user_id'])) {
    // exit();
 }
 ?>
-<<<<<<< HEAD
-=======
-=======
-
-
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,11 +21,7 @@ if (isset($_SESSION['user_id'])) {
 
 
   <!-- Include the jQuery library -->
-<<<<<<< HEAD
-  <script src="jquery/jquery-3.6.0.min.js"></script> 
-=======
   <script src="jquery/jquery-3.6.0.min.js"></script>
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
      <!-- sweet  alert 2 lib -->
      <link rel="stylesheet" href="../sweetalert2/dist/sweetalert2.min.css">
@@ -46,21 +31,9 @@ if (isset($_SESSION['user_id'])) {
    /* Font import */
    @import url('../bubblegumFont/BubblegumSans-Regular.ttf');
 
-<<<<<<< HEAD
     /* Custom CSS for the layout */
     body {
-      background-image: url('../img/admin.png');
-=======
-<<<<<<< HEAD
-    /* Custom CSS for the layout */ 
-    body {
-      background-image: url('../img/login.png');
-=======
-    /* Custom CSS for the layout */
-    body {
-      background-image: url('../img/admin.png');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
+      background-image: url('../img/admin.png'); 
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
@@ -174,7 +147,7 @@ if (isset($_SESSION['user_id'])) {
 <body>
 
 <!-- toast effect -->
-<script src="node_modules/toastify-js/src/toastify.js"></script>
+<script src="node_modules/toastify-js/src/toastify.js"></script> 
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md bg-white navbar-dark">
@@ -213,7 +186,7 @@ if (isset($_SESSION['user_id'])) {
             <form id="loginForm">
                 <h3 class="text-center mb-3">Admin Login</h3>
                 <div class="form-group">
-                    <label for="username">Email</label>
+                    <label for="username">Username</label>
                     <input type="text" name="username" id="username" class="form-control" >
                 </div>
                 <div class="form-group">

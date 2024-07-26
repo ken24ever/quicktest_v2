@@ -60,9 +60,11 @@ if (strcasecmp($selectedOptionRow['selected_option'], $questionRow['answer']) ==
     }
   }
 
-  //Now calculate correct scores in percentage
- $percentage = ($totalScore / $totalQuestions)*100;
- $roundUpVal = ceil($percentage);
+
+ // Now calculate correct scores in percentage and round to two decimal places
+$percentage = round(($totalScore / $totalQuestions) * 100, 2);
+$roundUpVal = ceil($percentage);
+
   
 // Store the scores, end time, and status in the USERS_EXAM table
 $updateScoresSql = "UPDATE users_exam SET scores = ?, end_time = NOW(), status = 'completed' WHERE user_id = ? AND exam_id = ?";

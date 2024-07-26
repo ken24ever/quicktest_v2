@@ -4,133 +4,17 @@ namespace PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx\Namespaces;
 use PhpOffice\PhpSpreadsheet\Shared\XMLWriter;
-<<<<<<< HEAD
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Theme as SpreadsheetTheme;
-=======
-<<<<<<< HEAD
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Theme as SpreadsheetTheme;
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
 class Theme extends WriterPart
 {
     /**
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-     * Map of Major fonts to write.
-     *
-     * @var string[]
-     */
-    private static $majorFonts = [
-        'Jpan' => 'ＭＳ Ｐゴシック',
-        'Hang' => '맑은 고딕',
-        'Hans' => '宋体',
-        'Hant' => '新細明體',
-        'Arab' => 'Times New Roman',
-        'Hebr' => 'Times New Roman',
-        'Thai' => 'Tahoma',
-        'Ethi' => 'Nyala',
-        'Beng' => 'Vrinda',
-        'Gujr' => 'Shruti',
-        'Khmr' => 'MoolBoran',
-        'Knda' => 'Tunga',
-        'Guru' => 'Raavi',
-        'Cans' => 'Euphemia',
-        'Cher' => 'Plantagenet Cherokee',
-        'Yiii' => 'Microsoft Yi Baiti',
-        'Tibt' => 'Microsoft Himalaya',
-        'Thaa' => 'MV Boli',
-        'Deva' => 'Mangal',
-        'Telu' => 'Gautami',
-        'Taml' => 'Latha',
-        'Syrc' => 'Estrangelo Edessa',
-        'Orya' => 'Kalinga',
-        'Mlym' => 'Kartika',
-        'Laoo' => 'DokChampa',
-        'Sinh' => 'Iskoola Pota',
-        'Mong' => 'Mongolian Baiti',
-        'Viet' => 'Times New Roman',
-        'Uigh' => 'Microsoft Uighur',
-        'Geor' => 'Sylfaen',
-    ];
-
-    /**
-     * Map of Minor fonts to write.
-     *
-     * @var string[]
-     */
-    private static $minorFonts = [
-        'Jpan' => 'ＭＳ Ｐゴシック',
-        'Hang' => '맑은 고딕',
-        'Hans' => '宋体',
-        'Hant' => '新細明體',
-        'Arab' => 'Arial',
-        'Hebr' => 'Arial',
-        'Thai' => 'Tahoma',
-        'Ethi' => 'Nyala',
-        'Beng' => 'Vrinda',
-        'Gujr' => 'Shruti',
-        'Khmr' => 'DaunPenh',
-        'Knda' => 'Tunga',
-        'Guru' => 'Raavi',
-        'Cans' => 'Euphemia',
-        'Cher' => 'Plantagenet Cherokee',
-        'Yiii' => 'Microsoft Yi Baiti',
-        'Tibt' => 'Microsoft Himalaya',
-        'Thaa' => 'MV Boli',
-        'Deva' => 'Mangal',
-        'Telu' => 'Gautami',
-        'Taml' => 'Latha',
-        'Syrc' => 'Estrangelo Edessa',
-        'Orya' => 'Kalinga',
-        'Mlym' => 'Kartika',
-        'Laoo' => 'DokChampa',
-        'Sinh' => 'Iskoola Pota',
-        'Mong' => 'Mongolian Baiti',
-        'Viet' => 'Arial',
-        'Uigh' => 'Microsoft Uighur',
-        'Geor' => 'Sylfaen',
-    ];
-
-    /**
-     * Map of core colours.
-     *
-     * @var string[]
-     */
-    private static $colourScheme = [
-        'dk2' => '1F497D',
-        'lt2' => 'EEECE1',
-        'accent1' => '4F81BD',
-        'accent2' => 'C0504D',
-        'accent3' => '9BBB59',
-        'accent4' => '8064A2',
-        'accent5' => '4BACC6',
-        'accent6' => 'F79646',
-        'hlink' => '0000FF',
-        'folHlink' => '800080',
-    ];
-
-    /**
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
      * Write theme to XML format.
      *
      * @return string XML Output
      */
-<<<<<<< HEAD
     public function writeTheme(Spreadsheet $spreadsheet)
-=======
-<<<<<<< HEAD
-    public function writeTheme(Spreadsheet $spreadsheet)
-=======
-    public function writeTheme()
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         // Create XML writer
         $objWriter = null;
@@ -139,14 +23,7 @@ class Theme extends WriterPart
         } else {
             $objWriter = new XMLWriter(XMLWriter::STORAGE_MEMORY);
         }
-<<<<<<< HEAD
         $theme = $spreadsheet->getTheme();
-=======
-<<<<<<< HEAD
-        $theme = $spreadsheet->getTheme();
-=======
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         // XML header
         $objWriter->startDocument('1.0', 'UTF-8', 'yes');
@@ -161,53 +38,14 @@ class Theme extends WriterPart
 
         // a:clrScheme
         $objWriter->startElement('a:clrScheme');
-<<<<<<< HEAD
         $objWriter->writeAttribute('name', $theme->getThemeColorName());
 
         $this->writeColourScheme($objWriter, $theme);
-=======
-<<<<<<< HEAD
-        $objWriter->writeAttribute('name', $theme->getThemeColorName());
-
-        $this->writeColourScheme($objWriter, $theme);
-=======
-        $objWriter->writeAttribute('name', 'Office');
-
-        // a:dk1
-        $objWriter->startElement('a:dk1');
-
-        // a:sysClr
-        $objWriter->startElement('a:sysClr');
-        $objWriter->writeAttribute('val', 'windowText');
-        $objWriter->writeAttribute('lastClr', '000000');
-        $objWriter->endElement();
-
-        $objWriter->endElement();
-
-        // a:lt1
-        $objWriter->startElement('a:lt1');
-
-        // a:sysClr
-        $objWriter->startElement('a:sysClr');
-        $objWriter->writeAttribute('val', 'window');
-        $objWriter->writeAttribute('lastClr', 'FFFFFF');
-        $objWriter->endElement();
-
-        $objWriter->endElement();
-
-        // a:dk2
-        $this->writeColourScheme($objWriter);
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         $objWriter->endElement();
 
         // a:fontScheme
         $objWriter->startElement('a:fontScheme');
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $objWriter->writeAttribute('name', $theme->getThemeFontName());
 
         // a:majorFont
@@ -233,24 +71,6 @@ class Theme extends WriterPart
         $objWriter->endElement(); // a:minorFont
 
         $objWriter->endElement(); // a:fontScheme
-<<<<<<< HEAD
-=======
-=======
-        $objWriter->writeAttribute('name', 'Office');
-
-        // a:majorFont
-        $objWriter->startElement('a:majorFont');
-        $this->writeFonts($objWriter, 'Cambria', self::$majorFonts);
-        $objWriter->endElement();
-
-        // a:minorFont
-        $objWriter->startElement('a:minorFont');
-        $this->writeFonts($objWriter, 'Calibri', self::$minorFonts);
-        $objWriter->endElement();
-
-        $objWriter->endElement();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
 
         // a:fmtScheme
         $objWriter->startElement('a:fmtScheme');
@@ -864,15 +684,7 @@ class Theme extends WriterPart
      *
      * @param string[] $fontSet
      */
-<<<<<<< HEAD
     private function writeFonts(XMLWriter $objWriter, string $latinFont, string $eastAsianFont, string $complexScriptFont, array $fontSet): void
-=======
-<<<<<<< HEAD
-    private function writeFonts(XMLWriter $objWriter, string $latinFont, string $eastAsianFont, string $complexScriptFont, array $fontSet): void
-=======
-    private function writeFonts(XMLWriter $objWriter, string $latinFont, array $fontSet): void
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     {
         // a:latin
         $objWriter->startElement('a:latin');
@@ -881,28 +693,12 @@ class Theme extends WriterPart
 
         // a:ea
         $objWriter->startElement('a:ea');
-<<<<<<< HEAD
         $objWriter->writeAttribute('typeface', $eastAsianFont);
-=======
-<<<<<<< HEAD
-        $objWriter->writeAttribute('typeface', $eastAsianFont);
-=======
-        $objWriter->writeAttribute('typeface', '');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $objWriter->endElement();
 
         // a:cs
         $objWriter->startElement('a:cs');
-<<<<<<< HEAD
         $objWriter->writeAttribute('typeface', $complexScriptFont);
-=======
-<<<<<<< HEAD
-        $objWriter->writeAttribute('typeface', $complexScriptFont);
-=======
-        $objWriter->writeAttribute('typeface', '');
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         $objWriter->endElement();
 
         foreach ($fontSet as $fontScript => $typeface) {
@@ -916,10 +712,6 @@ class Theme extends WriterPart
     /**
      * Write colour scheme to XML format.
      */
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
     private function writeColourScheme(XMLWriter $objWriter, SpreadsheetTheme $theme): void
     {
         $themeArray = $theme->getThemeColors();
@@ -947,21 +739,6 @@ class Theme extends WriterPart
                 $objWriter->endElement(); // a:srgbClr
                 $objWriter->endElement(); // a:$colourName
             }
-<<<<<<< HEAD
-=======
-=======
-    private function writeColourScheme(XMLWriter $objWriter): void
-    {
-        foreach (self::$colourScheme as $colourName => $colourValue) {
-            $objWriter->startElement('a:' . $colourName);
-
-            $objWriter->startElement('a:srgbClr');
-            $objWriter->writeAttribute('val', $colourValue);
-            $objWriter->endElement();
-
-            $objWriter->endElement();
->>>>>>> 6a18945e5e75c81531b1898c231a67172bfdc3d7
->>>>>>> c4384ae4e664a8dce411d4549ad4b7f4bbe6f742
         }
     }
 }
